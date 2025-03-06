@@ -26,6 +26,7 @@ $hero-color: #212121;
 $blue: #0265D2;
 
 .postman{
+    position: relative;
     padding: 0px;
     height: 100vh;
     background-color: $main-color;
@@ -466,6 +467,9 @@ $blue: #0265D2;
                         @include displaying();
                         justify-content: center;
                         box-sizing: border-box;
+
+                        // problem var!!!!!!!!!!!!!
+                        // gap: 20px;
                         
 
                         li{
@@ -968,4 +972,146 @@ $blue: #0265D2;
 [data-title]:hover::after {
     opacity: 1;
     visibility: visible;
+}
+
+
+.form-select option {
+    background-color: $hero-color;    
+    font-size: 12px;
+    font-family: $header-font;
+    border: $border !important;
+
+    &:nth-child(1){
+        color: #6bdd9a;
+    }
+
+    &:nth-child(2){
+        color: #ffe47e;
+    }
+
+    &:nth-child(3){
+        color: #74aef6;
+    }
+
+    &:nth-child(4){
+        color: #c0a8e1;
+    }
+
+    &:nth-child(5){
+        color: #f79a8e;
+    }
+    &:nth-child(6){
+        color: #6bdd9a;
+    }
+    &:nth-child(7){
+        color: #f15eb0;
+    }
+}
+
+
+// modal
+.modal{
+        width: 40%;
+        padding: 10px;
+        background-color: $hero-color;
+        position: absolute;
+        display: block;
+        height: auto;
+        left: 50%;
+        top: 0; 
+        transform: translateX(-50%); 
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border: $border;
+        font-family: $header-font;
+        font-size: 12px;
+        display: none;
+    
+
+    &__header{
+        display: flex;
+        gap: 30px;
+        border-bottom: $border;        
+        padding-bottom: 10px;
+
+
+        .modal-form-select{
+            width: 20%;
+            background-color: #3B3B3B;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            margin-left: 30px;
+            padding: 10px;
+        }
+
+        input{
+            width: 70%;
+            background-color: $hero-color;
+            border: none;
+            color: white;
+            font-weight: 200;
+            
+            &:focus{
+                outline: none;
+            }
+        }
+
+        .modal-closer{
+            color: $baseTextColor;
+            font-size: 18px;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__hero{
+        display: flex;
+        color: #5c5c5c;
+        gap: 30px;
+        align-items: center;
+        padding: 10px 30px 0px;
+
+        span{
+            font-size: 11px;
+        }
+
+        ul{
+            color: white;
+            @include agentEraser();
+            list-style: none;
+            @include displaying();
+            gap: 20px;
+            font-family: $header-font;
+
+            li{
+                padding: 4px 5px;
+                border-radius: 3px;
+                background-color: #303030;
+                display: flex;
+                gap: 5px;
+                align-items: center;
+
+                &:hover{
+                    background-color: #3B3B3B;
+                    cursor: pointer;
+                    transition: 0.3s;
+                }
+            }
+        }
+
+        .modal-search{
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        
+
+    }
+}
+
+.m-display{
+    display: block;
 }

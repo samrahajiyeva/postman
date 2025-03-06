@@ -191,15 +191,18 @@
                                     <div class="request-select col-11">
                                         <select class="form-select" aria-label="Disabled select example">
                                             <option selected>GET</option>
-                                            <option value="1">PUT</option>
-                                            <option value="2">DELETE</option>
-                                            <option value="3">POST</option>
+                                            <option value="1">POST</option>
+                                            <option value="2">PUT</option>
+                                            <option value="3">PATCH</option>
+                                            <option value="4">DELETE</option>
+                                            <option value="5">HEAD</option>
+                                            <option value="6">OPTIONS</option>
                                           </select>
-                                          <input class="" type="text" class="form-control" placeholder='Enter URL or paste text' id="exampleInputText" aria-describedby="textHelp">
+                                          <input class="" type="text" class="form-control" placeholder='Enter URL or paste text' id="exampleInputText" aria-describedby="textHelp" autocomplete>
                                     </div>
                                     <button class="col-1">
                                         <span>Send</span>
-                                        <i class="fa-solid fa-angle-down"></i>
+                                        <i class="fa-solid fa-angle-down" ></i>
                                     </button>
                                 </div>
 
@@ -347,6 +350,55 @@
                 </ul>
             </div>
          </div>
+
+
+
+
+
+
+
+
+
+
+         <!-- modal -->
+          <div class="modal">
+            <div class="modal__header col-12">
+                <select class="modal-form-select" aria-label="Disabled select example" disabled>
+                    <option selected>All of Postman</option>
+                  </select>
+                <input type="text" placeholder="Search for team APIs you want to explore">
+                  <div class="modal-closer"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+            <div class="modal__hero col-12">
+                <span class="modal-search">Search for:</span>
+                <ul>
+                    <li>
+                        <i class="fa-brands fa-squarespace"></i>
+                        <span>Workspaces</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-prescription-bottle"></i>
+                        <span>Collections</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-code-pull-request"></i>
+                        <span>Requests</span>
+                    </li>
+                    <li>
+                        <i class="fa-brands fa-stumbleupon-circle"></i>
+                        <span>APIs</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-chart-diagram"></i>
+                        <span>Flows</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-people-group"></i>
+                        <span>Teams</span>
+                    </li>
+                </ul>
+            </div>
+          </div>
 
     </div>
 

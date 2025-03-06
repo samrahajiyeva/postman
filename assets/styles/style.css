@@ -5,6 +5,7 @@
 }
 
 .postman {
+  position: relative;
   padding: 0px;
   height: 100vh;
   background-color: rgb(36, 36, 36);
@@ -729,4 +730,123 @@
 [data-title]:hover::after {
   opacity: 1;
   visibility: visible;
+}
+
+.form-select option {
+  background-color: #212121;
+  font-size: 12px;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", Helvetica, Arial, sans-serif;
+  border: 0.5px solid rgba(63, 63, 63, 0.473) !important;
+}
+.form-select option:nth-child(1) {
+  color: #6bdd9a;
+}
+.form-select option:nth-child(2) {
+  color: #ffe47e;
+}
+.form-select option:nth-child(3) {
+  color: #74aef6;
+}
+.form-select option:nth-child(4) {
+  color: #c0a8e1;
+}
+.form-select option:nth-child(5) {
+  color: #f79a8e;
+}
+.form-select option:nth-child(6) {
+  color: #6bdd9a;
+}
+.form-select option:nth-child(7) {
+  color: #f15eb0;
+}
+
+.modal {
+  width: 40%;
+  padding: 10px;
+  background-color: #212121;
+  position: absolute;
+  display: block;
+  height: auto;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 0.5px solid rgba(63, 63, 63, 0.473);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  display: none;
+}
+.modal__header {
+  display: flex;
+  gap: 30px;
+  border-bottom: 0.5px solid rgba(63, 63, 63, 0.473);
+  padding-bottom: 10px;
+}
+.modal__header .modal-form-select {
+  width: 20%;
+  background-color: #3B3B3B;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  margin-left: 30px;
+  padding: 10px;
+}
+.modal__header input {
+  width: 70%;
+  background-color: #212121;
+  border: none;
+  color: white;
+  font-weight: 200;
+}
+.modal__header input:focus {
+  outline: none;
+}
+.modal__header .modal-closer {
+  color: #A6A6A6;
+  font-size: 18px;
+}
+.modal__header .modal-closer:hover {
+  cursor: pointer;
+}
+.modal__hero {
+  display: flex;
+  color: #5c5c5c;
+  gap: 30px;
+  align-items: center;
+  padding: 10px 30px 0px;
+}
+.modal__hero span {
+  font-size: 11px;
+}
+.modal__hero ul {
+  color: white;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", Helvetica, Arial, sans-serif;
+}
+.modal__hero ul li {
+  padding: 4px 5px;
+  border-radius: 3px;
+  background-color: #303030;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.modal__hero ul li:hover {
+  background-color: #3B3B3B;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.modal__hero .modal-search {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.m-display {
+  display: block;
 }/*# sourceMappingURL=style.css.map */
