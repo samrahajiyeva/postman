@@ -197,15 +197,15 @@
                   <div class="request-select col-11">
                     <select
                       class="form-select"
-                      aria-label="Disabled select example"
+                      aria-label="Disabled select example" id="colorSelect"
                     >
-                      <option selected>GET</option>
-                      <option value="1">POST</option>
-                      <option value="2">PUT</option>
-                      <option value="3">PATCH</option>
-                      <option value="4">DELETE</option>
-                      <option value="5">HEAD</option>
-                      <option value="6">OPTIONS</option>
+                      <option value="1" selected style="color: #6bdd9a;">GET</option>
+                      <option value="2" style="color: #ffe47e;">POST</option>
+                      <option value="3" style="color: #74aef6;">PUT</option>
+                      <option value="4" style="color: #c0a8e1;">PATCH</option>
+                      <option value="5" style="color: #f79a8e;">DELETE</option>
+                      <option value="6" style="color: #6bdd9a;">HEAD</option>
+                      <option value="7" style="color: #f15eb0;">OPTIONS</option>
                     </select>
                     <input
                       class=""
@@ -422,6 +422,38 @@
             </li>
           </ul>
         </div>
+      </div>
+
+
+      <div class="invite-modal col-3">
+        <div class="invite-modal__header">
+            <h3>Invite to workspace</h3>
+            <i class="fa-solid fa-xmark inviteModalDisplayNone"></i>
+        </div>
+        <div class="invite-modal__blue">
+            <i class="fa-solid fa-info"></i>
+            <span>Inviting people will change this into a team workspace.</span>
+        </div>
+        <div class="invite-modal__workspace">
+            <span>
+                Invite by email
+            </span>
+
+            <ul>
+                <li>
+                    <span>Add from:</span>
+                    <img src="https://web.postman.co/_ar-assets/images/google_logo_dark-0cb233146aafa32bbbef10b199c4bab5.svg" alt="google">
+                    <span class="google">Google</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-angle-down"></i>
+                </li>
+            </ul>
+        </div>
+        <div class="invite-modal__input">
+            <input type="text">
+        </div>
+        <button disabled>Send Invite</button>
       </div>
     </div>
 
