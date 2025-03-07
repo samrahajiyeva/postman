@@ -75,4 +75,21 @@ const selectElement = document.getElementById("colorSelect");
 
   selectElement.dispatchEvent(new Event("change"));
 
+
+
+
+// light - dark mode
+const modeIcon = document.querySelector(".mode-icon")
+
+
+modeIcon.addEventListener("click", function () {
+  document.body.classList.toggle("light-mode");
+
+  modeIcon.classList.toggle('fa-sun');
+  modeIcon.classList.toggle('fa-moon');
+
+  console.log(document.body.classList.contains("light-mode") ? 'Light mode açıldı' : 'Dark mode açıldı');
+});
+
+
 });

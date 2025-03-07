@@ -26,6 +26,8 @@ $baseTextColor: #a6a6a6;
 $green: #6bdd9a;
 $hero-color: #212121;
 $blue: #0265d2;
+$lightborder: 0.5px solid #e2e0e0;
+$lightBaseTextColor: #212121;
 
 .postman {
   position: relative;
@@ -156,7 +158,7 @@ $blue: #0265d2;
   // main
   &__main {
     display: flex;
-    height: calc(100vh - 78.5px);
+    height: calc(100vh - 78px);
 
     &__sidebar {
       height: 100%;
@@ -1225,4 +1227,231 @@ $blue: #0265d2;
 .footerUpDown{
   position: fixed;
   bottom: 25px;
+}
+
+
+.mode-icon{
+  background-color: $primary-orange !important;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  @include displaying();
+  justify-content: center;
+}
+
+.fa-moon{
+  color: black !important;
+}
+
+.fa-sun{
+  color: gold !important;
+}
+
+
+.light-mode{
+  .postman{
+    .postman__header{
+      background-color: #f2f2f2;
+      border-bottom: $lightborder;
+
+      .upgrade {
+
+        button , span{
+          color: $lightBaseTextColor;
+          background-color: #e6e6e6;
+        }
+      }
+      li, span{
+        color: black;
+      }
+
+      .invite{
+        span{
+          color: white !important;
+        }
+      }
+
+      &__left{
+        ul{
+          li:hover{
+            background-color: #e6e6e6;
+          }
+        }
+      }
+    }
+
+    .postman__main__sidebar {
+      background-color: #f2f2f2;
+      border-right: $lightborder;
+
+    
+
+      &__bottom__right__top{
+        input{
+          background-color: #f2f2f2;
+        }
+      }
+
+      &__bottom__right__bottom{
+        ul{
+          li{
+            color: $lightBaseTextColor;
+
+
+            &:hover{
+              background-color: #e6e6e6 ;
+            }
+          }
+
+        }
+
+        .li-div{
+          background-color: #e6e6e6;
+          
+          span:nth-child(2){
+            color: black;
+          }
+          span:nth-child(1){
+            color: green;
+          }
+        
+        }
+      }
+
+      &__top{
+        border-bottom: $lightborder;
+        span{
+          color: $lightBaseTextColor;
+        }
+
+        i{
+          color: $lightBaseTextColor;
+        }
+
+        button{
+          background-color: #e6e6e6;
+          color: $lightBaseTextColor;
+        }
+      }
+
+      .postman__main__sidebar__bottom{
+        &__left{
+          border-right: $lightborder;
+          
+          ul{
+            color: #6b6b6b;
+
+            li{
+              
+              &:nth-child(1){
+                background-color: #E6E6E6;
+
+              }
+
+
+              &:hover{
+                background-color: #e6e6e6;
+                color: $lightBaseTextColor;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .postman__main__hero{
+      background-color: white;
+
+
+    }
+
+
+    .postman__footer{
+      background-color: #f2f2f2;
+      border-top: $lightborder;
+
+      ul{
+        li{
+          color: $lightBaseTextColor;
+        }
+      }
+    }
+
+
+    // light modal
+
+    .modal{
+      background-color: white;
+      border: $lightborder;
+      color: $lightBaseTextColor;
+
+      select{
+        background-color: #E6E6E6;
+        color: $lightBaseTextColor;
+
+      }
+
+      input{
+        background-color: white;
+      }
+
+      .modal__header{
+        border-bottom: $lightborder;
+      }
+
+      .modal__hero{
+        ul{
+          li{
+            background-color: #e6e6e6;
+            color: $lightBaseTextColor;
+
+
+          }
+        }
+      }
+    }
+
+
+    // light invite modal
+    .invite-modal{
+      background-color: white;
+      border: $lightborder;
+
+    .invite-modal__header{
+      h3 , i {
+        color: $lightBaseTextColor;
+      }
+
+      .fa-xmark:hover{
+        background-color: #e6e6e6;
+      }
+    }
+
+    .invite-modal__workspace{
+      span{
+        color: #6b6b6b;
+      }
+
+      ul{
+        li{
+          span{
+            color: #212121;
+          }
+        }
+      }
+    }
+
+    .invite-modal__input{
+      input{
+        background-color: white;
+      }
+    }
+
+    button{
+      background-color: #ffb091;
+      color: white;
+    }
+    }
+
+  }
 }
