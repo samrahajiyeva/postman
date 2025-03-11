@@ -21,42 +21,44 @@
     <title>Postman</title>
   </head>
   <body>
-    <div class="postman container-fluid">
+    <div class="postman container-fluid d-flex flex-column">
       <!-- header -->
-      <div class="postman__header">
-        <div class="postman__header__left">
-          <ul>
-            <li>Home</li>
-            <li>Workspaces <i class="fa-solid fa-angle-down"></i></li>
-            <li>API Network</li>
-          </ul>
-        </div>
-        <div class="postman__header__middle">
-          <div class="search-btn">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span>Search Postman</span>
+        <!-- boostrap navbar -->
+        <nav class="navbar bg-body-tertiary postman__header">
+          <div class="postman__header__left">
+            <ul>
+              <li>Home</li>
+              <li>Workspaces <i class="fa-solid fa-angle-down"></i></li>
+              <li>API Network</li>
+            </ul>
           </div>
-        </div>
-        <div class="postman__header__right">
-          <button class="invite">
-            <i class="fa-solid fa-user-plus"></i>
-            <span>Invite</span>
-          </button>
-          <i class="fa-solid fa-gear" data-title="Settings"></i>
-          <i class="fa-regular fa-bell" data-title="Notifications"></i>
-          <img src="assets/images/postman-img.png" alt="header-img" />
-          <div class="upgrade">
-            <button>Upgrade</button>
-            <span><i class="fa-solid fa-angle-down"></i></span>
+          <div class="postman__header__middle">
+            <div class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Search Postman</span>
+            </div>
           </div>
-          <!-- <i class="fa-solid fa-moon"></i>      -->
-          <i class="fa-solid fa-sun mode-icon"></i>
-        </div>
-      </div>
+          <div class="postman__header__right">
+            <button class="invite">
+              <i class="fa-solid fa-user-plus"></i>
+              <span>Invite</span>
+            </button>
+            <i class="fa-solid fa-gear" data-title="Settings"></i>
+            <i class="fa-regular fa-bell" data-title="Notifications"></i>
+            <img src="assets/images/postman-img.png" alt="header-img" />
+            <div class="upgrade d-flex">
+              <button>Upgrade</button>
+              <span><i class="fa-solid fa-angle-down"></i></span>
+            </div>
+            <i class="fa-solid fa-sun mode-icon"></i>
+          </div>
+        </nav>
+        
 
       <!-- main -->
       <div class="postman__main">
-        <!-- sidebar -->
+        <div class="row">
+                  <!-- sidebar -->
         <div class="postman__main__sidebar col-3">
           <!-- sidebar top -->
           <div class="postman__main__sidebar__top">
@@ -70,73 +72,76 @@
             </div>
           </div>
           <!-- sidebar bottom -->
-          <div class="postman__main__sidebar__bottom">
-            <div class="postman__main__sidebar__bottom__left col-3">
+          <div class="postman__main__sidebar__bottom d-flex">
+         <div class="row">
+          <div class="postman__main__sidebar__bottom__left col-3">
+            <ul>
+              <li>
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Collections</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-square-minus"></i>
+                <span>Environments</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-chart-diagram"></i>
+                <span>Flows</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>History</span>
+              </li>
+              <li data-title="Configure workspace sidebar">
+                <i class="fa-solid fa-sliders"></i>
+              </li>
+            </ul>
+          </div>
+
+          <div class="postman__main__sidebar__bottom__right col-9">
+            <div class="postman__main__sidebar__bottom__right__top">
+              <i
+                class="fa-solid fa-plus"
+                data-title="Create new collection"
+              ></i>
+              <div class="search-container">
+                <i class="fa-solid fa-layer-group"></i>
+                <input type="text" />
+              </div>
+              <i
+                class="fa-solid fa-ellipsis"
+                data-title="View more actions"
+              ></i>
+            </div>
+
+            <div class="postman__main__sidebar__bottom__right__bottom">
               <ul>
                 <li>
-                  <i class="fa-solid fa-layer-group"></i>
-                  <span>Collections</span>
+                  <div>
+                    <i class="fa-solid fa-angle-down"></i>
+                    <span> Collation </span>
+                  </div>
                 </li>
+              </ul>
+              <div class="li-div">
+                <span>GET</span>
+                <span>Test</span>
+              </div>
+              <ul>
                 <li>
-                  <i class="fa-solid fa-square-minus"></i>
-                  <span>Environments</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-chart-diagram"></i>
-                  <span>Flows</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-clock-rotate-left"></i>
-                  <span>History</span>
-                </li>
-                <li data-title="Configure workspace sidebar">
-                  <i class="fa-solid fa-sliders"></i>
+                  <div>
+                    <i class="fa-solid fa-angle-right"></i>
+                    <span>New Collection</span>
+                  </div>
                 </li>
               </ul>
             </div>
-
-            <div class="postman__main__sidebar__bottom__right col-9">
-              <div class="postman__main__sidebar__bottom__right__top">
-                <i
-                  class="fa-solid fa-plus"
-                  data-title="Create new collection"
-                ></i>
-                <div class="search-container">
-                  <i class="fa-solid fa-layer-group"></i>
-                  <input type="text" />
-                </div>
-                <i
-                  class="fa-solid fa-ellipsis"
-                  data-title="View more actions"
-                ></i>
-              </div>
-
-              <div class="postman__main__sidebar__bottom__right__bottom">
-                <ul>
-                  <li>
-                    <div>
-                      <i class="fa-solid fa-angle-down"></i>
-                      <span> Collation </span>
-                    </div>
-                  </li>
-                </ul>
-                <div class="li-div">
-                  <span>GET</span>
-                  <span>Test</span>
-                </div>
-                <ul>
-                  <li>
-                    <div>
-                      <i class="fa-solid fa-angle-right"></i>
-                      <span>New Collection</span>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+          </div>
+         </div>
           </div>
         </div>
-        <div class="postman__main__hero col-9">
+        <!-- main -->
+        <div class="postman__main__hero col-9 d-flex flex-column">
           <div class="postman__main__hero__top col-12">
             <div class="postman__main__hero__top__left col-10">
               <div class="right-side">
@@ -164,6 +169,7 @@
                 </li>
               </ul>
             </div>
+
           </div>
 
           <div class="postman__main__hero__bottom" class="col-12">
@@ -185,9 +191,9 @@
                     </li>
                     <li>
                       <i class="fa-solid fa-floppy-disk"></i>
-                      <span class="save">Save</span>
-                      <i class="fa-solid fa-angle-down"></i>
-                      <button data-title="Share request">Share</button>
+                      <span class="save" data-title="No new changes to save" >Save</span>
+                      <i class="fa-solid fa-angle-down saveAs"></i>
+                      <button data-title="Share request" class="share-toggle">Share</button>
                     </li>
                   </ul>
                 </div>
@@ -223,8 +229,8 @@
                     />
                   </div>
                   <button class="col-1">
-                    <span>Send</span>
-                    <i class="fa-solid fa-angle-down"></i>
+                    <span data-title="Ctrl+↩">Send</span>
+                    <i class="fa-solid fa-angle-down sendSubModalToggle"></i>
                   </button>
                 </div>
 
@@ -241,11 +247,11 @@
                       <li>Settings</li>
                     </ul>
                   </div>
-                  <span>Cookies</span>
+                  <span class="cookie-open">Cookies</span>
                 </div>
 
-                <!-- burada isleyirsen -->
-                <div class="postman__main__hero__bottom__left__hero__group">
+             
+                <div class="postman__main__hero__bottom__left__hero__group d-flex flex-column">
                   <span> Query Params </span>
                   <!-- query table -->
                   <div class="table col-12">
@@ -275,8 +281,10 @@
                   </div>
                 </div>
               </div>
-              <div class="postman__main__hero__bottom__left__footer col-12">
-                <div class="postman__main__hero__bottom__left__footer__header">
+
+                 <!-- burada isleyirsen -->
+              <div class="postman__main__hero__bottom__left__footer col-12 d-flex flex-column">
+                <div class="postman__main__hero__bottom__left__footer__header col-12">
                   <ul>
                     <li>
                       <span>Response</span>
@@ -305,27 +313,30 @@
 
             <div class="postman__main__hero__bottom__right">
               <ul>
-                <li><i class="fa-solid fa-file-invoice"></i></li>
-                <li>
+                <li data-title="Documentation">
+                  <i class="fa-solid fa-file-invoice"></i>
+                </li>
+                <li data-title="Comments">
                   <i class="fa-solid fa-comment-dots"></i>
                 </li>
-                <li>
+                <li data-title="Code">
                   <i class="fa-solid fa-code"></i>
                 </li>
-                <li>
+                <li data-title="Related requests">
                   <i class="fa-solid fa-code-pull-request"></i>
                 </li>
-                <li>
+                <li data-title="Info">
                   <i class="fa-solid fa-info"></i>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+        </div>
       </div>
 
       <!-- footer -->
-      <div class="postman__footer">
+      <div class="postman__footer col-12">
         <div class="postman__footer__left">
           <ul>
             <li>
@@ -429,6 +440,7 @@
         </div>
       </div>
 
+      <!-- invite modal -->
       <div class="invite-modal col-3">
         <div class="invite-modal__header">
           <h3>Invite to workspace</h3>
@@ -460,6 +472,153 @@
         </div>
         <button disabled>Send Invite</button>
       </div>
+
+      <!-- cookie modal -->
+       <div class="cookie-modal col-5 d-flex flex-column">
+        <div class="cookie-modal__top col-12">
+          <span>Cookies</span>
+          <i class="fa-solid fa-xmark cookie-close"></i>
+        </div>
+        <div class="cookie-modal__pagelist col-12">
+          <ul>
+            <li class="manage-cookie-li selected-cookie">
+              <span>Manage Cookies</span>
+            </li>
+            <li class="sync-cookie-li">
+              <span>Sync Cookies</span>
+            </li>
+          </ul>
+        </div>
+        <div class="cookie-modal__change">
+          <div class="cookie-manage col-12 d-flex flex-column">
+              <div class="cookie-manage__input col-12">
+              <div class="input-group mb-3 d-flex">
+                  <input type="text" class="form-control" placeholder="Type a domain name" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Add Domain</button>
+              </div>
+              </div>
+              <div class="cookie-manage__hero col-12 d-flex flex-column text-center">
+                <img src="https://postman.com/_aether-assets/illustrations/light/illustration-no-cookies.svg" alt="postman-logo">
+                <span>No Cookies available</span>
+              </div>
+              <div class="cookie-manage__button col-12">
+                <button class="btn">Domain Allowlist</button>
+              </div>
+          </div>
+          <div class="cookie-sync col-12 d-flex flex-column">
+            <p>Learn more about 
+              <span>cookies</span>
+               and how to capture them with 
+              <span>Interceptor</span>.</p>
+              <div class="noconnect col-12">
+               <div class="row">
+                <div class="col-1">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="d-flex flex-column col-11">
+                  <h5>
+                    No connection to interceptor
+                  </h5>
+                  <span>
+                    Make sure you've installed the 
+                    Interceptor extension.                    
+                  </span>
+                </div>
+               </div>
+              </div>
+
+              <span class="domain">Domains <i class="fa-solid fa-circle-info"></i></span>
+              <div class="input-group mb-3 d-flex">
+                <input type="text" class="form-control" placeholder="Type a domain name" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn" type="button" id="button-addon2">Add Domain</button>
+              </div>
+              
+              <div>
+                <button class="btn sync-btn">Start Syncing</button>
+              </div>
+          </div>
+        </div>
+       </div>
+
+       <!-- share modal -->
+        <div class="share-modal col-2 d-none">
+          <div class="row">
+            <div class="share-modal__header col-12">
+              <h5>Save changes before sharing?</h5>
+            </div>
+            <div class="share-modal__text col-12">
+              <p>You can also share this request without your recent changes.</p>
+            </div>
+            <div class="share-modal__buttons col-12 d-flex">
+                <button>Save and Share</button>
+                <button>Share Without Saving</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- saveAs submodal -->
+    <div class="saveAs-submodal col-1 d-none">
+      <button class="col-12 saveAsOpen">Save as</button>
+    </div>
+
+    <!-- saveAs Modal -->
+    <div class="saveAs-modal d-none col-4">
+     <div class="row">
+      <div class="saveAs-modal__title col-12">
+        <h3>SAVE REQUEST</h3>
+      </div>
+      <div class="saveAs-modal__request col-12">
+        <span>Request Name</span>
+        <input type="text" class="form-control col-12" id="exampleInputText" aria-describedby="textHelp">
+      </div>
+      <div class="saveAs-modal__desc col-12">
+        <span class="addDesc">Add description</span>
+        <div class="d-none addedDesc">
+          <span>Description</span>
+          <input type="text" class="saveAs-desc-input col-12">
+        </div>
+       </div>
+     </div>
+     <div class="saveAs-modal__explorer col-12 d-flex align-items-center">
+        <h6>
+          Save to
+        </h6>
+        <span>
+          Select a collection/folder
+        </span>
+     </div>
+     <div class="saveAs-modal__explorer-rows col-12">
+      <!-- burada isleyirsen -->
+      <div class="input-group input-group-sm mb-3 saveAs-inp2" >
+        <span class="input-group-text" id="inputGroup-sizing-sm" >
+          <i class="fa-solid fa-layer-group"></i>
+        </span>
+        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+      </div>
+      <div class="saveAs-changeable-part">
+        <ul class="d-flex flex-column">
+          <li>
+            <i class="fa-brands fa-nfc-symbol"></i>
+            <span>Collation</span>
+          </li>
+
+        </ul>
+      </div>
+     </div>
+     <div class="saveAs-modal__bottom col-12 d-flex justify-content-between align-items-center">
+      <span>New Collection</span>
+      <div class="saveAs-modal__bottom-buttons d-flex">
+        <button class="btn" disabled>Save</button>
+        <button class="btn saveAsCancel">Cancel</button>
+      </div>
+     </div>
+    </div>
+
+    <!-- send submodal -->
+
+    <div class="send-submodal col-1 d-none">
+      <button class="col-12">Send and Download</button>
     </div>
 
     <!-- scripts -->
