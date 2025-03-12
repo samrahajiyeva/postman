@@ -195,4 +195,25 @@ document.addEventListener("DOMContentLoaded", function () {
   addNewCollectionCancel.addEventListener("click", () => {
     addNewCollection.classList.add("d-none");
   });
+
+  const addNewCollectionCreate = document.querySelector(
+    ".addNewCollection-create"
+  );
+  const addNewCollectionInput = document.querySelector(".addNewCollection-inp");
+  const addNewCollectionList = document.querySelector(".addNewCollectionList");
+
+  let collections = [];
+
+  addNewCollectionCreate.addEventListener("click", () => {
+    if (addNewCollectionInput.value.trim() !== "") {
+      let newItem = document.createElement("li");
+      newItem.innerHTML = `
+        <i class="fa-brands fa-nfc-symbol"></i>
+        <span>${addNewCollectionInput.value}</span>
+      `;
+
+      addNewCollectionList.appendChild(newItem);
+      addNewCollectionInput.value = "";
+    }
+  });
 });
