@@ -213,7 +213,7 @@
   height: 100vh;
 }
 .postman__main__sidebar__bottom__left {
-  padding-top: 10px;
+  padding-top: 15px;
   border-right: var(--border);
 }
 .postman__main__sidebar__bottom__left ul {
@@ -223,7 +223,7 @@
   color: var(--baseTextColor);
   margin: 0;
   padding: 0;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
 }
 .postman__main__sidebar__bottom__left ul li {
@@ -233,7 +233,7 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 80%;
   height: 60px;
 }
 .postman__main__sidebar__bottom__left ul li:nth-child(1) {
@@ -279,12 +279,12 @@
   border: var(--border);
   border-radius: 5px;
   outline: none;
-  font-size: 14px;
+  font-size: 12px;
   background-color: var(--dark-gray);
   color: var(--white);
 }
 .postman__main__sidebar__bottom__right__top .search-container input:focus {
-  background-color: var(--main-color);
+  background-color: var(--dark-gray);
 }
 .postman__main__sidebar__bottom__right__top .fa-plus,
 .postman__main__sidebar__bottom__right__top .fa-ellipsis {
@@ -1071,7 +1071,8 @@
   align-items: center;
   justify-content: space-between;
 }
-.cookie-modal__top span, .cookie-modal__top i {
+.cookie-modal__top span,
+.cookie-modal__top i {
   color: var(--white);
   font-size: 16px;
 }
@@ -1154,7 +1155,8 @@
   padding: 16px;
   margin: 5px 0px 15px;
 }
-.cookie-modal__change .cookie-sync .noconnect h5, .cookie-modal__change .cookie-sync .noconnect span {
+.cookie-modal__change .cookie-sync .noconnect h5,
+.cookie-modal__change .cookie-sync .noconnect span {
   font-size: 12px;
   color: #212121;
 }
