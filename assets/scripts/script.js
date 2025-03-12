@@ -180,4 +180,19 @@ document.addEventListener("DOMContentLoaded", function () {
       sendSubModal.classList.add("d-none");
     }
   });
+
+  // save as daxili funksionalliqlar
+  const addNewCollection = document.querySelector(".addNewCollection");
+  const addNewCollectionCancel = document.querySelector(
+    ".addNewCollection-cancel"
+  );
+  const newCollectionSpan = document.querySelector(".newCollectionSpan");
+
+  newCollectionSpan.addEventListener("click", () => {
+    addNewCollection.classList.toggle("d-none");
+  });
+
+  addNewCollectionCancel.addEventListener("click", () => {
+    addNewCollection.classList.add("d-none");
+  });
 });
