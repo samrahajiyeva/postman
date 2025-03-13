@@ -17,6 +17,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- sortable js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+
     <link rel="stylesheet" href="assets/styles/style.css" />
     <title>Postman</title>
   </head>
@@ -279,12 +282,12 @@
                         class="postman__main__hero__bottom__left__hero__group d-flex flex-column"
                       >
                         <span> Query Params </span>
-                       
+
                         <table class="table">
                           <thead>
                             <tr>
                               <th class="d-flex justify-content-center">
-                                <input type="checkbox" class="params-check">
+                                <input type="checkbox" class="params-check" />
                               </th>
                               <th>Key</th>
                               <th>Value</th>
@@ -292,24 +295,35 @@
                               <th>Bulk Edit</th>
                             </tr>
                           </thead>
-                          <tbody>
+                          <tbody id="sortable-table">
                             <tr>
                               <td class="d-flex justify-content-center">
-                                <input type="checkbox" class="params-check">
+                                <input type="checkbox" class="params-check" />
                               </td>
                               <td>
-                                <input placeholder="Key" type="text" class="key-input" />
+                                <input
+                                  placeholder="Key"
+                                  type="text"
+                                  class="key-input"
+                                />
                               </td>
                               <td>
-                                <input placeholder="Value" type="text"  class="key-input"/>
+                                <input
+                                  placeholder="Value"
+                                  type="text"
+                                  class="key-input"
+                                />
                               </td>
                               <td colspan="2">
-                                <input placeholder="Description" type="text"  class="key-input"/>
+                                <input
+                                  placeholder="Description"
+                                  type="text"
+                                  class="key-input"
+                                />
                               </td>
                             </tr>
                           </tbody>
                         </table>
-                        
                       </div>
                     </div>
 

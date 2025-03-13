@@ -737,19 +737,20 @@ body {
                 font-family: var(--header-font);
                 font-size: 12px;
                 background-color: var(--hero-color);
-              
-                th, td {
+
+                th,
+                td {
                   padding: 10px;
                   border: var(--border);
                   text-align: left;
                   background-color: var(--hero-color);
                 }
-              
+
                 th {
                   background-color: var(--hero-color);
                   color: var(--white);
                 }
-              
+
                 td input {
                   width: 100%;
                   border-radius: 0% !important;
@@ -758,12 +759,12 @@ body {
                   color: var(--white);
                   outline: none;
                   padding: 1px 2px 1px;
-              
+
                   &:focus {
                     border: var(--border) !important;
                   }
                 }
-              
+
                 td input[type="checkbox"] {
                   width: 20px;
                   height: 20px;
@@ -780,12 +781,12 @@ body {
                   color: var(--white);
                   outline: none;
                   padding: 1px 2px 1px;
-              
+
                   &:focus {
                     border: var(--border) !important;
                   }
                 }
-              
+
                 th input[type="checkbox"] {
                   width: 20px;
                   height: 20px;
@@ -793,16 +794,15 @@ body {
                   border-radius: 5px !important;
                   background-color: transparent !important;
                 }
-              
-              
+
                 .bulk-edit {
                   color: var(--baseTextColor);
                   text-align: center;
-              
+
                   .fa-ellipsis {
                     border-radius: 3px;
                     padding: 3px;
-              
+
                     &:hover {
                       background-color: var(--bg-color-1);
                       cursor: pointer;
@@ -810,7 +810,7 @@ body {
                       transition: 0.3s;
                     }
                   }
-              
+
                   span {
                     margin-left: 10px;
                     font-weight: 300 !important;
@@ -818,7 +818,7 @@ body {
                     font-size: 12px;
                     border-radius: 3px;
                     padding: 3px;
-              
+
                     &:hover {
                       background-color: var(--bg-color-1);
                       color: var(--white);
@@ -828,7 +828,6 @@ body {
                   }
                 }
               }
-              
             }
           }
 
@@ -1633,7 +1632,6 @@ body {
   }
 
   .saveAs-modal__explorer {
-
     h6 {
       color: var(--baseTextColor);
       padding: 0;
@@ -1648,7 +1646,8 @@ body {
       cursor: pointer !important;
     }
 
-    .selectCollectionFolder , .myWorkspace{
+    .selectCollectionFolder,
+    .myWorkspace {
       cursor: pointer;
     }
   }
@@ -1705,7 +1704,7 @@ body {
         }
       }
 
-      .emptyCollection{
+      .emptyCollection {
         color: var(--baseTextColor);
         font-size: 12px;
       }
@@ -1786,4 +1785,11 @@ body {
       transition: 0.3s;
     }
   }
+}
+
+td.d-flex {
+  cursor: grab; /* Normal halda "tutmaq üçün əl" */
+}
+td.d-flex:active {
+  cursor: grabbing; /* Mouse basıldıqda "tutulmuş əl" */
 }

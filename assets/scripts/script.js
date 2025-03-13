@@ -181,15 +181,13 @@ document.addEventListener("DOMContentLoaded", function () {
     addedDesc.classList.toggle("d-none");
   });
 
-  
-
   // save as daxili funksionalliqlar
   const addNewCollection = document.querySelector(".addNewCollection");
   const addNewCollectionCancel = document.querySelector(
     ".addNewCollection-cancel"
   );
   const newCollectionSpan = document.querySelector(".newCollectionSpan");
-  const newFolderSpan = document.querySelector('.newFolderSpan')
+  const newFolderSpan = document.querySelector(".newFolderSpan");
 
   newCollectionSpan.addEventListener("click", () => {
     addNewCollection.classList.toggle("d-none");
@@ -205,11 +203,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const addNewCollectionInput = document.querySelector(".addNewCollection-inp");
   const addNewCollectionList = document.querySelector(".addNewCollectionList");
   // sidebar
-  const sidebarList = document.querySelector('.sidebarList')
-  // new collection add etdikden sonra redirect etmek 
-  const saveasChangeablePart = document.querySelector('.saveAs-changeable-part')
-  const selectCollectionFolder = document.querySelector('.selectCollectionFolder')
-  const myWorkspace = document.querySelector('.myWorkspace')
+  const sidebarList = document.querySelector(".sidebarList");
+  // new collection add etdikden sonra redirect etmek
+  const saveasChangeablePart = document.querySelector(
+    ".saveAs-changeable-part"
+  );
+  const selectCollectionFolder = document.querySelector(
+    ".selectCollectionFolder"
+  );
+  const myWorkspace = document.querySelector(".myWorkspace");
 
   let collections = [];
 
@@ -230,13 +232,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //     let newSidebarLi
   //     collections.forEach((item) => {
-  //       newSidebarLi= document.createElement("li") 
+  //       newSidebarLi= document.createElement("li")
   //       newSidebarLi.innerHTML = `
   //       <div>
   //           <i class="fa-solid fa-angle-right"></i>
   //           <span>${item}</span>
   //       </div>
-  //       `      
+  //       `
   //     })
 
   //     // sidebarList.appendChild(newSidebarLi)
@@ -248,69 +250,62 @@ document.addEventListener("DOMContentLoaded", function () {
   //   }
   // });
 
-
   // Yeni kolleksiya yaratmaq
-addNewCollectionCreate.addEventListener("click", () => {
-  if (addNewCollectionInput.value.trim() !== "") {
-    let collectionName = addNewCollectionInput.value.trim();
-    collections.push(collectionName);
-    
-    let newItem = document.createElement("li");
-    newItem.innerHTML = `
+  addNewCollectionCreate.addEventListener("click", () => {
+    if (addNewCollectionInput.value.trim() !== "") {
+      let collectionName = addNewCollectionInput.value.trim();
+      collections.push(collectionName);
+
+      let newItem = document.createElement("li");
+      newItem.innerHTML = `
       <i class="fa-brands fa-nfc-symbol"></i>
       <span>${collectionName}</span>
     `;
-    addNewCollectionList.appendChild(newItem);
-    addNewCollectionInput.value = "";
-    addNewCollection.classList.toggle("d-none");
+      addNewCollectionList.appendChild(newItem);
+      addNewCollectionInput.value = "";
+      addNewCollection.classList.toggle("d-none");
 
-    newFolderSpan.classList.toggle('d-none')
-    newCollectionSpan.classList.toggle('d-none')
-    myWorkspace.classList.remove("d-none");
-    selectCollectionFolder.textContent = `/${collectionName}`;
-    saveasChangeablePart.innerHTML = `<h6 style="color: white">${collectionName}</h6>`;
+      newFolderSpan.classList.toggle("d-none");
+      newCollectionSpan.classList.toggle("d-none");
+      myWorkspace.classList.remove("d-none");
+      selectCollectionFolder.textContent = `/${collectionName}`;
+      saveasChangeablePart.innerHTML = `<h6 style="color: white">${collectionName}</h6>`;
 
-    // Sidebara yeni collceton elave etme
-    let newSidebarLi = document.createElement("li");
-    newSidebarLi.innerHTML = `
+      // Sidebara yeni collceton elave etme
+      let newSidebarLi = document.createElement("li");
+      newSidebarLi.innerHTML = `
       <div>
           <i class="fa-solid fa-angle-right"></i>
           <span>${collectionName}</span>
       </div>
     `;
-    sidebarList.appendChild(newSidebarLi);
-  }
-});
-
-
-myWorkspace.addEventListener("click", () => {
-  saveasChangeablePart.innerHTML = addNewCollectionList.outerHTML;
-  selectCollectionFolder.textContent = "Select a collection/folder";
-  myWorkspace.classList.add("d-none");
-  newFolderSpan.classList.toggle('d-none')
-  newCollectionSpan.classList.remove('d-none')
-
-
-  newCollectionSpan.addEventListener("click", () => {
-    console.log('clicklendi')
-    addNewCollection.classList.toggle("d-flex");
-    console.log('burani oxuyur');
-    
+      sidebarList.appendChild(newSidebarLi);
+    }
   });
 
-  console.log(saveasChangeablePart);
+  myWorkspace.addEventListener("click", () => {
+    saveasChangeablePart.innerHTML = addNewCollectionList.outerHTML;
+    selectCollectionFolder.textContent = "Select a collection/folder";
+    myWorkspace.classList.add("d-none");
+    newFolderSpan.classList.toggle("d-none");
+    newCollectionSpan.classList.remove("d-none");
 
-  
-});
+    newCollectionSpan.addEventListener("click", () => {
+      console.log("clicklendi");
+      addNewCollection.classList.toggle("d-flex");
+      console.log("burani oxuyur");
+    });
 
+    console.log(saveasChangeablePart);
+  });
 
-// Request table
-const tableBody = document.querySelector('tbody'); 
-const mainCheckbox = document.querySelector('thead .params-check'); 
+  // Request table
+  const tableBody = document.querySelector("tbody");
+  const mainCheckbox = document.querySelector("thead .params-check");
 
-function addNewRow() {
-  const newRow = document.createElement('tr');
-  newRow.innerHTML = `
+  function addNewRow() {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
     <td class="d-flex justify-content-center">
       <input type="checkbox" class="params-check" style="opacity: 0;">
     </td>
@@ -324,46 +319,51 @@ function addNewRow() {
       <input placeholder="Description" type="text" class="key-input"/>
     </td>
   `;
-  tableBody.appendChild(newRow); 
-  addEventToInputs(newRow); 
-}
+    tableBody.appendChild(newRow);
+    addEventToInputs(newRow);
+  }
 
-function addEventToInputs(row) {
-  const inputs = row.querySelectorAll('.key-input'); 
-  const checkbox = row.querySelector('.params-check'); 
-  let isRowUpdated = false; 
+  function addEventToInputs(row) {
+    const inputs = row.querySelectorAll(".key-input");
+    const checkbox = row.querySelector(".params-check");
+    let isRowUpdated = false;
 
-  inputs.forEach((input) => {
-    input.addEventListener('input', () => {
-      if (input.value.trim() !== '') {
-        checkbox.style.opacity = 1; // Checkbox görünür olsun
-        checkbox.checked = true;
-        updateMainCheckbox();
+    inputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        if (input.value.trim() !== "") {
+          checkbox.style.opacity = 1; // Checkbox görünür olsun
+          checkbox.checked = true;
+          updateMainCheckbox();
 
-        if (!isRowUpdated) {
-          isRowUpdated = true; 
-          addNewRow();
+          if (!isRowUpdated) {
+            isRowUpdated = true;
+            addNewRow();
+          }
         }
-      }
+      });
     });
+
+    checkbox.addEventListener("change", updateMainCheckbox);
+  }
+
+  function updateMainCheckbox() {
+    const allCheckboxes = document.querySelectorAll("tbody .params-check");
+    const validCheckboxes = [...allCheckboxes].slice(0, -1);
+    const allChecked =
+      validCheckboxes.length > 0 &&
+      validCheckboxes.every((checkbox) => checkbox.checked);
+
+    mainCheckbox.checked = allChecked;
+  }
+
+  document.querySelectorAll("tbody tr").forEach((row) => {
+    addEventToInputs(row);
   });
 
-  checkbox.addEventListener('change', updateMainCheckbox); 
-}
-
-function updateMainCheckbox() {
-  const allCheckboxes = document.querySelectorAll('tbody .params-check');
-  const validCheckboxes = [...allCheckboxes].slice(0, -1); 
-  const allChecked = validCheckboxes.length > 0 && validCheckboxes.every(checkbox => checkbox.checked);
-
-  mainCheckbox.checked = allChecked; 
-}
-
-document.querySelectorAll('tbody tr').forEach((row) => {
-  addEventToInputs(row);
+  // sortable.js
+  new Sortable(document.getElementById("sortable-table"), {
+    animation: 150, // Hərəkət effekti
+    handle: "td.d-flex", // Sadəcə checkbox olan td üzərindən sürüşdürülə bilər
+    ghostClass: "sortable-ghost",
+  });
 });
-
-
-});
-
-
