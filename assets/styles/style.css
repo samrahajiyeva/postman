@@ -591,16 +591,23 @@ body {
   margin: 10px 0px;
 }
 .postman__main__hero__bottom__left__hero__group .table {
-  display: grid;
-  grid-template-columns: 1fr 5fr 5fr 5fr 2fr;
-}
-.postman__main__hero__bottom__left__hero__group .table div {
+  width: 100%;
+  border-collapse: collapse;
   font-family: var(--header-font);
   font-size: 12px;
-  border: var(--border);
-  padding: 10px;
+  background-color: var(--hero-color);
 }
-.postman__main__hero__bottom__left__hero__group .table div input {
+.postman__main__hero__bottom__left__hero__group .table th, .postman__main__hero__bottom__left__hero__group .table td {
+  padding: 10px;
+  border: var(--border);
+  text-align: left;
+  background-color: var(--hero-color);
+}
+.postman__main__hero__bottom__left__hero__group .table th {
+  background-color: var(--hero-color);
+  color: var(--white);
+}
+.postman__main__hero__bottom__left__hero__group .table td input {
   width: 100%;
   border-radius: 0% !important;
   background-color: var(--hero-color);
@@ -609,14 +616,15 @@ body {
   outline: none;
   padding: 1px 2px 1px;
 }
-.postman__main__hero__bottom__left__hero__group .table div input:focus {
+.postman__main__hero__bottom__left__hero__group .table td input:focus {
   border: var(--border) !important;
 }
-.postman__main__hero__bottom__left__hero__group .table div:nth-last-child(2) {
-  grid-column: span 2;
-}
-.postman__main__hero__bottom__left__hero__group .table div:nth-last-child(1) {
-  display: none;
+.postman__main__hero__bottom__left__hero__group .table td input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--white);
+  border-radius: 5px !important;
+  background-color: transparent !important;
 }
 .postman__main__hero__bottom__left__hero__group .table .bulk-edit {
   color: var(--baseTextColor);
@@ -1321,18 +1329,20 @@ body {
 .saveAs-modal .saveAs-modal__desc .saveAs-desc-input:focus {
   border: var(--border) !important;
 }
-.saveAs-modal .saveAs-modal__explorer {
-  gap: 20px;
-}
 .saveAs-modal .saveAs-modal__explorer h6 {
   color: var(--baseTextColor);
   padding: 0;
   margin: 0;
   font-size: 13px;
+  margin-right: 20px;
 }
 .saveAs-modal .saveAs-modal__explorer span {
   font-size: 12px;
   color: var(--baseTextColor);
+  cursor: pointer !important;
+}
+.saveAs-modal .saveAs-modal__explorer .selectCollectionFolder, .saveAs-modal .saveAs-modal__explorer .myWorkspace {
+  cursor: pointer;
 }
 .saveAs-modal .saveAs-modal__explorer-rows {
   border-radius: 5px;
@@ -1375,6 +1385,10 @@ body {
   transition: 0.2s;
   cursor: pointer;
   background-color: var(--bg-color-2);
+}
+.saveAs-modal .saveAs-modal__explorer-rows .saveAs-changeable-part .emptyCollection {
+  color: var(--baseTextColor);
+  font-size: 12px;
 }
 .saveAs-modal .saveAs-modal__explorer-rows .saveAs-inp2 input {
   background-color: var(--bg-color-2) !important;

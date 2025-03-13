@@ -279,32 +279,35 @@
                         class="postman__main__hero__bottom__left__hero__group d-flex flex-column"
                       >
                         <span> Query Params </span>
-                        <!-- query table -->
-                        <div class="table col-12">
-                          <div></div>
-                          <div><span>Key</span></div>
-                          <div><span>Value</span></div>
-                          <div><span>Description</span></div>
-                          <div class="bulk-edit">
-                            <i class="fa-solid fa-ellipsis"></i>
-                            <span>Bulk Edit</span>
-                          </div>
-                          <div></div>
-                          <div>
-                            <input placeholder="Key" type="text" />
-                          </div>
-                          <div>
-                            <input placeholder="Value" type="text" />
-                          </div>
-                          <div>
-                            <input
-                              placeholder="Description
-                                            "
-                              type="text"
-                            />
-                          </div>
-                          <div></div>
-                        </div>
+                       
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th></th>
+                              <th>Key</th>
+                              <th>Value</th>
+                              <th>Description</th>
+                              <th>Bulk Edit</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="d-flex justify-content-center">
+                                <input type="checkbox" class="params-check">
+                              </td>
+                              <td>
+                                <input placeholder="Key" type="text" class="key-input" />
+                              </td>
+                              <td>
+                                <input placeholder="Value" type="text"  class="key-input"/>
+                              </td>
+                              <td colspan="2">
+                                <input placeholder="Description" type="text"  class="key-input"/>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        
                       </div>
                     </div>
 
@@ -645,10 +648,12 @@
         </div>
         <div class="saveAs-modal__explorer col-12 d-flex align-items-center">
           <h6>Save to</h6>
-          <span> Select a collection/folder </span>
+          <span class="myWorkspace d-none"> My Workspace </span>
+          <span class="selectCollectionFolder">
+            Select a collection/folder
+          </span>
         </div>
         <div class="saveAs-modal__explorer-rows col-12">
-          <!-- burada isleyirsen -->
           <div class="input-group input-group-sm mb-3 saveAs-inp2">
             <span class="input-group-text" id="inputGroup-sizing-sm">
               <i class="fa-solid fa-layer-group"></i>
@@ -660,6 +665,8 @@
               aria-describedby="inputGroup-sizing-sm"
             />
           </div>
+
+          <!-- burada isleyirsen -->
           <div class="saveAs-changeable-part">
             <ul class="d-flex flex-column addNewCollectionList">
               <li class="addNewCollection d-none">
@@ -679,12 +686,15 @@
                 <span>Collation</span>
               </li>
             </ul>
+
+            <!-- <span class="emptyCollection">This collection is empty</span> -->
           </div>
         </div>
         <div
           class="saveAs-modal__bottom col-12 d-flex justify-content-between align-items-center"
         >
           <span class="newCollectionSpan">New Collection</span>
+          <span class="newFolderSpan d-none">New Folder</span>
           <div class="saveAs-modal__bottom-buttons d-flex">
             <button class="btn" disabled>Save</button>
             <button class="btn saveAsCancel">Cancel</button>

@@ -134,6 +134,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // send submodal
+  const sendSubModal = document.querySelector(".send-submodal");
+  const sendSubModalToggle = document.querySelector(".sendSubModalToggle");
+
+  sendSubModalToggle.addEventListener("click", () => {
+    sendSubModal.classList.toggle("d-none");
+  });
+
+  window.addEventListener("click", (e) => {
+    if (!sendSubModal.contains(e.target) && e.target !== sendSubModalToggle) {
+      sendSubModal.classList.add("d-none");
+    }
+  });
+
   // saveAs submodal kodlari
   const saveAsToggle = document.querySelector(".saveAs");
   const saveAsSubModal = document.querySelector(".saveAs-submodal");
@@ -167,19 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
     addedDesc.classList.toggle("d-none");
   });
 
-  // send submodal
-  const sendSubModal = document.querySelector(".send-submodal");
-  const sendSubModalToggle = document.querySelector(".sendSubModalToggle");
-
-  sendSubModalToggle.addEventListener("click", () => {
-    sendSubModal.classList.toggle("d-none");
-  });
-
-  window.addEventListener("click", (e) => {
-    if (!sendSubModal.contains(e.target) && e.target !== sendSubModalToggle) {
-      sendSubModal.classList.add("d-none");
-    }
-  });
+  
 
   // save as daxili funksionalliqlar
   const addNewCollection = document.querySelector(".addNewCollection");
@@ -187,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ".addNewCollection-cancel"
   );
   const newCollectionSpan = document.querySelector(".newCollectionSpan");
+  const newFolderSpan = document.querySelector('.newFolderSpan')
 
   newCollectionSpan.addEventListener("click", () => {
     addNewCollection.classList.toggle("d-none");
@@ -203,41 +206,157 @@ document.addEventListener("DOMContentLoaded", function () {
   const addNewCollectionList = document.querySelector(".addNewCollectionList");
   // sidebar
   const sidebarList = document.querySelector('.sidebarList')
+  // new collection add etdikden sonra redirect etmek 
+  const saveasChangeablePart = document.querySelector('.saveAs-changeable-part')
+  const selectCollectionFolder = document.querySelector('.selectCollectionFolder')
+  const myWorkspace = document.querySelector('.myWorkspace')
 
   let collections = [];
 
-  addNewCollectionCreate.addEventListener("click", () => {
-    if (addNewCollectionInput.value.trim() !== "") {
-      collections.push(addNewCollectionInput.value)
-      let newItem = document.createElement("li");
-      newItem.innerHTML = `
-        <i class="fa-brands fa-nfc-symbol"></i>
-        <span>${addNewCollectionInput.value}</span>
-      `;
+  // addNewCollectionCreate.addEventListener("click", () => {
+  //   if (addNewCollectionInput.value.trim() !== "") {
+  //     collections.push(addNewCollectionInput.value)
+  //     let newItem = document.createElement("li");
+  //     newItem.innerHTML = `
+  //       <i class="fa-brands fa-nfc-symbol"></i>
+  //       <span>${addNewCollectionInput.value}</span>
+  //     `;
 
-      addNewCollectionList.appendChild(newItem);
-      addNewCollectionInput.value = "";
-      addNewCollection.classList.toggle("d-none");
+  //     addNewCollectionList.appendChild(newItem);
+  //     addNewCollectionInput.value = "";
+  //     addNewCollection.classList.toggle("d-none");
 
-      console.log(collections);
+  //     console.log(collections);
 
-      let newSidebarLi
-      collections.forEach((item) => {
-        newSidebarLi= document.createElement("li") 
-        newSidebarLi.innerHTML = `
-        <div>
-            <i class="fa-solid fa-angle-right"></i>
-            <span>${item}</span>
-        </div>
-        `      
-      })
+  //     let newSidebarLi
+  //     collections.forEach((item) => {
+  //       newSidebarLi= document.createElement("li") 
+  //       newSidebarLi.innerHTML = `
+  //       <div>
+  //           <i class="fa-solid fa-angle-right"></i>
+  //           <span>${item}</span>
+  //       </div>
+  //       `      
+  //     })
 
-      sidebarList.appendChild(newSidebarLi)
-      
-    }
+  //     // sidebarList.appendChild(newSidebarLi)
+  //     // newFolderSpan.classList.toggle('d-none')
+  //     // newCollectionSpan.classList.toggle('d-none')
+  //     // myWorkspace.classList.toggle('d-none')
+  //     // selectCollectionFolder.classList.toggle('d-none')
+
+  //   }
+  // });
+
+
+  // Yeni kolleksiya yaratmaq
+addNewCollectionCreate.addEventListener("click", () => {
+  if (addNewCollectionInput.value.trim() !== "") {
+    let collectionName = addNewCollectionInput.value.trim();
+    collections.push(collectionName);
+    
+    let newItem = document.createElement("li");
+    newItem.innerHTML = `
+      <i class="fa-brands fa-nfc-symbol"></i>
+      <span>${collectionName}</span>
+    `;
+    addNewCollectionList.appendChild(newItem);
+    addNewCollectionInput.value = "";
+    addNewCollection.classList.toggle("d-none");
+
+    newFolderSpan.classList.toggle('d-none')
+    newCollectionSpan.classList.toggle('d-none')
+    myWorkspace.classList.remove("d-none");
+    selectCollectionFolder.textContent = `/${collectionName}`;
+    saveasChangeablePart.innerHTML = `<h6 style="color: white">${collectionName}</h6>`;
+
+    // Sidebara yeni collceton elave etme
+    let newSidebarLi = document.createElement("li");
+    newSidebarLi.innerHTML = `
+      <div>
+          <i class="fa-solid fa-angle-right"></i>
+          <span>${collectionName}</span>
+      </div>
+    `;
+    sidebarList.appendChild(newSidebarLi);
+  }
+});
+
+
+myWorkspace.addEventListener("click", () => {
+  saveasChangeablePart.innerHTML = addNewCollectionList.outerHTML;
+  selectCollectionFolder.textContent = "Select a collection/folder";
+  myWorkspace.classList.add("d-none");
+  newFolderSpan.classList.toggle('d-none')
+  newCollectionSpan.classList.remove('d-none')
+
+
+  newCollectionSpan.addEventListener("click", () => {
+    console.log('clicklendi')
+    addNewCollection.classList.toggle("d-flex");
+    console.log('burani oxuyur');
+    
   });
 
+  console.log(saveasChangeablePart);
 
   
+});
+
+// Request table
+const tableBody = document.querySelector('tbody'); // tbody seç
+
+// Yeni bir satır əlavə edən funksiya
+function addNewRow() {
+  const newRow = document.createElement('tr');
+  newRow.innerHTML = `
+    <td class="d-flex justify-content-center">
+      <input type="checkbox" class="params-check">
+    </td>
+    <td>
+      <input placeholder="Key" type="text" class="key-input" />
+    </td>
+    <td>
+      <input placeholder="Value" type="text" class="key-input"/>
+    </td>
+    <td colspan="2">
+      <input placeholder="Description" type="text" class="key-input"/>
+    </td>
+  `;
+  tableBody.appendChild(newRow); // Yeni satırı tabloya əlavə et
+  addEventToInputs(newRow); // Yeni inputlara event əlavə et
+}
+
+// Mövcud və yeni input-lara event əlavə edən funksiya
+function addEventToInputs(row) {
+  const inputs = row.querySelectorAll('.key-input'); // Satırdakı bütün input-ları seç
+  let isRowUpdated = false; // Bu satır üçün yeni tr əlavə edilib-edilmədiyini yoxlamaq üçün flag
+
+  inputs.forEach((input) => {
+    input.addEventListener('input', () => {
+      const checkbox = row.querySelector('.params-check'); // Satırdakı checkbox-u seç
+
+      if (input.value.trim() !== '') {
+        checkbox.checked = true; // Checkbox-u işarələ
+
+        // Əgər bu satır üçün artıq yeni tr əlavə edilməyibsə, bir dəfə əlavə et
+        if (!isRowUpdated) {
+          isRowUpdated = true; // Artıq yeni satır əlavə edildiyini qeyd et
+          addNewRow(); // Yeni satır əlavə et
+        }
+      }
+    });
+  });
+}
+
+// İlk mövcud satır üçün eventləri əlavə et
+document.querySelectorAll('tbody tr').forEach((row) => {
+  addEventToInputs(row);
+});
+
 
 });
+
+
+// simdi iyi oldu , ama soyle bir problem var: tr dahilinde 2ci yani value td ve 3cu yani description td'ye bir input girerken konsolda script.js:335 Uncaught TypeError: Cannot set properties of undefined (setting 'checked')
+//     at HTMLInputElement.<anonymous> (script.js:335:36) erroru cikiyor , yani yeni bir tr satri eklenemiyor ve input checked olmuyor

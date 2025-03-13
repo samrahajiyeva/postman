@@ -731,63 +731,55 @@ body {
               }
 
               // table
-
               .table {
-                display: grid;
-                grid-template-columns: 1fr 5fr 5fr 5fr 2fr;
-
-                div {
-                  font-family: var(--header-font);
-                  font-size: 12px;
-                  border: var(--border);
+                width: 100%;
+                border-collapse: collapse;
+                font-family: var(--header-font);
+                font-size: 12px;
+                background-color: var(--hero-color);
+              
+                th, td {
                   padding: 10px;
-
-                  input {
-                    width: 100%;
-                    border-radius: 0% !important;
-                    background-color: var(--hero-color);
-                    border: none;
-                    color: var(--white);
-                    outline: none;
-                    padding: 1px 2px 1px;
-
-                    &:focus {
-                      border: var(--border) !important;
-                    }
+                  border: var(--border);
+                  text-align: left;
+                  background-color: var(--hero-color);
+                }
+              
+                th {
+                  background-color: var(--hero-color);
+                  color: var(--white);
+                }
+              
+                td input {
+                  width: 100%;
+                  border-radius: 0% !important;
+                  background-color: var(--hero-color);
+                  border: none;
+                  color: var(--white);
+                  outline: none;
+                  padding: 1px 2px 1px;
+              
+                  &:focus {
+                    border: var(--border) !important;
                   }
                 }
-
-                // .desc {
-                //   span {
-                //     vertical-align: center;
-                //   }
-
-                //   .fa-info {
-                //     vertical-align: center;
-                //     color: white;
-                //     font-size: 5px;
-                //     border-radius: 50%;
-                //     border: 1px solid white;
-                //     padding: 3px 5px;
-                //   }
-                // }
-
-                div:nth-last-child(2) {
-                  grid-column: span 2;
+              
+                td input[type="checkbox"] {
+                  width: 20px;
+                  height: 20px;
+                  accent-color: var(--white);
+                  border-radius: 5px !important;
+                  background-color: transparent !important;
                 }
-
-                div:nth-last-child(1) {
-                  display: none;
-                }
-
+              
                 .bulk-edit {
                   color: var(--baseTextColor);
                   text-align: center;
-
+              
                   .fa-ellipsis {
                     border-radius: 3px;
                     padding: 3px;
-
+              
                     &:hover {
                       background-color: var(--bg-color-1);
                       cursor: pointer;
@@ -795,7 +787,7 @@ body {
                       transition: 0.3s;
                     }
                   }
-
+              
                   span {
                     margin-left: 10px;
                     font-weight: 300 !important;
@@ -803,7 +795,7 @@ body {
                     font-size: 12px;
                     border-radius: 3px;
                     padding: 3px;
-
+              
                     &:hover {
                       background-color: var(--bg-color-1);
                       color: var(--white);
@@ -813,6 +805,7 @@ body {
                   }
                 }
               }
+              
             }
           }
 
@@ -1617,18 +1610,23 @@ body {
   }
 
   .saveAs-modal__explorer {
-    gap: 20px;
 
     h6 {
       color: var(--baseTextColor);
       padding: 0;
       margin: 0;
       font-size: 13px;
+      margin-right: 20px;
     }
 
     span {
       font-size: 12px;
       color: var(--baseTextColor);
+      cursor: pointer !important;
+    }
+
+    .selectCollectionFolder , .myWorkspace{
+      cursor: pointer;
     }
   }
 
@@ -1682,6 +1680,11 @@ body {
             background-color: var(--bg-color-2);
           }
         }
+      }
+
+      .emptyCollection{
+        color: var(--baseTextColor);
+        font-size: 12px;
       }
     }
 
