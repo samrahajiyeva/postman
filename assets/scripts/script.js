@@ -312,7 +312,7 @@ function addNewRow() {
   const newRow = document.createElement('tr');
   newRow.innerHTML = `
     <td class="d-flex justify-content-center">
-      <input type="checkbox" class="params-check">
+      <input type="checkbox" class="params-check" style="opacity: 0;">
     </td>
     <td>
       <input placeholder="Key" type="text" class="key-input" />
@@ -336,6 +336,7 @@ function addEventToInputs(row) {
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
       if (input.value.trim() !== '') {
+        checkbox.style.opacity = 1; // Checkbox görünür olsun
         checkbox.checked = true;
         updateMainCheckbox();
 
@@ -349,7 +350,6 @@ function addEventToInputs(row) {
 
   checkbox.addEventListener('change', updateMainCheckbox); 
 }
-
 
 function updateMainCheckbox() {
   const allCheckboxes = document.querySelectorAll('tbody .params-check');
