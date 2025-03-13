@@ -304,9 +304,9 @@ myWorkspace.addEventListener("click", () => {
 });
 
 // Request table
-const tableBody = document.querySelector('tbody'); // tbody seç
+const tableBody = document.querySelector('tbody'); 
 
-// Yeni bir satır əlavə edən funksiya
+// yeni setir tr row
 function addNewRow() {
   const newRow = document.createElement('tr');
   newRow.innerHTML = `
@@ -323,26 +323,24 @@ function addNewRow() {
       <input placeholder="Description" type="text" class="key-input"/>
     </td>
   `;
-  tableBody.appendChild(newRow); // Yeni satırı tabloya əlavə et
-  addEventToInputs(newRow); // Yeni inputlara event əlavə et
+  tableBody.appendChild(newRow); 
+  addEventToInputs(newRow); 
 }
 
-// Mövcud və yeni input-lara event əlavə edən funksiya
 function addEventToInputs(row) {
-  const inputs = row.querySelectorAll('.key-input'); // Satırdakı bütün input-ları seç
-  let isRowUpdated = false; // Bu satır üçün yeni tr əlavə edilib-edilmədiyini yoxlamaq üçün flag
+  const inputs = row.querySelectorAll('.key-input'); 
+  let isRowUpdated = false; 
 
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
-      const checkbox = row.querySelector('.params-check'); // Satırdakı checkbox-u seç
+      const checkbox = row.querySelector('.params-check'); 
 
       if (input.value.trim() !== '') {
-        checkbox.checked = true; // Checkbox-u işarələ
+        checkbox.checked = true;
 
-        // Əgər bu satır üçün artıq yeni tr əlavə edilməyibsə, bir dəfə əlavə et
         if (!isRowUpdated) {
-          isRowUpdated = true; // Artıq yeni satır əlavə edildiyini qeyd et
-          addNewRow(); // Yeni satır əlavə et
+          isRowUpdated = true; 
+          addNewRow();
         }
       }
     });
@@ -358,5 +356,3 @@ document.querySelectorAll('tbody tr').forEach((row) => {
 });
 
 
-// simdi iyi oldu , ama soyle bir problem var: tr dahilinde 2ci yani value td ve 3cu yani description td'ye bir input girerken konsolda script.js:335 Uncaught TypeError: Cannot set properties of undefined (setting 'checked')
-//     at HTMLInputElement.<anonymous> (script.js:335:36) erroru cikiyor , yani yeni bir tr satri eklenemiyor ve input checked olmuyor
