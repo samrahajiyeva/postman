@@ -201,11 +201,14 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const addNewCollectionInput = document.querySelector(".addNewCollection-inp");
   const addNewCollectionList = document.querySelector(".addNewCollectionList");
+  // sidebar
+  const sidebarList = document.querySelector('.sidebarList')
 
   let collections = [];
 
   addNewCollectionCreate.addEventListener("click", () => {
     if (addNewCollectionInput.value.trim() !== "") {
+      collections.push(addNewCollectionInput.value)
       let newItem = document.createElement("li");
       newItem.innerHTML = `
         <i class="fa-brands fa-nfc-symbol"></i>
@@ -214,6 +217,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
       addNewCollectionList.appendChild(newItem);
       addNewCollectionInput.value = "";
+      addNewCollection.classList.toggle("d-none");
+
+      console.log(collections);
+
+      let newSidebarLi
+      collections.forEach((item) => {
+        newSidebarLi= document.createElement("li") 
+        newSidebarLi.innerHTML = `
+        <div>
+            <i class="fa-solid fa-angle-right"></i>
+            <span>${item}</span>
+        </div>
+        `      
+      })
+
+      sidebarList.appendChild(newSidebarLi)
+      
     }
   });
+
+
+  
+
 });
