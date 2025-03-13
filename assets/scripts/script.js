@@ -303,10 +303,11 @@ myWorkspace.addEventListener("click", () => {
   
 });
 
+
 // Request table
 const tableBody = document.querySelector('tbody'); 
+const mainCheckbox = document.querySelector('thead .params-check'); 
 
-// yeni setir tr row
 function addNewRow() {
   const newRow = document.createElement('tr');
   newRow.innerHTML = `
@@ -329,14 +330,14 @@ function addNewRow() {
 
 function addEventToInputs(row) {
   const inputs = row.querySelectorAll('.key-input'); 
+  const checkbox = row.querySelector('.params-check'); 
   let isRowUpdated = false; 
 
   inputs.forEach((input) => {
     input.addEventListener('input', () => {
-      const checkbox = row.querySelector('.params-check'); 
-
       if (input.value.trim() !== '') {
         checkbox.checked = true;
+        updateMainCheckbox();
 
         if (!isRowUpdated) {
           isRowUpdated = true; 
@@ -345,9 +346,19 @@ function addEventToInputs(row) {
       }
     });
   });
+
+  checkbox.addEventListener('change', updateMainCheckbox); 
 }
 
-// İlk mövcud satır üçün eventləri əlavə et
+
+function updateMainCheckbox() {
+  const allCheckboxes = document.querySelectorAll('tbody .params-check');
+  const validCheckboxes = [...allCheckboxes].slice(0, -1); 
+  const allChecked = validCheckboxes.length > 0 && validCheckboxes.every(checkbox => checkbox.checked);
+
+  mainCheckbox.checked = allChecked; 
+}
+
 document.querySelectorAll('tbody tr').forEach((row) => {
   addEventToInputs(row);
 });

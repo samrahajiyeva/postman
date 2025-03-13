@@ -771,6 +771,29 @@ body {
                   border-radius: 5px !important;
                   background-color: transparent !important;
                 }
+
+                th input {
+                  width: 100%;
+                  border-radius: 0% !important;
+                  background-color: var(--hero-color);
+                  border: none;
+                  color: var(--white);
+                  outline: none;
+                  padding: 1px 2px 1px;
+              
+                  &:focus {
+                    border: var(--border) !important;
+                  }
+                }
+              
+                th input[type="checkbox"] {
+                  width: 20px;
+                  height: 20px;
+                  accent-color: var(--white);
+                  border-radius: 5px !important;
+                  background-color: transparent !important;
+                }
+              
               
                 .bulk-edit {
                   color: var(--baseTextColor);
