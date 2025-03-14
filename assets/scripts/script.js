@@ -156,6 +156,12 @@ document.addEventListener("DOMContentLoaded", function () {
     saveAsSubModal.classList.toggle("d-none");
   });
 
+  window.addEventListener("click", (e) => {
+    if (!saveAsSubModal.contains(e.target) && !saveAsToggle.contains(e.target)) {
+      saveAsSubModal.classList.add("d-none");
+    }
+  });
+
   // addDesc
   const addDesc = document.querySelector(".addDesc");
   const addedDesc = document.querySelector(".addedDesc");
@@ -366,4 +372,43 @@ document.addEventListener("DOMContentLoaded", function () {
     handle: "td.d-flex", // Sadəcə checkbox olan td üzərindən sürüşdürülə bilər
     ghostClass: "sortable-ghost",
   });
+
+
+  // history funksionalliq
+  const historyToggle = document.querySelector('.historyToggle');
+  const historyModal = document.querySelector('.history-modal');
+  
+  historyToggle.addEventListener('click', (e) => {
+    historyModal.classList.toggle('d-none');
+  });
+  
+  window.addEventListener("click", (e) => {
+    if (!historyModal.contains(e.target) && !historyToggle.contains(e.target)) {
+      historyModal.classList.add("d-none");
+    }
+  });
+  
+
+
+const requestSendInput = document.getElementById('exampleInputText')
+const requestSendBtn = document.querySelector('.request-send-btn')
+const historyModalEmpty =document.querySelector('.history-modal-empty')
+const historyModalSend = document.querySelector('.history-modal-send')
+const dateFromRequest = document.querySelector('.dateFromRequest')
+const now = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+
+
+requestSendBtn.addEventListener('click' , ()=> {
+ if (requestSendInput.value.trim()) {
+    historyModalSend.classList.remove('d-none')
+    historyModalEmpty.classList.add('d-none')
+
+
+    dateFromRequest.innerHTML = `
+    Today, <span>${now}</span>
+    `
+    
+ }
+})
+
 });

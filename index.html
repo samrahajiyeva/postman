@@ -245,14 +245,14 @@
                           <input
                             class=""
                             type="text"
-                            class="form-control"
+                            class="form-control request-send-input"
                             placeholder="Enter URL or paste text"
                             id="exampleInputText"
                             aria-describedby="textHelp"
                             autocomplete
                           />
                         </div>
-                        <button class="col-1">
+                        <button class="col-1 request-send-btn">
                           <span data-title="Ctrl+↩">Send</span>
                           <i
                             class="fa-solid fa-angle-down sendSubModalToggle"
@@ -320,6 +320,7 @@
                                   type="text"
                                   class="key-input"
                                 />
+                                <!-- <i class="fa-solid fa-trash-can"></i> -->
                               </td>
                             </tr>
                           </tbody>
@@ -338,7 +339,7 @@
                           <li>
                             <span>Response</span>
                           </li>
-                          <li>
+                          <li class="historyToggle">
                             <i class="fa-solid fa-clock-rotate-left"></i>
                             <span>History</span>
                             <i class="fa-solid fa-angle-down"></i>
@@ -722,6 +723,65 @@
 
       <div class="send-submodal col-1 d-none">
         <button class="col-12">Send and Download</button>
+      </div>
+    </div>
+
+    <!-- history modal -->
+    <div class="history-modal col-2 d-none">
+      <div
+        class="history-modal-empty d-flex flex-column align-items-center text-center"
+      >
+        <p><i class="fa-solid fa-clock-rotate-left"></i></p>
+        <h5>No request history</h5>
+        <span>Send the request and browse through its history</span>
+      </div>
+
+      <div class="history-modal-send d-none">
+        <ul>
+          <li>Current</li>
+          <li>
+            <p class="dateFromRequest">Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+            <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+            <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+            <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Yesterday, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+            <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+            <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+            <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
 
