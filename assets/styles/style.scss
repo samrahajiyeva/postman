@@ -5,7 +5,7 @@
 }
 
 .history-modal-send {
-  --sb-track-color: #f2f3f3;
+  --sb-track-color: #e6e6e6;
   --sb-thumb-color: #212121;
   --sb-size: 6px;
 }
@@ -98,7 +98,7 @@
   // padding: 0px;
   background-color: var(--main-color);
   background-color: purple;
-  // overflow: hidden;
+  overflow: hidden;
   height: 100vh;
 
   // header
@@ -756,99 +756,104 @@
               }
 
               // table
-              .table {
-                width: 100%;
-                border-collapse: collapse;
-                font-family: var(--header-font);
-                font-size: 12px;
-                background-color: var(--hero-color);
+              .table-wrapper {
+                height: 166px;
+                overflow: auto;
 
-                th,
-                td {
-                  padding: 10px;
-                  border: var(--border);
-                  text-align: left;
-                  background-color: var(--hero-color);
-                }
-
-                th {
-                  background-color: var(--hero-color);
-                  color: var(--white);
-                }
-
-                td input {
+                .table {
                   width: 100%;
-                  border-radius: 0% !important;
+                  border-collapse: collapse;
+                  font-family: var(--header-font);
+                  font-size: 12px;
                   background-color: var(--hero-color);
-                  border: none;
-                  color: var(--white);
-                  outline: none;
-                  padding: 1px 2px 1px;
 
-                  &:focus {
-                    border: var(--border) !important;
+                  th,
+                  td {
+                    padding: 10px;
+                    border: var(--border);
+                    text-align: left;
+                    background-color: var(--hero-color);
                   }
-                }
 
-                td input[type="checkbox"] {
-                  width: 20px;
-                  height: 20px;
-                  accent-color: var(--white);
-                  border-radius: 5px !important;
-                  background-color: transparent !important;
-                }
-
-                th input {
-                  width: 100%;
-                  border-radius: 0% !important;
-                  background-color: var(--hero-color);
-                  border: none;
-                  color: var(--white);
-                  outline: none;
-                  padding: 1px 2px 1px;
-
-                  &:focus {
-                    border: var(--border) !important;
+                  th {
+                    background-color: var(--hero-color);
+                    color: var(--white);
                   }
-                }
 
-                th input[type="checkbox"] {
-                  width: 20px;
-                  height: 20px;
-                  accent-color: var(--white);
-                  border-radius: 5px !important;
-                  background-color: transparent !important;
-                }
+                  td input {
+                    width: 100%;
+                    border-radius: 0% !important;
+                    background-color: var(--hero-color);
+                    border: none;
+                    color: var(--white);
+                    outline: none;
+                    padding: 1px 2px 1px;
 
-                .bulk-edit {
-                  color: var(--baseTextColor);
-                  text-align: center;
-
-                  .fa-ellipsis {
-                    border-radius: 3px;
-                    padding: 3px;
-
-                    &:hover {
-                      background-color: var(--bg-color-1);
-                      cursor: pointer;
-                      color: var(--white);
-                      transition: 0.3s;
+                    &:focus {
+                      border: var(--border) !important;
                     }
                   }
 
-                  span {
-                    margin-left: 10px;
-                    font-weight: 300 !important;
-                    color: var(--baseTextColor);
-                    font-size: 12px;
-                    border-radius: 3px;
-                    padding: 3px;
+                  td input[type="checkbox"] {
+                    width: 20px;
+                    height: 20px;
+                    accent-color: var(--white);
+                    border-radius: 5px !important;
+                    background-color: transparent !important;
+                  }
 
-                    &:hover {
-                      background-color: var(--bg-color-1);
-                      color: var(--white);
-                      cursor: pointer;
-                      transition: 0.2s;
+                  th input {
+                    width: 100%;
+                    border-radius: 0% !important;
+                    background-color: var(--hero-color);
+                    border: none;
+                    color: var(--white);
+                    outline: none;
+                    padding: 1px 2px 1px;
+
+                    &:focus {
+                      border: var(--border) !important;
+                    }
+                  }
+
+                  th input[type="checkbox"] {
+                    width: 20px;
+                    height: 20px;
+                    accent-color: var(--white);
+                    border-radius: 5px !important;
+                    background-color: transparent !important;
+                  }
+
+                  .bulk-edit {
+                    color: var(--baseTextColor);
+                    text-align: center;
+
+                    .fa-ellipsis {
+                      border-radius: 3px;
+                      padding: 3px;
+
+                      &:hover {
+                        background-color: var(--bg-color-1);
+                        cursor: pointer;
+                        color: var(--white);
+                        transition: 0.3s;
+                      }
+                    }
+
+                    span {
+                      margin-left: 10px;
+                      font-weight: 300 !important;
+                      color: var(--baseTextColor);
+                      font-size: 12px;
+                      border-radius: 3px;
+                      padding: 3px;
+
+                      &:hover {
+                        background-color: var(--bg-color-1);
+                        color: var(--white);
+                        cursor: pointer;
+                        transition: 0.2s;
+                      }
                     }
                   }
                 }
@@ -1818,7 +1823,7 @@
 .history-modal {
   padding: 8px;
   position: absolute;
-  top: 73%;
+  top: 71%;
   left: 30.5%;
   background-color: var(--dark);
   border-radius: 5px;
@@ -1860,7 +1865,7 @@
   }
 
   &-send {
-    max-height: 180px;
+    max-height: 160px;
     overflow: auto;
 
     ul {
@@ -1919,4 +1924,39 @@ td.d-flex {
 }
 td.d-flex:active {
   cursor: grabbing; /* Mouse basıldıqda "tutulmuş əl" */
+}
+
+.table-wrapper {
+  --sb-track-color: #e6e6e6;
+  --sb-thumb-color: #212121;
+  --sb-size: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .table-wrapper {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+.fa-trash-can {
+  vertical-align: center;
+  margin-left: 8px !important;
+  color: var(--white);
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.1s;
 }

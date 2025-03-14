@@ -263,48 +263,52 @@
                 >
                   <span> Query Params </span>
 
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th class="d-flex justify-content-center">
-                          <input type="checkbox" class="params-check" />
-                        </th>
-                        <th>Key</th>
-                        <th>Value</th>
-                        <th>Description</th>
-                        <th>Bulk Edit</th>
-                      </tr>
-                    </thead>
-                    <tbody id="sortable-table">
-                      <tr>
-                        <td class="d-flex justify-content-center">
-                          <input type="checkbox" class="params-check" />
-                        </td>
-                        <td>
-                          <input
-                            placeholder="Key"
-                            type="text"
-                            class="key-input"
-                          />
-                        </td>
-                        <td>
-                          <input
-                            placeholder="Value"
-                            type="text"
-                            class="key-input"
-                          />
-                        </td>
-                        <td colspan="2">
-                          <input
-                            placeholder="Description"
-                            type="text"
-                            class="key-input"
-                          />
-                          <!-- <i class="fa-solid fa-trash-can"></i> -->
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="table-wrapper">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="d-flex justify-content-center">
+                            <input type="checkbox" class="params-check" />
+                          </th>
+                          <th>Key</th>
+                          <th>Value</th>
+                          <th>Description</th>
+                          <th>Bulk Edit</th>
+                        </tr>
+                      </thead>
+                      <tbody id="sortable-table">
+                        <tr>
+                          <td class="d-flex justify-content-center">
+                            <input type="checkbox" class="params-check" />
+                          </td>
+                          <td>
+                            <input
+                              placeholder="Key"
+                              type="text"
+                              class="key-input"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              placeholder="Value"
+                              type="text"
+                              class="key-input"
+                            />
+                          </td>
+                          <td colspan="2">
+                            <div class="d-flex align-items-center">
+                              <input
+                                placeholder="Description"
+                                type="text"
+                                class="key-input"
+                              />
+                              <i class="fa-solid fa-trash-can opacity-0"></i>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 

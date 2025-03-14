@@ -157,7 +157,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   window.addEventListener("click", (e) => {
-    if (!saveAsSubModal.contains(e.target) && !saveAsToggle.contains(e.target)) {
+    if (
+      !saveAsSubModal.contains(e.target) &&
+      !saveAsToggle.contains(e.target)
+    ) {
       saveAsSubModal.classList.add("d-none");
     }
   });
@@ -309,6 +312,67 @@ document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.querySelector("tbody");
   const mainCheckbox = document.querySelector("thead .params-check");
 
+  // function addNewRow() {
+  //   const newRow = document.createElement("tr");
+  //   newRow.innerHTML = `
+  //   <td class="d-flex justify-content-center">
+  //     <input type="checkbox" class="params-check" style="opacity: 0;">
+  //   </td>
+  //   <td>
+  //     <input placeholder="Key" type="text" class="key-input" />
+  //   </td>
+  //   <td>
+  //     <input placeholder="Value" type="text" class="key-input"/>
+  //   </td>
+  //   <td colspan="2">
+  //     <input placeholder="Description" type="text" class="key-input"/>
+  //   </td>
+  // `;
+  //   tableBody.appendChild(newRow);
+  //   addEventToInputs(newRow);
+  // }
+
+  function addDeleteFunctionality(row) {
+    const trashIcon = row.querySelector(".fa-trash-can");
+
+    if (!trashIcon) return;
+
+    row.addEventListener("mouseenter", () => {
+      if (row !== tableBody.lastElementChild) {
+        trashIcon.style.opacity = "1"; // Hover zamanı göstər
+      }
+    });
+
+    row.addEventListener("mouseleave", () => {
+      if (!row.querySelector(".key-input").value.trim()) {
+        trashIcon.style.opacity = "0"; // Boşdursa gizlət
+      }
+    });
+
+    trashIcon.addEventListener("click", () => {
+      if (tableBody.children.length > 1 && row !== tableBody.lastElementChild) {
+        row.remove();
+        updateMainCheckbox();
+      }
+    });
+
+    const inputs = row.querySelectorAll(".key-input");
+    inputs.forEach((input) => {
+      input.addEventListener("input", () => {
+        if (input.value.trim() !== "") {
+          trashIcon.style.opacity = "1"; // İlk input daxil edildikdə trash icon görünəcək
+        } else {
+          trashIcon.style.opacity = "0"; // Əgər input boşaldılarsa yenidən gizlət
+        }
+      });
+    });
+
+    // Əgər sətir ilk sətirdirsə, trash iconu dərhal göstərək
+    if (row === tableBody.firstElementChild) {
+      trashIcon.style.opacity = "1";
+    }
+  }
+
   function addNewRow() {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
@@ -322,12 +386,19 @@ document.addEventListener("DOMContentLoaded", function () {
       <input placeholder="Value" type="text" class="key-input"/>
     </td>
     <td colspan="2">
-      <input placeholder="Description" type="text" class="key-input"/>
+      <div class="d-flex align-items-center">
+        <input placeholder="Description" type="text" class="key-input"/>
+        <i class="fa-solid fa-trash-can" style="opacity: 0; cursor: pointer;"></i>
+      </div>
     </td>
   `;
     tableBody.appendChild(newRow);
     addEventToInputs(newRow);
+    addDeleteFunctionality(newRow);
   }
+
+  // İlk sətirə də silmə funksiyası əlavə edirik
+  document.querySelectorAll("tbody tr").forEach(addDeleteFunctionality);
 
   function addEventToInputs(row) {
     const inputs = row.querySelectorAll(".key-input");
@@ -337,7 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
     inputs.forEach((input) => {
       input.addEventListener("input", () => {
         if (input.value.trim() !== "") {
-          checkbox.style.opacity = 1; // Checkbox görünür olsun
+          checkbox.style.opacity = 1;
           checkbox.checked = true;
           updateMainCheckbox();
 
@@ -373,42 +444,39 @@ document.addEventListener("DOMContentLoaded", function () {
     ghostClass: "sortable-ghost",
   });
 
-
   // history funksionalliq
-  const historyToggle = document.querySelector('.historyToggle');
-  const historyModal = document.querySelector('.history-modal');
-  
-  historyToggle.addEventListener('click', (e) => {
-    historyModal.classList.toggle('d-none');
+  const historyToggle = document.querySelector(".historyToggle");
+  const historyModal = document.querySelector(".history-modal");
+
+  historyToggle.addEventListener("click", (e) => {
+    historyModal.classList.toggle("d-none");
   });
-  
+
   window.addEventListener("click", (e) => {
     if (!historyModal.contains(e.target) && !historyToggle.contains(e.target)) {
       historyModal.classList.add("d-none");
     }
   });
-  
 
+  const requestSendInput = document.getElementById("exampleInputText");
+  const requestSendBtn = document.querySelector(".request-send-btn");
+  const historyModalEmpty = document.querySelector(".history-modal-empty");
+  const historyModalSend = document.querySelector(".history-modal-send");
+  const dateFromRequest = document.querySelector(".dateFromRequest");
+  const now = new Date().toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
 
-const requestSendInput = document.getElementById('exampleInputText')
-const requestSendBtn = document.querySelector('.request-send-btn')
-const historyModalEmpty =document.querySelector('.history-modal-empty')
-const historyModalSend = document.querySelector('.history-modal-send')
-const dateFromRequest = document.querySelector('.dateFromRequest')
-const now = new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+  requestSendBtn.addEventListener("click", () => {
+    if (requestSendInput.value.trim()) {
+      historyModalSend.classList.remove("d-none");
+      historyModalEmpty.classList.add("d-none");
 
-
-requestSendBtn.addEventListener('click' , ()=> {
- if (requestSendInput.value.trim()) {
-    historyModalSend.classList.remove('d-none')
-    historyModalEmpty.classList.add('d-none')
-
-
-    dateFromRequest.innerHTML = `
+      dateFromRequest.innerHTML = `
     Today, <span>${now}</span>
-    `
-    
- }
-})
-
+    `;
+    }
+  });
 });
