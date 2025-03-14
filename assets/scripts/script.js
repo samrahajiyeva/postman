@@ -361,16 +361,16 @@ document.addEventListener("DOMContentLoaded", function () {
       input.addEventListener("input", () => {
         if (input.value.trim() !== "") {
           trashIcon.style.opacity = "1"; // İlk input daxil edildikdə trash icon görünəcək
+
+          if (row === tableBody.firstElementChild) {
+            trashIcon.style.opacity = "1";
+            trashIcon.classList.remove("opacity-0"); // İlk satırda opacity-0 sınıfını kaldır
+          }
         } else {
           trashIcon.style.opacity = "0"; // Əgər input boşaldılarsa yenidən gizlət
         }
       });
     });
-
-    // Əgər sətir ilk sətirdirsə, trash iconu dərhal göstərək
-    if (row === tableBody.firstElementChild) {
-      trashIcon.style.opacity = "1";
-    }
   }
 
   function addNewRow() {
