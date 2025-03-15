@@ -73,7 +73,6 @@
 .postman {
   background-color: var(--main-color);
   background-color: purple;
-  overflow: hidden;
   height: 100vh;
 }
 .postman__header {
@@ -1421,6 +1420,19 @@
   padding: 4px 6px;
 }
 .saveAs-modal .saveAs-modal__explorer-rows .saveAs-changeable-part ul .addNewCollection:hover {
+  background-color: transparent;
+}
+.saveAs-modal .saveAs-modal__explorer-rows .saveAs-changeable-part ul .addNewFolder input {
+  font-size: 12px;
+}
+.saveAs-modal .saveAs-modal__explorer-rows .saveAs-changeable-part ul .addNewFolder button {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--bg-color-2);
+  color: var(--white);
+  padding: 4px 6px;
+}
+.saveAs-modal .saveAs-modal__explorer-rows .saveAs-changeable-part ul .addNewFolder:hover {
   background-color: transparent;
 }
 .saveAs-modal .saveAs-modal__explorer-rows .saveAs-changeable-part ul li {

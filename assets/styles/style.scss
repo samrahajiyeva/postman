@@ -98,7 +98,7 @@
   // padding: 0px;
   background-color: var(--main-color);
   background-color: purple;
-  overflow: hidden;
+  // overflow: hidden;
   height: 100vh;
 
   // header
@@ -1701,6 +1701,24 @@
         gap: 10px;
 
         .addNewCollection {
+          input {
+            font-size: 12px;
+          }
+
+          button {
+            border: none;
+            border-radius: 5px;
+            background-color: var(--bg-color-2);
+            color: var(--white);
+            padding: 4px 6px;
+          }
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+
+        .addNewFolder {
           input {
             font-size: 12px;
           }

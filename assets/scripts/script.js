@@ -211,6 +211,11 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const addNewCollectionInput = document.querySelector(".addNewCollection-inp");
   const addNewCollectionList = document.querySelector(".addNewCollectionList");
+  const addNewFolderList = document.querySelector('.addNewFolderList')
+  const addNewFolder = document.querySelector('.addNewFolder')
+  const emptyItem = document.querySelector('.emptyItem')
+
+
   // sidebar
   const sidebarList = document.querySelector(".sidebarList");
   // new collection add etdikden sonra redirect etmek
@@ -223,41 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const myWorkspace = document.querySelector(".myWorkspace");
 
   let collections = [];
-
-  // addNewCollectionCreate.addEventListener("click", () => {
-  //   if (addNewCollectionInput.value.trim() !== "") {
-  //     collections.push(addNewCollectionInput.value)
-  //     let newItem = document.createElement("li");
-  //     newItem.innerHTML = `
-  //       <i class="fa-brands fa-nfc-symbol"></i>
-  //       <span>${addNewCollectionInput.value}</span>
-  //     `;
-
-  //     addNewCollectionList.appendChild(newItem);
-  //     addNewCollectionInput.value = "";
-  //     addNewCollection.classList.toggle("d-none");
-
-  //     console.log(collections);
-
-  //     let newSidebarLi
-  //     collections.forEach((item) => {
-  //       newSidebarLi= document.createElement("li")
-  //       newSidebarLi.innerHTML = `
-  //       <div>
-  //           <i class="fa-solid fa-angle-right"></i>
-  //           <span>${item}</span>
-  //       </div>
-  //       `
-  //     })
-
-  //     // sidebarList.appendChild(newSidebarLi)
-  //     // newFolderSpan.classList.toggle('d-none')
-  //     // newCollectionSpan.classList.toggle('d-none')
-  //     // myWorkspace.classList.toggle('d-none')
-  //     // selectCollectionFolder.classList.toggle('d-none')
-
-  //   }
-  // });
 
   // Yeni kolleksiya yaratmaq
   addNewCollectionCreate.addEventListener("click", () => {
@@ -278,7 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
       newCollectionSpan.classList.toggle("d-none");
       myWorkspace.classList.remove("d-none");
       selectCollectionFolder.textContent = `/${collectionName}`;
-      saveasChangeablePart.innerHTML = `<h6 style="color: white">${collectionName}</h6>`;
+      // saveasChangeablePart.innerHTML = `<h6 style="color: white">${collectionName}</h6>`;
+      addNewFolderList.classList.remove('d-none')
+      addNewCollectionList.classList.add('d-none')
 
       // Sidebara yeni collceton elave etme
       let newSidebarLi = document.createElement("li");
@@ -292,20 +264,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  newFolderSpan.addEventListener('click' , ()=> {
+    addNewFolder.classList.remove('d-none')
+  })
+
   myWorkspace.addEventListener("click", () => {
-    saveasChangeablePart.innerHTML = addNewCollectionList.outerHTML;
+    // saveasChangeablePart.innerHTML = addNewCollectionList.outerHTML;
     selectCollectionFolder.textContent = "Select a collection/folder";
+    addNewFolderList.classList.add('d-none')
+    addNewCollectionList.classList.remove('d-none')
     myWorkspace.classList.add("d-none");
     newFolderSpan.classList.toggle("d-none");
     newCollectionSpan.classList.remove("d-none");
 
-    newCollectionSpan.addEventListener("click", () => {
-      console.log("clicklendi");
-      addNewCollection.classList.toggle("d-flex");
-      console.log("burani oxuyur");
-    });
+    
+    // newCollectionSpan.addEventListener("click", () => {
+    //   console.log("clicklendi");
+    //   addNewCollection.classList.toggle("d-flex");
+    //   console.log("burani oxuyur");
+    // });
+    // console.log(saveasChangeablePart);
 
-    console.log(saveasChangeablePart);
+
   });
 
   // Request table
