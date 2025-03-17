@@ -211,10 +211,12 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const addNewCollectionInput = document.querySelector(".addNewCollection-inp");
   const addNewCollectionList = document.querySelector(".addNewCollectionList");
-  const addNewFolderList = document.querySelector('.addNewFolderList')
-  const addNewFolder = document.querySelector('.addNewFolder')
-  const emptyItem = document.querySelector('.emptyItem')
-
+  const addNewFolderList = document.querySelector(".addNewFolderList");
+  const addNewFolder = document.querySelector(".addNewFolder");
+  const emptyItem = document.querySelector(".emptyItem");
+  const addNewFolderCreate = document.querySelector(".addNewFolder-create");
+  const addNewFolderCancel = document.querySelector(".addNewFolder-cancel");
+  const addednewFoldersZone = document.querySelector('.addednewFoldersZone')
 
   // sidebar
   const sidebarList = document.querySelector(".sidebarList");
@@ -227,13 +229,23 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   const myWorkspace = document.querySelector(".myWorkspace");
 
-  let collections = [];
+  let collections = [
+    {
+      collection: "Collation",
+      folder: [],
+    }
+  ];
 
   // Yeni kolleksiya yaratmaq
   addNewCollectionCreate.addEventListener("click", () => {
     if (addNewCollectionInput.value.trim() !== "") {
       let collectionName = addNewCollectionInput.value.trim();
-      collections.push(collectionName);
+      if (collectionName) {
+        collections.push({
+          collection: collectionName,
+          folder: [], // Yeni kolleksiya ilə boş qovluq siyahısı əlavə edilir
+        });
+      }
 
       let newItem = document.createElement("li");
       newItem.innerHTML = `
@@ -249,8 +261,8 @@ document.addEventListener("DOMContentLoaded", function () {
       myWorkspace.classList.remove("d-none");
       selectCollectionFolder.textContent = `/${collectionName}`;
       // saveasChangeablePart.innerHTML = `<h6 style="color: white">${collectionName}</h6>`;
-      addNewFolderList.classList.remove('d-none')
-      addNewCollectionList.classList.add('d-none')
+      addNewFolderList.classList.remove("d-none");
+      addNewCollectionList.classList.add("d-none");
 
       // Sidebara yeni collceton elave etme
       let newSidebarLi = document.createElement("li");
@@ -262,30 +274,78 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
       sidebarList.appendChild(newSidebarLi);
     }
+    
+    
+  
+    console.log(collections);
+    
+    
   });
 
-  newFolderSpan.addEventListener('click' , ()=> {
-    addNewFolder.classList.remove('d-none')
-  })
+  newFolderSpan.addEventListener("click", () => {
+    addNewFolder.classList.remove("d-none");
+    emptyItem.classList.add("d-none");
+  });
 
   myWorkspace.addEventListener("click", () => {
     // saveasChangeablePart.innerHTML = addNewCollectionList.outerHTML;
     selectCollectionFolder.textContent = "Select a collection/folder";
-    addNewFolderList.classList.add('d-none')
-    addNewCollectionList.classList.remove('d-none')
+    addNewFolderList.classList.add("d-none");
+    addNewCollectionList.classList.remove("d-none");
     myWorkspace.classList.add("d-none");
     newFolderSpan.classList.toggle("d-none");
     newCollectionSpan.classList.remove("d-none");
+    emptyItem.classList.remove("d-none");
+    addNewFolder.classList.add("d-none");
+    addednewFoldersZone.innerHTML = ""
 
-    
     // newCollectionSpan.addEventListener("click", () => {
     //   console.log("clicklendi");
     //   addNewCollection.classList.toggle("d-flex");
     //   console.log("burani oxuyur");
     // });
     // console.log(saveasChangeablePart);
+  });
+
+  addNewFolderCancel.addEventListener("click", () => {
+    addNewFolder.classList.add("d-none");
+  });
 
 
+  let folderInput = document.querySelector('.addNewFolder-inp');
+  let folderName = folderInput.value.trim();
+
+  addNewFolderCreate.addEventListener("click", () => {
+
+    // console.log(collections);
+    folderName = document.querySelector(".addNewFolder-inp").value.trim();
+
+    if (folderName && collections.length > 0) {
+      let collectionName = selectCollectionFolder.textContent.trim().substring(1); 
+      let selectedCollection = collections.find(
+        (collection) => collection.collection === collectionName
+      );
+  
+      if (selectedCollection) {
+        selectedCollection.folder.push(folderName);
+  
+        // Qovluq siyahısına yeni item əlavə et
+        let newFolderItem = document.createElement("li");
+        newFolderItem.innerHTML = `
+       <i class="fa-brands fa-nfc-symbol"></i>
+        <span>${folderName}</span>`;
+        addednewFoldersZone.appendChild(newFolderItem);
+
+        console.log(selectedCollection);
+        
+      }
+  
+      // Qovluq əlavə etdikdən sonra formu təmizləyib, qovluq əlavə etmə panelini bağlayırıq
+      document.querySelector(".addNewFolder-inp").value = "";
+      addNewFolder.classList.add("d-none");
+  
+      console.log("Updated Collections:", collections);
+    }
   });
 
   // Request table
@@ -319,13 +379,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     row.addEventListener("mouseenter", () => {
       if (row !== tableBody.lastElementChild) {
-        trashIcon.style.opacity = "1"; // Hover zamanı göstər
+        trashIcon.style.opacity = "1";
       }
     });
 
     row.addEventListener("mouseleave", () => {
       if (!row.querySelector(".key-input").value.trim()) {
-        trashIcon.style.opacity = "0"; // Boşdursa gizlət
+        trashIcon.style.opacity = "0";
       }
     });
 
@@ -340,14 +400,14 @@ document.addEventListener("DOMContentLoaded", function () {
     inputs.forEach((input) => {
       input.addEventListener("input", () => {
         if (input.value.trim() !== "") {
-          trashIcon.style.opacity = "1"; // İlk input daxil edildikdə trash icon görünəcək
+          trashIcon.style.opacity = "1";
 
           if (row === tableBody.firstElementChild) {
             trashIcon.style.opacity = "1";
-            trashIcon.classList.remove("opacity-0"); // İlk satırda opacity-0 sınıfını kaldır
+            trashIcon.classList.remove("opacity-0");
           }
         } else {
-          trashIcon.style.opacity = "0"; // Əgər input boşaldılarsa yenidən gizlət
+          trashIcon.style.opacity = "0";
         }
       });
     });
@@ -377,7 +437,6 @@ document.addEventListener("DOMContentLoaded", function () {
     addDeleteFunctionality(newRow);
   }
 
-  // İlk sətirə də silmə funksiyası əlavə edirik
   document.querySelectorAll("tbody tr").forEach(addDeleteFunctionality);
 
   function addEventToInputs(row) {
