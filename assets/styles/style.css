@@ -59,7 +59,7 @@
 
 .light-mode {
   --dark-gray: rgb(249, 248, 248);
-  --border: 0.5px solid #eae9e9;
+  --border: 0.5px solid #dfdfdf;
   --baseTextColor: #6b6b6b;
   --green: #007f31;
   --hero-color: white;
@@ -74,7 +74,6 @@ body {
   min-height: 100vh;
   background-color: purple;
   width: 100%;
-  overflow: hidden;
 }
 
 .postman {
@@ -88,6 +87,7 @@ body {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  height: 55px;
 }
 .postman__header .header-links {
   list-style: none;
@@ -372,6 +372,7 @@ body {
 .postman__main__hero {
   background-color: var(--hero-color);
   padding: 0px;
+  overflow: hidden;
 }
 .postman__main__hero__top {
   padding: 0px 10px;
@@ -663,7 +664,7 @@ body {
 }
 .postman__main__hero__bottom__left__footer {
   border-top: var(--border);
-  overflow: hidden;
+  height: calc(100vh - 470px);
 }
 .postman__main__hero__bottom__left__footer__header {
   display: flex;
@@ -1594,7 +1595,7 @@ td.d-flex:active {
 }
 
 .main {
-  height: calc(100vh - 78.5px);
+  height: calc(100vh - 82.5px);
 }
 
 .main-bottom-left {
@@ -1664,6 +1665,13 @@ td.d-flex:active {
   }
 }
 .table-trash {
-  color: var(--white);
   cursor: pointer;
+}
+
+.navbar-toggler {
+  border: none;
+  background: transparent;
+  color: var(--baseTextColor);
+  font-size: 20px;
+  padding: 0 !important;
 }/*# sourceMappingURL=style.css.map */

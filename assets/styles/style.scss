@@ -82,7 +82,7 @@
 .light-mode {
   // --primary-orange: #ff6c37;
   --dark-gray: rgb(249, 248, 248);
-  --border: 0.5px solid #eae9e9;
+  --border: 0.5px solid #dfdfdf;
   --baseTextColor: #6b6b6b;
   --green: #007f31;
   --hero-color: white;
@@ -97,7 +97,7 @@ body {
   min-height: 100vh;
   background-color: purple;
   width: 100%;
-  overflow: hidden;
+  // overflow: hidden;
 }
 .postman {
   // position: relative;
@@ -115,6 +115,7 @@ body {
     @include displaying();
     justify-content: space-between;
     position: relative;
+    height: 55px;
 
     .header-links {
       list-style: none;
@@ -465,6 +466,8 @@ body {
       background-color: var(--hero-color);
       padding: 0px;
       // height: 100%;
+      overflow: hidden;
+
 
       &__top {
         padding: 0px 10px;
@@ -859,7 +862,8 @@ body {
             // position: relative;
             // display: flex !important;
             // flex-direction: column;
-            overflow: hidden;
+            // overflow: hidden;
+            height: calc(100vh - 470px);
 
             &__header {
               @include displaying();
@@ -1957,8 +1961,12 @@ td.d-flex:active {
 }
 
 .main {
-  height: calc(100vh - 78.5px);
+  height: calc(100vh - 82.5px);
 }
+
+// footer{
+//   height: 30px !important;
+// }
 
 .main-bottom-left {
   width: 96%;
@@ -2031,6 +2039,15 @@ td.d-flex:active {
 }
 
 .table-trash{
-  color: var(--white);
+  // color: var(--dark) !important;
   cursor: pointer;
 }
+
+.navbar-toggler{
+  border: none;
+  background: transparent;
+  color: var(--baseTextColor);
+  font-size: 20px;
+  padding: 0 !important;
+}
+

@@ -344,7 +344,7 @@ $(function () {
         <td colspan="2">
           <div class="d-flex align-items-center">
             <input placeholder="Description" type="text" class="key-input"/>
-            <i class="fa-solid fa-trash-can" style="opacity: 0; cursor: pointer;"></i>
+            <i class="fa-solid fa-trash-can text-light" style="opacity: 0; cursor: pointer;"></i>
           </div>
         </td>
       </tr>
