@@ -274,12 +274,9 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
       sidebarList.appendChild(newSidebarLi);
     }
-    
-    
-  
+
     console.log(collections);
-    
-    
+
   });
 
   newFolderSpan.addEventListener("click", () => {
@@ -311,7 +308,6 @@ document.addEventListener("DOMContentLoaded", function () {
     addNewFolder.classList.add("d-none");
   });
 
-
   let folderInput = document.querySelector('.addNewFolder-inp');
   let folderName = folderInput.value.trim();
 
@@ -321,14 +317,14 @@ document.addEventListener("DOMContentLoaded", function () {
     folderName = document.querySelector(".addNewFolder-inp").value.trim();
 
     if (folderName && collections.length > 0) {
-      let collectionName = selectCollectionFolder.textContent.trim().substring(1); 
+      let collectionName = selectCollectionFolder.textContent.trim().substring(1);
       let selectedCollection = collections.find(
         (collection) => collection.collection === collectionName
       );
-  
+
       if (selectedCollection) {
         selectedCollection.folder.push(folderName);
-  
+
         // Qovluq siyahısına yeni item əlavə et
         let newFolderItem = document.createElement("li");
         newFolderItem.innerHTML = `
@@ -337,13 +333,13 @@ document.addEventListener("DOMContentLoaded", function () {
         addednewFoldersZone.appendChild(newFolderItem);
 
         console.log(selectedCollection);
-        
+
       }
-  
+
       // Qovluq əlavə etdikdən sonra formu təmizləyib, qovluq əlavə etmə panelini bağlayırıq
       document.querySelector(".addNewFolder-inp").value = "";
       addNewFolder.classList.add("d-none");
-  
+
       console.log("Updated Collections:", collections);
     }
   });
@@ -519,3 +515,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+

@@ -1,0 +1,770 @@
+<body>
+    <div class="postman container-fluid d-flex flex-column">
+      <!-- header -->
+      <!-- boostrap navbar -->
+      <div class="row">
+        <nav class="navbar bg-body-tertiary postman__header col-12">
+          <div class="postman__header__left">
+            <ul>
+              <li>Home</li>
+              <li>Workspaces <i class="fa-solid fa-angle-down"></i></li>
+              <li>API Network</li>
+            </ul>
+          </div>
+          <div class="postman__header__middle">
+            <div class="search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Search Postman</span>
+            </div>
+          </div>
+          <div class="postman__header__right">
+            <button class="invite">
+              <i class="fa-solid fa-user-plus"></i>
+              <span>Invite</span>
+            </button>
+            <i class="fa-solid fa-gear" data-title="Settings"></i>
+            <i class="fa-regular fa-bell" data-title="Notifications"></i>
+            <img src="assets/images/postman-img.png" alt="header-img" />
+            <div class="upgrade d-flex">
+              <button>Upgrade</button>
+              <span><i class="fa-solid fa-angle-down"></i></span>
+            </div>
+            <i class="fa-solid fa-sun mode-icon"></i>
+          </div>
+        </nav>
+      </div>
+
+      <!-- main -->
+      <div class="row postman__main flex-grow-1">
+        <!-- sidebar -->
+        <div class="postman__main__sidebar col-3 d-flex flex-column">
+          <!-- sidebar top -->
+          <div class="postman__main__sidebar__top">
+            <div class="postman__main__sidebar__top__left">
+              <i class="fa-regular fa-user"></i>
+              <span>My Workspace</span>
+            </div>
+            <div class="postman__main__sidebar__top__right">
+              <button class="new">New</button>
+              <button class="import">Import</button>
+            </div>
+          </div>
+          <!-- sidebar bottom -->
+          <div
+            class="postman__main__sidebar__bottom d-flex flex-column flex-grow: 1;"
+          >
+            <div class="row flex-grow-1">
+              <div class="postman__main__sidebar__bottom__left col-3">
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>Collections</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-square-minus"></i>
+                    <span>Environments</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-chart-diagram"></i>
+                    <span>Flows</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>History</span>
+                  </li>
+                  <li data-title="Configure workspace sidebar">
+                    <i class="fa-solid fa-sliders"></i>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="postman__main__sidebar__bottom__right col-9">
+                <div class="postman__main__sidebar__bottom__right__top">
+                  <i
+                    class="fa-solid fa-plus"
+                    data-title="Create new collection"
+                  ></i>
+                  <div class="search-container">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <input type="text" />
+                  </div>
+                  <i
+                    class="fa-solid fa-ellipsis"
+                    data-title="View more actions"
+                  ></i>
+                </div>
+
+                <div class="postman__main__sidebar__bottom__right__bottom">
+                  <ul>
+                    <li>
+                      <div>
+                        <i class="fa-solid fa-angle-down"></i>
+                        <span> Collation </span>
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="li-div">
+                    <span>GET</span>
+                    <span>Test</span>
+                  </div>
+                  <ul class="sidebarList">
+                    <!-- <li>
+                          <div>
+                            <i class="fa-solid fa-angle-right"></i>
+                            <span>New Collection</span>
+                          </div>
+                        </li> -->
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- main -->
+        <div class="postman__main__hero col-9 d-flex flex-column">
+          <div class="postman__main__hero__top col-12">
+            <div class="postman__main__hero__top__left">
+              <div class="right-side">
+                <div class="review">
+                  <span> GET </span>
+                  <span>Test</span>
+                </div>
+                <i class="fa-solid fa-plus"></i>
+              </div>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <div class="postman__main__hero__top__right">
+              <ul>
+                <li>
+                  <i class="fa-regular fa-note-sticky"></i>
+                  <span>No environment</span>
+                  <i class="fa-solid fa-angle-down"></i>
+                </li>
+
+                <li>
+                  <i
+                    class="fa-solid fa-code-pull-request"
+                    data-title="Variables in this request"
+                  ></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="postman__main__hero__bottom col-12 flex-grow-1">
+            <div class="postman__main__hero__bottom__left d-flex flex-column">
+              <div class="postman__main__hero__bottom__left__hero col-12">
+                <div
+                  class="postman__main__hero__bottom__left__hero__header col-12"
+                >
+                  <ul>
+                    <li>
+                      <img
+                        src="https://www.ajayrajbanshi.com.np/wp-content/uploads/2019/03/https.png"
+                        alt=""
+                      />
+                      <span class="span-1">Collation</span>
+                      <span class="span-2">/</span>
+                      <span class="span-3">Test</span>
+                      <!-- <i class="fa-solid fa-shekel-sign"></i> -->
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-floppy-disk"></i>
+                      <span class="save" data-title="No new changes to save"
+                        >Save</span
+                      >
+                      <i class="fa-solid fa-angle-down saveAs"></i>
+                      <button data-title="Share request" class="share-toggle">
+                        Share
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                <div
+                  class="postman__main__hero__bottom__left__hero__request col-12"
+                >
+                  <!-- burada isleyirsen -->
+                  <div class="request-select col-11">
+                    <select
+                      class="form-select"
+                      aria-label="Disabled select example"
+                      id="colorSelect"
+                    >
+                      <option value="1" selected style="color: #007f31">
+                        GET
+                      </option>
+                      <option value="2" style="color: #ffe47e">POST</option>
+                      <option value="3" style="color: #74aef6">PUT</option>
+                      <option value="4" style="color: #c0a8e1">PATCH</option>
+                      <option value="5" style="color: #f79a8e">DELETE</option>
+                      <option value="6" style="color: #007f31">HEAD</option>
+                      <option value="7" style="color: #f15eb0">OPTIONS</option>
+                    </select>
+                    <input
+                      class=""
+                      type="text"
+                      class="form-control request-send-input"
+                      placeholder="Enter URL or paste text"
+                      id="exampleInputText"
+                      aria-describedby="textHelp"
+                      autocomplete
+                    />
+                  </div>
+                  <button class="col-1 request-send-btn">
+                    <span data-title="Ctrl+↩">Send</span>
+                    <i class="fa-solid fa-angle-down sendSubModalToggle"></i>
+                  </button>
+                </div>
+
+                <div
+                  class="postman__main__hero__bottom__left__hero__editor col-12"
+                >
+                  <div class="editor-left">
+                    <ul>
+                      <li>Params</li>
+                      <li>Authorization</li>
+                      <li>Headers <span class="header-span">(7)</span></li>
+                      <li>Body</li>
+                      <li>Scripts</li>
+                      <li>Settings</li>
+                    </ul>
+                  </div>
+                  <span class="cookie-open">Cookies</span>
+                </div>
+
+                <div
+                  class="postman__main__hero__bottom__left__hero__group d-flex flex-column"
+                >
+                  <span> Query Params </span>
+
+                  <div class="table-wrapper">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th class="d-flex justify-content-center">
+                            <input type="checkbox" class="params-check" />
+                          </th>
+                          <th>Key</th>
+                          <th>Value</th>
+                          <th>Description</th>
+                          <th>Bulk Edit</th>
+                        </tr>
+                      </thead>
+                      <tbody id="sortable-table">
+                        <tr>
+                          <td class="d-flex justify-content-center">
+                            <input type="checkbox" class="params-check" />
+                          </td>
+                          <td>
+                            <input
+                              placeholder="Key"
+                              type="text"
+                              class="key-input"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              placeholder="Value"
+                              type="text"
+                              class="key-input"
+                            />
+                          </td>
+                          <td colspan="2">
+                            <div class="d-flex align-items-center">
+                              <input
+                                placeholder="Description"
+                                type="text"
+                                class="key-input"
+                              />
+                              <i class="fa-solid fa-trash-can opacity-0"></i>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <!-- burada isleyirsen -->
+              <div
+                class="postman__main__hero__bottom__left__footer"
+              >
+                <div
+                  class="postman__main__hero__bottom__left__footer__header col-12"
+                >
+                  <ul>
+                    <li>
+                      <span>Response</span>
+                    </li>
+                    <li class="historyToggle">
+                      <i class="fa-solid fa-clock-rotate-left"></i>
+                      <span>History</span>
+                      <i class="fa-solid fa-angle-down"></i>
+                    </li>
+                  </ul>
+                  <i class="fa-solid fa-angle-down hero-footer-toggle"></i>
+                </div>
+                <div
+                  class="postman__main__hero__bottom__left__footer__hero col-12"
+                >
+                  <div class="inner-div">
+                    <img
+                      src="https://postman.com/_aether-assets/illustrations/dark/illustration-hit-send.svg"
+                      alt="postman"
+                    />
+                    <span>Click Send to get a response</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="postman__main__hero__bottom__right">
+              <ul>
+                <li data-title="Documentation">
+                  <i class="fa-solid fa-file-invoice"></i>
+                </li>
+                <li data-title="Comments">
+                  <i class="fa-solid fa-comment-dots"></i>
+                </li>
+                <li data-title="Code">
+                  <i class="fa-solid fa-code"></i>
+                </li>
+                <li data-title="Related requests">
+                  <i class="fa-solid fa-code-pull-request"></i>
+                </li>
+                <li data-title="Info">
+                  <i class="fa-solid fa-info"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- footer -->
+        <div class="postman__footer col-12">
+          <div class="postman__footer__left">
+            <ul>
+              <li>
+                <i class="fa-solid fa-book-open"></i>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check"></i>
+                <span>Online</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-terminal"></i>
+                <span>Console</span>
+              </li>
+            </ul>
+          </div>
+          <div class="postman__footer__right">
+            <ul>
+              <li>
+                <i class="fa-solid fa-prescription-bottle"></i>
+                <span>Postbot</span>
+              </li>
+              <li>
+                <i class="fa-regular fa-square-caret-right"></i>
+                <span>Runner</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-code-pull-request"></i>
+                <span>Capture requests</span>
+              </li>
+
+              <li>
+                <i class="fa-regular fa-circle-check"></i>
+                <span>Auto-select-agent</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-cookie-bite"></i>
+                <span>Cookies</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-vault"></i>
+                <span>Vault</span>
+              </li>
+              <li>
+                <i class="fa-regular fa-trash-can"></i>
+                <span>Trash</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-table-columns"></i>
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-question"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- modal -->
+      <div class="modal">
+        <div class="modal__header col-12">
+          <select
+            class="modal-form-select"
+            aria-label="Disabled select example"
+            disabled
+          >
+            <option selected>All of Postman</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Search for team APIs you want to explore"
+          />
+          <div class="modal-closer"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="modal__hero col-12">
+          <span class="modal-search">Search for:</span>
+          <ul>
+            <li>
+              <i class="fa-brands fa-squarespace"></i>
+              <span>Workspaces</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-prescription-bottle"></i>
+              <span>Collections</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-code-pull-request"></i>
+              <span>Requests</span>
+            </li>
+            <li>
+              <i class="fa-brands fa-stumbleupon-circle"></i>
+              <span>APIs</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-chart-diagram"></i>
+              <span>Flows</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-people-group"></i>
+              <span>Teams</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- invite modal -->
+      <div class="invite-modal col-3">
+        <div class="invite-modal__header">
+          <h3>Invite to workspace</h3>
+          <i class="fa-solid fa-xmark inviteModalDisplayNone"></i>
+        </div>
+        <div class="invite-modal__blue">
+          <i class="fa-solid fa-info"></i>
+          <span>Inviting people will change this into a team workspace.</span>
+        </div>
+        <div class="invite-modal__workspace">
+          <span> Invite by email </span>
+
+          <ul>
+            <li>
+              <span>Add from:</span>
+              <img
+                src="https://web.postman.co/_ar-assets/images/google_logo_dark-0cb233146aafa32bbbef10b199c4bab5.svg"
+                alt="google"
+              />
+              <span class="google">Google</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-angle-down"></i>
+            </li>
+          </ul>
+        </div>
+        <div class="invite-modal__input">
+          <input type="text" />
+        </div>
+        <button disabled>Send Invite</button>
+      </div>
+
+      <!-- cookie modal -->
+      <div class="cookie-modal col-5 d-flex flex-column">
+        <div class="cookie-modal__top col-12">
+          <span>Cookies</span>
+          <i class="fa-solid fa-xmark cookie-close"></i>
+        </div>
+        <div class="cookie-modal__pagelist col-12">
+          <ul>
+            <li class="manage-cookie-li selected-cookie">
+              <span>Manage Cookies</span>
+            </li>
+            <li class="sync-cookie-li">
+              <span>Sync Cookies</span>
+            </li>
+          </ul>
+        </div>
+        <div class="cookie-modal__change">
+          <div class="cookie-manage col-12 d-flex flex-column">
+            <div class="cookie-manage__input col-12">
+              <div class="input-group mb-3 d-flex">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Type a domain name"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  id="button-addon2"
+                >
+                  Add Domain
+                </button>
+              </div>
+            </div>
+            <div
+              class="cookie-manage__hero col-12 d-flex flex-column text-center"
+            >
+              <img
+                src="https://postman.com/_aether-assets/illustrations/light/illustration-no-cookies.svg"
+                alt="postman-logo"
+              />
+              <span>No Cookies available</span>
+            </div>
+            <div class="cookie-manage__button col-12">
+              <button class="btn">Domain Allowlist</button>
+            </div>
+          </div>
+          <div class="cookie-sync col-12 d-flex flex-column">
+            <p>
+              Learn more about
+              <span>cookies</span>
+              and how to capture them with
+              <span>Interceptor</span>.
+            </p>
+            <div class="noconnect col-12">
+              <div class="row">
+                <div class="col-1">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="d-flex flex-column col-11">
+                  <h5>No connection to interceptor</h5>
+                  <span>
+                    Make sure you've installed the Interceptor extension.
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <span class="domain"
+              >Domains <i class="fa-solid fa-circle-info"></i
+            ></span>
+            <div class="input-group mb-3 d-flex">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Type a domain name"
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+              />
+              <button class="btn" type="button" id="button-addon2">
+                Add Domain
+              </button>
+            </div>
+
+            <div>
+              <button class="btn sync-btn">Start Syncing</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- share modal -->
+      <div class="share-modal col-2 d-none">
+        <div class="row">
+          <div class="share-modal__header col-12">
+            <h5>Save changes before sharing?</h5>
+          </div>
+          <div class="share-modal__text col-12">
+            <p>You can also share this request without your recent changes.</p>
+          </div>
+          <div class="share-modal__buttons col-12 d-flex">
+            <button>Save and Share</button>
+            <button>Share Without Saving</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- saveAs submodal -->
+      <div class="saveAs-submodal col-1 d-none">
+        <button class="col-12 saveAsOpen">Save as</button>
+      </div>
+
+      <!-- saveAs Modal -->
+      <div class="saveAs-modal d-none col-5">
+        <div class="row">
+          <div class="saveAs-modal__title col-12">
+            <h3>SAVE REQUEST</h3>
+          </div>
+          <div class="saveAs-modal__request col-12">
+            <span>Request Name</span>
+            <input
+              type="text"
+              class="form-control col-12"
+              id="exampleInputText"
+              aria-describedby="textHelp"
+            />
+          </div>
+          <div class="saveAs-modal__desc col-12">
+            <span class="addDesc">Add description</span>
+            <div class="d-none addedDesc">
+              <span>Description</span>
+              <input type="text" class="saveAs-desc-input col-12" />
+            </div>
+          </div>
+        </div>
+        <div class="saveAs-modal__explorer col-12 d-flex align-items-center">
+          <h6>Save to</h6>
+          <span class="myWorkspace d-none"> My Workspace </span>
+          <span class="selectCollectionFolder">
+            Select a collection/folder
+          </span>
+        </div>
+        <div class="saveAs-modal__explorer-rows col-12">
+          <div class="input-group input-group-sm mb-3 saveAs-inp2">
+            <span class="input-group-text" id="inputGroup-sizing-sm">
+              <i class="fa-solid fa-layer-group"></i>
+            </span>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm"
+            />
+          </div>
+
+          <!-- burada isleyirsen -->
+          <div class="saveAs-changeable-part">
+            <ul class="d-flex flex-column addNewCollectionList">
+              <li class="addNewCollection d-none">
+                <i class="fa-brands fa-nfc-symbol"></i>
+                <input
+                  type="text"
+                  class="form-control addNewCollection-inp"
+                  id="exampleInputText1"
+                  aria-describedby="textHelp"
+                />
+
+                <button class="addNewCollection-create">Create</button>
+                <button class="addNewCollection-cancel">Cancel</button>
+              </li>
+              <li>
+                <i class="fa-brands fa-nfc-symbol"></i>
+                <span>Collation</span>
+              </li>
+            </ul>
+            <!-- burada isleyirsen -->
+            <ul class="d-flex flex-column addNewFolderList d-none">
+              <li class="addNewFolder d-none">
+                <i class="fa-brands fa-nfc-symbol"></i>
+                <input
+                  type="text"
+                  class="form-control addNewFolder-inp"
+                  id="exampleInputText1"
+                  aria-describedby="textHelp"
+                />
+
+                <button class="addNewFolder-create">Create</button>
+                <button class="addNewFolder-cancel">Cancel</button>
+              </li>
+              <li class="emptyItem text-center">
+                There is no item
+              </li>
+              <!-- bura yeni folderler elave olunacaq -->
+               <div class="addednewFoldersZone">
+                
+               </div>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="saveAs-modal__bottom col-12 d-flex justify-content-between align-items-center"
+        >
+          <span class="newCollectionSpan">New Collection</span>
+          <span class="newFolderSpan d-none">New Folder</span>
+          <div class="saveAs-modal__bottom-buttons d-flex">
+            <button class="btn" disabled>Save</button>
+            <button class="btn saveAsCancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- send submodal -->
+
+      <div class="send-submodal col-1 d-none">
+        <button class="col-12">Send and Download</button>
+      </div>
+    </div>
+
+    <!-- history modal -->
+    <div class="history-modal col-2 d-none">
+      <div
+        class="history-modal-empty d-flex flex-column align-items-center text-center"
+      >
+        <p><i class="fa-solid fa-clock-rotate-left"></i></p>
+        <h5>No request history</h5>
+        <span>Send the request and browse through its history</span>
+      </div>
+
+      <div class="history-modal-send d-none">
+        <ul>
+          <li>Current</li>
+          <li>
+            <p class="dateFromRequest">Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Yesterday, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+          <li>
+            <p>Today, <span>1:53PM</span></p>
+            <div>
+              <span>403</span>
+              <i class="fa-solid fa-ellipsis"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js
+     "></script>
+    <script src="assets/scripts/script.js"></script>
+  </body>
