@@ -344,13 +344,12 @@ $(function () {
         <td colspan="2">
           <div class="d-flex align-items-center">
             <input placeholder="Description" type="text" class="key-input"/>
-            <i class="fa-solid fa-trash-can ${
-              $("body").hasClass("light-mode") ? "text-dark" : "text-light"
-            }" style="opacity: 0; cursor: pointer;"></i>
+            <i class="fa-solid fa-trash-can" style="opacity: 0; cursor: pointer;"></i>
           </div>
         </td>
       </tr>
     `);
+  
     $tableBody.append($newRow);
     addEventToInputs($newRow);
     addDeleteFunctionality($newRow);
@@ -409,3 +408,4 @@ $(function () {
     ghostClass: "sortable-ghost",
   });
 });
+

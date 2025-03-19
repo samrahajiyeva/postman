@@ -1665,4 +1665,5 @@ td.d-flex:active {
 }
 .table-trash {
   color: var(--white);
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
