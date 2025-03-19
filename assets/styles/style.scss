@@ -744,7 +744,7 @@ body {
 
               // table
               .table-wrapper {
-                height: 166px;
+                height: 140px;
                 overflow: auto;
 
                 .table {
@@ -2025,4 +2025,8 @@ td.d-flex:active {
   .saveAs-modal__explorer-rows {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
+}
+
+.table-trash{
+  color: var(--white);
 }
