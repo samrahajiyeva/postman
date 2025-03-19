@@ -1,512 +1,411 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Modal ucun kodlar
-  const searchBtn = document.querySelector(".search-btn");
-  const modal = document.querySelector(".modal");
-  const modalCloser = document.querySelector(".modal-closer");
-
-  searchBtn.addEventListener("click", (e) => {
-    modal.classList.add("m-display");
+$(function () {
+  // Modal
+  $(".search-btn").on("click", function () {
+    $(".modal").addClass("m-display");
   });
 
-  modalCloser.addEventListener("click", (e) => {
-    modal.classList.remove("m-display");
+  $(".modal-closer").on("click", function () {
+    $(".modal").removeClass("m-display");
   });
 
-  //   invite modal ucun kodlar
-
-  const inviteBtn = document.querySelector(".invite");
-  const inviteModal = document.querySelector(".invite-modal");
-  const inviteModalNone = document.querySelector(".inviteModalDisplayNone");
-
-  inviteBtn.addEventListener("click", (e) => {
-    inviteModal.classList.add("inviteModalDisplay");
+  // Invite Modal
+  $(".invite").on("click", function () {
+    $(".invite-modal").addClass("inviteModalDisplay");
   });
 
-  inviteModalNone.addEventListener("click", (e) => {
-    inviteModal.classList.remove("inviteModalDisplay");
+  $(".inviteModalDisplayNone").on("click", function () {
+    $(".invite-modal").removeClass("inviteModalDisplay");
   });
 
-  // select option
-  const selectElement = document.getElementById("colorSelect");
-
-  selectElement.addEventListener("change", function () {
-    const selectedOption = selectElement.options[selectElement.selectedIndex];
-    selectElement.style.color = selectedOption.style.color;
+  // Select Option
+  $("#colorSelect").on("change", function () {
+    const selectedOption = $("#colorSelect option:selected");
+    $(this).css("color", selectedOption.css("color"));
   });
 
-  selectElement.dispatchEvent(new Event("change"));
+  $("#colorSelect").trigger("change");
 
   // light - dark mode
-  const modeIcon = document.querySelector(".mode-icon");
+  $(document).ready(function () {
+    $(".mode-icon").on("click", function () {
+      $("body").toggleClass("light-mode");
 
-  modeIcon.addEventListener("click", function () {
-    document.body.classList.toggle("light-mode");
+      $(this).toggleClass("fa-sun fa-moon");
 
-    modeIcon.classList.toggle("fa-sun");
-    modeIcon.classList.toggle("fa-moon");
-
-    console.log(
-      document.body.classList.contains("light-mode")
-        ? "Light mode açıldı"
-        : "Dark mode açıldı"
-    );
+      console.log(
+        $("body").hasClass("light-mode")
+          ? "Light mode açıldı"
+          : "Dark mode açıldı"
+      );
+    });
   });
 
   // cookie modal display ucun kodlar
-  const cookieOpen = document.querySelector(".cookie-open");
-  const cookieModal = document.querySelector(".cookie-modal");
-  const cookieClose = document.querySelector(".cookie-close");
+  $(document).ready(function () {
+    $(".cookie-open").on("click", function () {
+      $(".cookie-modal").addClass("cookieDisplay");
+    });
 
-  cookieOpen.addEventListener("click", () => {
-    cookieModal.classList.add("cookieDisplay");
-  });
-
-  cookieClose.addEventListener("click", () => {
-    cookieModal.classList.remove("cookieDisplay");
+    $(".cookie-close").on("click", function () {
+      $(".cookie-modal").removeClass("cookieDisplay");
+    });
   });
 
   // cookie modal list ucun kodlar
+  $(".sync-cookie-li").on("click", function () {
+    $(".manage-cookie-li").removeClass("selected-cookie");
+    $(".sync-cookie-li").addClass("selected-cookie");
 
-  const manageList = document.querySelector(".manage-cookie-li");
-  const syncList = document.querySelector(".sync-cookie-li");
-  const cookieManage = document.querySelector(".cookie-manage");
-  const cookieSync = document.querySelector(".cookie-sync");
-
-  syncList.addEventListener("click", () => {
-    manageList.classList.remove("selected-cookie");
-    syncList.classList.add("selected-cookie");
-
-    cookieManage.classList.toggle("manageDisplay");
-    cookieSync.classList.toggle("syncDisplay");
+    $(".cookie-manage").toggleClass("manageDisplay");
+    $(".cookie-sync").toggleClass("syncDisplay");
   });
 
-  manageList.addEventListener("click", () => {
-    manageList.classList.add("selected-cookie");
-    syncList.classList.remove("selected-cookie");
+  $(".manage-cookie-li").on("click", function () {
+    $(".manage-cookie-li").addClass("selected-cookie");
+    $(".sync-cookie-li").removeClass("selected-cookie");
 
-    cookieSync.classList.toggle("syncDisplay");
-    cookieManage.classList.toggle("manageDisplay");
+    $(".cookie-sync").toggleClass("syncDisplay");
+    $(".cookie-manage").toggleClass("manageDisplay");
   });
 
   // share modal kodlari
-  const shareToggle = document.querySelector(".share-toggle");
-  const shareModal = document.querySelector(".share-modal");
-
-  shareToggle.addEventListener("click", () => {
-    shareModal.classList.toggle("d-none");
+  $(".share-toggle").on("click", function () {
+    $(".share-modal").toggleClass("d-none");
   });
 
-  window.addEventListener("click", (e) => {
-    if (!shareModal.contains(e.target) && e.target !== shareToggle) {
-      shareModal.classList.add("d-none");
+  $(window).on("click", function (e) {
+    if (!$(e.target).closest(".share-modal, .share-toggle").length) {
+      $(".share-modal").addClass("d-none");
     }
   });
 
-  // send submodal
-  const sendSubModal = document.querySelector(".send-submodal");
-  const sendSubModalToggle = document.querySelector(".sendSubModalToggle");
-
-  sendSubModalToggle.addEventListener("click", () => {
-    sendSubModal.classList.toggle("d-none");
+  //send submodal
+  $(".sendSubModalToggle").on("click", function () {
+    $(".send-submodal").toggleClass("d-none");
   });
 
-  window.addEventListener("click", (e) => {
-    if (!sendSubModal.contains(e.target) && e.target !== sendSubModalToggle) {
-      sendSubModal.classList.add("d-none");
+  $(window).on("click", function (e) {
+    if (!$(e.target).closest(".send-submodal, .sendSubModalToggle").length) {
+      $(".send-submodal").addClass("d-none");
     }
   });
 
   // saveAs submodal kodlari
-  const saveAsToggle = document.querySelector(".saveAs");
-  const saveAsSubModal = document.querySelector(".saveAs-submodal");
-
-  saveAsToggle.addEventListener("click", () => {
-    saveAsSubModal.classList.toggle("d-none");
+  $(".saveAs").on("click", function () {
+    $(".saveAs-submodal").toggleClass("d-none");
   });
 
-  window.addEventListener("click", (e) => {
-    if (
-      !saveAsSubModal.contains(e.target) &&
-      !saveAsToggle.contains(e.target)
-    ) {
-      saveAsSubModal.classList.add("d-none");
+  $(window).on("click", function (e) {
+    if (!$(e.target).closest(".saveAs-submodal, .saveAs").length) {
+      $(".saveAs-submodal").addClass("d-none");
     }
   });
 
-  // addDesc
-  const addDesc = document.querySelector(".addDesc");
-  const addedDesc = document.querySelector(".addedDesc");
-
-  addDesc.addEventListener("click", () => {
-    addDesc.classList.toggle("d-none");
-    addedDesc.classList.toggle("d-none");
+  //desc kodlari
+  $(".addDesc").on("click", function () {
+    $(this).toggleClass("d-none");
+    $(".addedDesc").toggleClass("d-none");
   });
 
-  // save ass cancel
-  const saveasCancel = document.querySelector(".saveAsCancel");
-  const saveasModal = document.querySelector(".saveAs-modal");
-  const saveasOpen = document.querySelector(".saveAsOpen");
-
-  saveasOpen.addEventListener("click", () => {
-    saveasModal.classList.remove("d-none");
-    saveAsSubModal.classList.toggle("d-none");
+  // save as cancel
+  $(".saveAsOpen").on("click", function () {
+    $(".saveAs-modal").removeClass("d-none");
+    $(".saveAs-submodal").toggleClass("d-none");
   });
 
-  saveasCancel.addEventListener("click", () => {
-    saveasModal.classList.add("d-none");
-    addDesc.classList.remove("d-none");
-    addedDesc.classList.add("d-none");
+  $(".saveAsCancel").on("click", function () {
+    $(".saveAs-modal").addClass("d-none");
+    $(".addDesc").removeClass("d-none");
+    $(".addedDesc").addClass("d-none");
   });
 
   // save as daxili funksionalliqlar
-  const addNewCollection = document.querySelector(".addNewCollection");
-  const addNewCollectionCancel = document.querySelector(
-    ".addNewCollection-cancel"
-  );
-  const newCollectionSpan = document.querySelector(".newCollectionSpan");
-  const newFolderSpan = document.querySelector(".newFolderSpan");
+  const $addNewCollection = $(".addNewCollection");
+  const $addNewCollectionCancel = $(".addNewCollection-cancel");
+  const $newCollectionSpan = $(".newCollectionSpan");
 
-  newCollectionSpan.addEventListener("click", () => {
-    addNewCollection.classList.toggle("d-none");
+  $newCollectionSpan.on("click", function () {
+    $addNewCollection.toggleClass("d-none");
   });
 
-  addNewCollectionCancel.addEventListener("click", () => {
-    addNewCollection.classList.add("d-none");
+  $addNewCollectionCancel.on("click", function () {
+    $addNewCollection.addClass("d-none");
   });
 
-  const addNewCollectionCreate = document.querySelector(
-    ".addNewCollection-create"
-  );
-  const addNewCollectionInput = document.querySelector(".addNewCollection-inp");
-  const addNewCollectionList = document.querySelector(".addNewCollectionList");
-  const addNewFolderList = document.querySelector(".addNewFolderList");
-  const addNewFolder = document.querySelector(".addNewFolder");
-  const emptyItem = document.querySelector(".emptyItem");
-  const addNewFolderCreate = document.querySelector(".addNewFolder-create");
-  const addNewFolderCancel = document.querySelector(".addNewFolder-cancel");
-  const addednewFoldersZone = document.querySelector('.addednewFoldersZone')
+  const $addNewCollectionCreate = $(".addNewCollection-create");
+  const $addNewCollectionInput = $(".addNewCollection-inp");
+  const $addNewCollectionList = $(".addNewCollectionList");
+  const $addNewFolderList = $(".addNewFolderList");
+  const $addNewFolder = $(".addNewFolder");
+  const $emptyItem = $(".emptyItem");
+  const $addNewFolderCreate = $(".addNewFolder-create");
+  const $addNewFolderCancel = $(".addNewFolder-cancel");
+  const $addednewFoldersZone = $(".addednewFoldersZone");
+  const $newFolderSpan = $(".newFolderSpan");
 
-  // sidebar
-  const sidebarList = document.querySelector(".sidebarList");
-  const saveasChangeablePart = document.querySelector(
-    ".saveAs-changeable-part"
-  );
-  const selectCollectionFolder = document.querySelector(
-    ".selectCollectionFolder"
-  );
-  const myWorkspace = document.querySelector(".myWorkspace");
+  const $sidebarList = $(".sidebarList");
+  const $saveasChangeablePart = $(".saveAs-changeable-part");
+  const $selectCollectionFolder = $(".selectCollectionFolder");
+  const $myWorkspace = $(".myWorkspace");
 
   let collections = [
     {
       collection: "Collation",
       folder: [],
-    }
+    },
   ];
 
-  // Yeni kolleksiya yaratmaq
-  addNewCollectionCreate.addEventListener("click", () => {
-    if (addNewCollectionInput.value.trim() !== "") {
-      let collectionName = addNewCollectionInput.value.trim();
-      if (collectionName) {
-        collections.push({
-          collection: collectionName,
-          folder: [], 
-        });
-      }
+  $addNewCollectionCreate.on("click", function () {
+    const collectionName = $addNewCollectionInput.val().trim();
+    if (collectionName) {
+      collections.push({
+        collection: collectionName,
+        folder: [],
+      });
 
-      let newItem = document.createElement("li");
-      newItem.innerHTML = `
-      <i class="fa-brands fa-nfc-symbol"></i>
-      <span>${collectionName}</span>
-    `;
-      addNewCollectionList.appendChild(newItem);
-      addNewCollectionInput.value = "";
-      addNewCollection.classList.toggle("d-none");
-
-      newFolderSpan.classList.toggle("d-none");
-      newCollectionSpan.classList.toggle("d-none");
-      myWorkspace.classList.remove("d-none");
-      selectCollectionFolder.textContent = `/${collectionName}`;
-      // saveasChangeablePart.innerHTML = `<h6 style="color: white">${collectionName}</h6>`;
-      addNewFolderList.classList.remove("d-none");
-      addNewCollectionList.classList.add("d-none");
-
-      // Sidebara yeni collceton elave etme
-      let newSidebarLi = document.createElement("li");
-      newSidebarLi.innerHTML = `
-      <div>
-          <i class="fa-solid fa-angle-right"></i>
+      const newItem = $("<li>").html(`
+          <i class="fa-brands fa-nfc-symbol"></i>
           <span>${collectionName}</span>
-      </div>
-    `;
-      sidebarList.appendChild(newSidebarLi);
+        `);
+      $addNewCollectionList.append(newItem);
+      $addNewCollectionInput.val("");
+      $(".addNewCollection").toggleClass("d-none");
+
+      $newFolderSpan.toggleClass("d-none");
+      $(".newCollectionSpan").toggleClass("d-none");
+      $myWorkspace.removeClass("d-none");
+      $selectCollectionFolder.text(`/${collectionName}`);
+      $addNewFolderList.removeClass("d-none");
+      $addNewCollectionList.addClass("d-none");
+
+      const newSidebarLi = $("<li>").html(`
+          <div>
+            <i class="fa-solid fa-angle-right"></i>
+            <span>${collectionName}</span>
+          </div>
+        `);
+      $sidebarList.append(newSidebarLi);
     }
 
     console.log(collections);
-
   });
 
-  newFolderSpan.addEventListener("click", () => {
-    addNewFolder.classList.remove("d-none");
-    emptyItem.classList.add("d-none");
+  $newFolderSpan.on("click", function () {
+    $addNewFolder.removeClass("d-none");
+    $emptyItem.addClass("d-none");
   });
 
-  myWorkspace.addEventListener("click", () => {
-    // saveasChangeablePart.innerHTML = addNewCollectionList.outerHTML;
-    selectCollectionFolder.textContent = "Select a collection/folder";
-    addNewFolderList.classList.add("d-none");
-    addNewCollectionList.classList.remove("d-none");
-    myWorkspace.classList.add("d-none");
-    newFolderSpan.classList.toggle("d-none");
-    newCollectionSpan.classList.remove("d-none");
-    emptyItem.classList.remove("d-none");
-    addNewFolder.classList.add("d-none");
-    addednewFoldersZone.innerHTML = ""
-
-    // newCollectionSpan.addEventListener("click", () => {
-    //   console.log("clicklendi");
-    //   addNewCollection.classList.toggle("d-flex");
-    //   console.log("burani oxuyur");
-    // });
-    // console.log(saveasChangeablePart);
+  $myWorkspace.on("click", function () {
+    $selectCollectionFolder.text("Select a collection/folder");
+    $addNewFolderList.addClass("d-none");
+    $addNewCollectionList.removeClass("d-none");
+    $myWorkspace.addClass("d-none");
+    $newFolderSpan.toggleClass("d-none");
+    $(".newCollectionSpan").removeClass("d-none");
+    $emptyItem.removeClass("d-none");
+    $addNewFolder.addClass("d-none");
+    $addednewFoldersZone.empty();
   });
 
-  addNewFolderCancel.addEventListener("click", () => {
-    addNewFolder.classList.add("d-none");
+  $addNewFolderCancel.on("click", function () {
+    $addNewFolder.addClass("d-none");
   });
 
-  let folderInput = document.querySelector('.addNewFolder-inp');
-  let folderName = folderInput.value.trim();
+  let folderName = "";
 
-  addNewFolderCreate.addEventListener("click", () => {
-
-    // console.log(collections);
-    folderName = document.querySelector(".addNewFolder-inp").value.trim();
+  $addNewFolderCreate.on("click", function () {
+    folderName = $(".addNewFolder-inp").val().trim();
 
     if (folderName && collections.length > 0) {
-      let collectionName = selectCollectionFolder.textContent.trim().substring(1);
-      let selectedCollection = collections.find(
+      const collectionName = $selectCollectionFolder.text().trim().substring(1);
+      const selectedCollection = collections.find(
         (collection) => collection.collection === collectionName
       );
 
       if (selectedCollection) {
         selectedCollection.folder.push(folderName);
 
-        let newFolderItem = document.createElement("li");
-        newFolderItem.innerHTML = `
-       <i class="fa-brands fa-nfc-symbol"></i>
-        <span>${folderName}</span>`;
-        addednewFoldersZone.appendChild(newFolderItem);
-
+        const newFolderItem = $("<li>").html(`
+            <i class="fa-brands fa-nfc-symbol"></i>
+            <span>${folderName}</span>
+          `);
+        $addednewFoldersZone.append(newFolderItem);
         console.log(selectedCollection);
-
       }
 
-      document.querySelector(".addNewFolder-inp").value = "";
-      addNewFolder.classList.add("d-none");
+      $(".addNewFolder-inp").val("");
+      $addNewFolder.addClass("d-none");
 
       console.log("Updated Collections:", collections);
     }
   });
 
-  // Request table
-  const tableBody = document.querySelector("tbody");
-  const mainCheckbox = document.querySelector("thead .params-check");
+  // history funksionalliq
+  $(document).ready(function () {
+    const $historyToggle = $(".historyToggle");
+    const $historyModal = $(".history-modal");
 
-  function addDeleteFunctionality(row) {
-    const trashIcon = row.querySelector(".fa-trash-can");
+    $historyToggle.on("click", function () {
+      $historyModal.toggleClass("d-none");
+    });
 
-    if (!trashIcon) return;
-
-    row.addEventListener("mouseenter", () => {
-      if (row !== tableBody.lastElementChild) {
-        trashIcon.style.opacity = "1";
+    $(window).on("click", function (e) {
+      if (
+        !$(e.target).closest($historyModal).length &&
+        !$(e.target).closest($historyToggle).length
+      ) {
+        $historyModal.addClass("d-none");
       }
     });
 
-    row.addEventListener("mouseleave", () => {
-      if (!row.querySelector(".key-input").value.trim()) {
-        trashIcon.style.opacity = "0";
+    const $requestSendInput = $("#exampleInputText");
+    const $requestSendBtn = $(".request-send-btn");
+    const $historyModalEmpty = $(".history-modal-empty");
+    const $historyModalSend = $(".history-modal-send");
+    const $dateFromRequest = $(".dateFromRequest");
+
+    const now = new Date().toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+
+    $requestSendBtn.on("click", function () {
+      if ($requestSendInput.val().trim()) {
+        $historyModalSend.removeClass("d-none");
+        $historyModalEmpty.addClass("d-none");
+
+        $dateFromRequest.html(`
+           Today, <span>${now}</span>
+        `);
+      }
+
+      $requestSendInput.val("");
+    });
+  });
+
+  //request table
+  const $tableBody = $("tbody");
+  const $mainCheckbox = $("thead .params-check");
+
+  function addDeleteFunctionality($row) {
+    const $trashIcon = $row.find(".fa-trash-can");
+
+    if ($trashIcon.length === 0) return;
+
+    $row.on("mouseenter", function () {
+      if ($row[0] !== $tableBody.children().last()[0]) {
+        $trashIcon.css("opacity", "1");
       }
     });
 
-    trashIcon.addEventListener("click", () => {
-      if (tableBody.children.length > 1 && row !== tableBody.lastElementChild) {
-        row.remove();
+    $row.on("mouseleave", function () {
+      if ($row.find(".key-input").val().trim() === "") {
+        $trashIcon.css("opacity", "0");
+      }
+    });
+
+    $trashIcon.on("click", function () {
+      if (
+        $tableBody.children().length > 1 &&
+        $row[0] !== $tableBody.children().last()[0]
+      ) {
+        $row.remove();
         updateMainCheckbox();
       }
     });
 
-    const inputs = row.querySelectorAll(".key-input");
-    inputs.forEach((input) => {
-      input.addEventListener("input", () => {
-        if (input.value.trim() !== "") {
-          trashIcon.style.opacity = "1";
+    const $inputs = $row.find(".key-input");
+    $inputs.on("input", function () {
+      if ($(this).val().trim() !== "") {
+        $trashIcon.css("opacity", "1");
 
-          if (row === tableBody.firstElementChild) {
-            trashIcon.style.opacity = "1";
-            trashIcon.classList.remove("opacity-0");
-          }
-        } else {
-          trashIcon.style.opacity = "0";
+        if ($row[0] === $tableBody.children().first()[0]) {
+          $trashIcon.removeClass("opacity-0");
         }
-      });
+      } else {
+        $trashIcon.css("opacity", "0");
+      }
     });
   }
 
   function addNewRow() {
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-    <td class="d-flex justify-content-center">
-      <input type="checkbox" class="params-check" style="opacity: 0;">
-    </td>
-    <td>
-      <input placeholder="Key" type="text" class="key-input" />
-    </td>
-    <td>
-      <input placeholder="Value" type="text" class="key-input"/>
-    </td>
-    <td colspan="2">
-      <div class="d-flex align-items-center">
-        <input placeholder="Description" type="text" class="key-input"/>
-        <i class="fa-solid fa-trash-can ${document.body.classList.contains('light-mode')?"text-dark" : "text-light"} style="opacity: 0; cursor: pointer;"></i>
-      </div>
-    </td>
-  `;
-    tableBody.appendChild(newRow);
-    addEventToInputs(newRow);
-    addDeleteFunctionality(newRow);
+    const $newRow = $(`
+      <tr>
+        <td class="d-flex justify-content-center">
+          <input type="checkbox" class="params-check" style="opacity: 0;">
+        </td>
+        <td>
+          <input placeholder="Key" type="text" class="key-input" />
+        </td>
+        <td>
+          <input placeholder="Value" type="text" class="key-input"/>
+        </td>
+        <td colspan="2">
+          <div class="d-flex align-items-center">
+            <input placeholder="Description" type="text" class="key-input"/>
+            <i class="fa-solid fa-trash-can ${
+              $("body").hasClass("light-mode") ? "text-dark" : "text-light"
+            }" style="opacity: 0; cursor: pointer;"></i>
+          </div>
+        </td>
+      </tr>
+    `);
+    $tableBody.append($newRow);
+    addEventToInputs($newRow);
+    addDeleteFunctionality($newRow);
   }
 
-  document.querySelectorAll("tbody tr").forEach(addDeleteFunctionality);
+  $("tbody tr").each(function () {
+    addDeleteFunctionality($(this));
+  });
 
-  function addEventToInputs(row) {
-    const inputs = row.querySelectorAll(".key-input");
-    const checkbox = row.querySelector(".params-check");
+  function addEventToInputs($row) {
+    const $inputs = $row.find(".key-input");
+    const $checkbox = $row.find(".params-check");
     let isRowUpdated = false;
 
-    inputs.forEach((input) => {
-      input.addEventListener("input", () => {
-        if (input.value.trim() !== "") {
-          checkbox.style.opacity = 1;
-          checkbox.checked = true;
-          updateMainCheckbox();
+    $inputs.on("input", function () {
+      if ($(this).val().trim() !== "") {
+        $checkbox.css("opacity", 1);
+        $checkbox.prop("checked", true);
+        updateMainCheckbox();
 
-          if (!isRowUpdated) {
-            isRowUpdated = true;
-            addNewRow();
-          }
+        if (!isRowUpdated) {
+          isRowUpdated = true;
+          addNewRow();
         }
-      });
+      }
     });
 
-    checkbox.addEventListener("change", updateMainCheckbox);
+    $checkbox.on("change", updateMainCheckbox);
   }
 
   function updateMainCheckbox() {
-    const allCheckboxes = document.querySelectorAll("tbody .params-check");
-    const validCheckboxes = [...allCheckboxes].slice(0, -1);
+    const $allCheckboxes = $("tbody .params-check");
+    const $validCheckboxes = $allCheckboxes.slice(0, -1);
     const allChecked =
-      validCheckboxes.length > 0 &&
-      validCheckboxes.every((checkbox) => checkbox.checked);
+      $validCheckboxes.length > 0 &&
+      $validCheckboxes.toArray().every((checkbox) => checkbox.checked);
 
-    mainCheckbox.checked = allChecked;
+    $mainCheckbox.prop("checked", allChecked);
   }
 
-  document.querySelectorAll("tbody tr").forEach((row) => {
-    addEventToInputs(row);
+  $("tbody tr").each(function () {
+    addEventToInputs($(this));
   });
 
-  const firstRow = document.querySelector("tbody tr:first-child");
+  const $firstRow = $("tbody tr:first-child");
 
-  if (firstRow) {
-    // İlk sıradakı bütün input-ları boşalt
-    const inputs = firstRow.querySelectorAll(".key-input");
-    inputs.forEach(input => {
-      input.value = ""; // Text inputları boşalt
-    });
-
-    // İlk sıradakı checkbox-u unchecked et
-    const checkbox = firstRow.querySelector(".params-check");
-    if (checkbox) {
-      checkbox.checked = false; // Checkbox-u unchecked et
-    }
+  if ($firstRow.length) {
+    $firstRow.find(".key-input").val("");
+    $firstRow.find(".params-check").prop("checked", false);
   }
+
   // sortable.js
   new Sortable(document.getElementById("sortable-table"), {
     animation: 150, // Hərəkət effekti
     handle: "td.d-flex", // Sadəcə checkbox olan td üzərindən sürüşdürülə bilər
     ghostClass: "sortable-ghost",
   });
-
-  // history funksionalliq
-  const historyToggle = document.querySelector(".historyToggle");
-  const historyModal = document.querySelector(".history-modal");
-
-  historyToggle.addEventListener("click", (e) => {
-    historyModal.classList.toggle("d-none");
-  });
-
-  window.addEventListener("click", (e) => {
-    if (!historyModal.contains(e.target) && !historyToggle.contains(e.target)) {
-      historyModal.classList.add("d-none");
-    }
-  });
-
-  const requestSendInput = document.getElementById("exampleInputText");
-  const requestSendBtn = document.querySelector(".request-send-btn");
-  const historyModalEmpty = document.querySelector(".history-modal-empty");
-  const historyModalSend = document.querySelector(".history-modal-send");
-  const dateFromRequest = document.querySelector(".dateFromRequest");
-  const now = new Date().toLocaleString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  });
-
-  requestSendBtn.addEventListener("click", () => {
-    if (requestSendInput.value.trim()) {
-      historyModalSend.classList.remove("d-none");
-      historyModalEmpty.classList.add("d-none");
-
-      dateFromRequest.innerHTML = `
-       Today, <span>${now}</span>
-    `;
-    }
-  });
 });
-
-
-
-
-
-
-  //hero footer ucun kodlar
-  //   const icon = document.querySelector(".hero-footer-toggle");
-  //   const footerHero = document.querySelector(
-  //     ".postman__main__hero__bottom__left__footer__hero"
-  //   );
-  //   const footerHeader = document.querySelector('.postman__main__hero__bottom__left__footer__header')
-  //   const mainHeroFooter = document.querySelector('.postman__main__hero__bottom__left__footer')
-
-  // //   const footerToggleStyle = {
-  // //     display: 'flex',
-  // //     alignItems: 'center',
-  // //     justifyContent: 'space-between'
-  // //   };
-
-  //   icon.addEventListener("click", function () {
-  //     if (footerHero.style.display === "none") {
-  //       footerHero.style.display = "block";
-  //       icon.classList.replace("fa-angle-up", "fa-angle-down");
-  //       footerHeader.classList.remove('footerUpDown')
-  //       mainHeroFooter.style.border = '0.5px solid rgba(63, 63, 63, 0.473)'
-
-  //     } else {
-  //         footerHero.style.display = "none";
-  //         icon.classList.replace("fa-angle-down", "fa-angle-up");
-  //         footerHeader.classList.add('footerUpDown')
-  //         mainHeroFooter.style.border = 'none'
-  //         footerHeader.style.borderTop = '0.5px solid rgba(63, 63, 63, 0.473)'
-  //     }
-  //   });

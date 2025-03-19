@@ -1070,6 +1070,7 @@ body {
   background-color: var(--dark-gray);
   border-radius: 5px;
   display: none !important;
+  border: var(--border);
 }
 .cookie-modal__top {
   display: flex;
