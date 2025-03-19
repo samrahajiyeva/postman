@@ -97,6 +97,7 @@ body {
   min-height: 100vh;
   background-color: purple;
   width: 100%;
+  overflow: hidden;
 }
 .postman {
   // position: relative;
@@ -524,6 +525,7 @@ body {
 
         &__end {
           height: 100%;
+          border-left: var(--border);
           // display: flex;
           // align-items: center;
           // justify-content: center;

@@ -74,6 +74,7 @@ body {
   min-height: 100vh;
   background-color: purple;
   width: 100%;
+  overflow: hidden;
 }
 
 .postman {
@@ -411,6 +412,7 @@ body {
 }
 .postman__main__hero__top__end {
   height: 100%;
+  border-left: var(--border);
 }
 .postman__main__hero__top__end .fa-square-xing {
   font-size: 13px;

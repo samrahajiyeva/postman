@@ -1,5 +1,3 @@
-//  BISMILLAH
-
 document.addEventListener("DOMContentLoaded", function () {
   // Modal ucun kodlar
   const searchBtn = document.querySelector(".search-btn");
@@ -190,7 +188,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // sidebar
   const sidebarList = document.querySelector(".sidebarList");
-  // new collection add etdikden sonra redirect etmek
   const saveasChangeablePart = document.querySelector(
     ".saveAs-changeable-part"
   );
@@ -213,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (collectionName) {
         collections.push({
           collection: collectionName,
-          folder: [], // Yeni kolleksiya ilə boş qovluq siyahısı əlavə edilir
+          folder: [], 
         });
       }
 
@@ -295,7 +292,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (selectedCollection) {
         selectedCollection.folder.push(folderName);
 
-        // Qovluq siyahısına yeni item əlavə et
         let newFolderItem = document.createElement("li");
         newFolderItem.innerHTML = `
        <i class="fa-brands fa-nfc-symbol"></i>
@@ -306,7 +302,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       }
 
-      // Qovluq əlavə etdikdən sonra formu təmizləyib, qovluq əlavə etmə panelini bağlayırıq
       document.querySelector(".addNewFolder-inp").value = "";
       addNewFolder.classList.add("d-none");
 
@@ -317,26 +312,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Request table
   const tableBody = document.querySelector("tbody");
   const mainCheckbox = document.querySelector("thead .params-check");
-
-  // function addNewRow() {
-  //   const newRow = document.createElement("tr");
-  //   newRow.innerHTML = `
-  //   <td class="d-flex justify-content-center">
-  //     <input type="checkbox" class="params-check" style="opacity: 0;">
-  //   </td>
-  //   <td>
-  //     <input placeholder="Key" type="text" class="key-input" />
-  //   </td>
-  //   <td>
-  //     <input placeholder="Value" type="text" class="key-input"/>
-  //   </td>
-  //   <td colspan="2">
-  //     <input placeholder="Description" type="text" class="key-input"/>
-  //   </td>
-  // `;
-  //   tableBody.appendChild(newRow);
-  //   addEventToInputs(newRow);
-  // }
 
   function addDeleteFunctionality(row) {
     const trashIcon = row.querySelector(".fa-trash-can");
@@ -394,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <td colspan="2">
       <div class="d-flex align-items-center">
         <input placeholder="Description" type="text" class="key-input"/>
-        <i class="fa-solid fa-trash-can" style="opacity: 0; cursor: pointer;"></i>
+        <i class="fa-solid fa-trash-can ${document.body.classList.contains('light-mode')?"text-dark" : "text-light"} style="opacity: 0; cursor: pointer;"></i>
       </div>
     </td>
   `;
@@ -442,6 +417,21 @@ document.addEventListener("DOMContentLoaded", function () {
     addEventToInputs(row);
   });
 
+  const firstRow = document.querySelector("tbody tr:first-child");
+
+  if (firstRow) {
+    // İlk sıradakı bütün input-ları boşalt
+    const inputs = firstRow.querySelectorAll(".key-input");
+    inputs.forEach(input => {
+      input.value = ""; // Text inputları boşalt
+    });
+
+    // İlk sıradakı checkbox-u unchecked et
+    const checkbox = firstRow.querySelector(".params-check");
+    if (checkbox) {
+      checkbox.checked = false; // Checkbox-u unchecked et
+    }
+  }
   // sortable.js
   new Sortable(document.getElementById("sortable-table"), {
     animation: 150, // Hərəkət effekti
@@ -480,7 +470,7 @@ document.addEventListener("DOMContentLoaded", function () {
       historyModalEmpty.classList.add("d-none");
 
       dateFromRequest.innerHTML = `
-    Today, <span>${now}</span>
+       Today, <span>${now}</span>
     `;
     }
   });
