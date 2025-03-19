@@ -186,8 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   saveasCancel.addEventListener("click", () => {
     saveasModal.classList.add("d-none");
-    addDesc.classList.toggle("d-none");
-    addedDesc.classList.toggle("d-none");
+    addDesc.classList.remove("d-none");
+    addedDesc.classList.add("d-none");
   });
 
   // save as daxili funksionalliqlar

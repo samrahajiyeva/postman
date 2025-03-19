@@ -86,6 +86,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 .postman__header .header-links {
   list-style: none;
@@ -1314,7 +1315,7 @@ body {
   background-color: var(--bg-color-2);
   border: none;
   margin: 10px 0px;
-  height: 80px;
+  height: 50px;
   border: var(--border);
   color: var(--white);
   font-size: 12px;
@@ -1341,11 +1342,14 @@ body {
   cursor: pointer;
 }
 .saveAs-modal .saveAs-modal__explorer-rows {
+  overflow-y: auto;
   border-radius: 5px;
-  height: 300px;
-  overflow: auto;
+  height: 200px;
   margin: 7px 0px 25px;
   border: var(--border);
+}
+.saveAs-modal .saveAs-modal__explorer-rows .saveAs-changeable-part {
+  overflow-y: auto;
 }
 .saveAs-modal .saveAs-modal__explorer-rows .saveAs-changeable-part ul {
   list-style: none;
@@ -1628,6 +1632,31 @@ td.d-flex:active {
 
 @supports not selector(::-webkit-scrollbar) {
   .postman__main__hero__bottom__left__footer__hero {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+.saveAs-modal__explorer-rows {
+  --sb-track-color: #e6e6e6;
+  --sb-thumb-color: #212121;
+  --sb-size: 6px;
+}
+
+.saveAs-modal__explorer-rows::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.saveAs-modal__explorer-rows::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.saveAs-modal__explorer-rows::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .saveAs-modal__explorer-rows {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
 }/*# sourceMappingURL=style.css.map */
