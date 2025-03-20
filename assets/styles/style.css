@@ -1212,55 +1212,65 @@ body {
   display: block !important;
 }
 
-.share-modal {
+.shareContainer {
+  position: relative;
+}
+.shareContainer .share-modal {
+  z-index: 999;
   padding: 20px;
   position: absolute;
-  top: 16.5%;
-  right: 3.5%;
+  top: 36px;
+  right: 0%;
   background-color: var(--dark-gray);
   border-radius: 5px;
   border: var(--border);
   font-family: var(--header-font);
+  min-width: 280px;
 }
-.share-modal__header h5 {
+.shareContainer .share-modal__header h5 {
   color: var(--white);
 }
-.share-modal__text {
+.shareContainer .share-modal__text {
   margin: 10px 0px;
 }
-.share-modal__text p {
+.shareContainer .share-modal__text p {
   color: var(--white);
   font-size: 12px;
 }
-.share-modal__buttons button:nth-child(1) {
+.shareContainer .share-modal__buttons button:nth-child(1) {
   color: white;
   background-color: var(--primary-orange);
   font-size: 12px;
   margin-right: 10px;
   font-weight: 600;
 }
-.share-modal__buttons button:nth-child(2) {
+.shareContainer .share-modal__buttons button:nth-child(2) {
   color: #212121;
   background-color: #a6a6a6;
   font-size: 12px;
 }
-.share-modal__buttons button {
+.shareContainer .share-modal__buttons button {
   border: none;
   border-radius: 5px;
   padding: 7px 10px;
 }
 
-.saveAs-submodal {
+.saveasContainer {
+  position: relative;
+}
+.saveasContainer .saveAs-submodal {
+  min-width: 100px;
   padding: 8px;
   position: absolute;
-  top: 16%;
-  right: 6.5%;
+  top: 25px;
+  right: 0%;
   background-color: var(--dark);
   border-radius: 5px;
   border: var(--border);
   font-family: var(--header-font);
+  z-index: 999;
 }
-.saveAs-submodal button {
+.saveasContainer .saveAs-submodal button {
   border-radius: 5px;
   border: none;
   background-color: transparent;
@@ -1268,7 +1278,7 @@ body {
   color: var(--white);
   padding: 5px;
 }
-.saveAs-submodal button:hover {
+.saveasContainer .saveAs-submodal button:hover {
   background-color: var(--bg-color-2);
   transition: 0.3s;
 }

@@ -250,20 +250,47 @@
                             <span class="span-3">Test</span>
                             <!-- <i class="fa-solid fa-shekel-sign"></i> -->
                           </li>
-                          <li>
+                          <li class="shareContainer">
                             <i class="fa-solid fa-floppy-disk"></i>
                             <span
                               class="save"
                               data-title="No new changes to save"
                               >Save</span
                             >
-                            <i class="fa-solid fa-angle-down saveAs"></i>
+                            <div class="saveasContainer">
+                              <i class="fa-solid fa-angle-down saveAs"></i>
+                              <!-- saveAs submodal -->
+                              <div class="saveAs-submodal d-none">
+                                <button class="col-12 saveAsOpen">
+                                  Save as
+                                </button>
+                              </div>
+                            </div>
                             <button
                               data-title="Share request"
                               class="share-toggle"
                             >
                               Share
                             </button>
+
+                            <!-- share modal -->
+                            <div class="share-modal d-none">
+                              <div class="row">
+                                <div class="share-modal__header col-12">
+                                  <h5>Save changes before sharing?</h5>
+                                </div>
+                                <div class="share-modal__text col-12">
+                                  <p>
+                                    You can also share this request without your
+                                    recent changes.
+                                  </p>
+                                </div>
+                                <div class="share-modal__buttons col-12 d-flex">
+                                  <button>Save and Share</button>
+                                  <button>Share Without Saving</button>
+                                </div>
+                              </div>
+                            </div>
                           </li>
                         </ul>
                       </div>
@@ -793,27 +820,6 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- share modal -->
-    <div class="share-modal col-2 d-none">
-      <div class="row">
-        <div class="share-modal__header col-12">
-          <h5>Save changes before sharing?</h5>
-        </div>
-        <div class="share-modal__text col-12">
-          <p>You can also share this request without your recent changes.</p>
-        </div>
-        <div class="share-modal__buttons col-12 d-flex">
-          <button>Save and Share</button>
-          <button>Share Without Saving</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- saveAs submodal -->
-    <div class="saveAs-submodal col-1 d-none">
-      <button class="col-12 saveAsOpen">Save as</button>
     </div>
 
     <!-- saveAs Modal -->
