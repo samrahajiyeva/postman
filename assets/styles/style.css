@@ -579,7 +579,6 @@ body {
   overflow: auto;
 }
 .postman__main__hero__bottom__left__hero__group .table-wrapper .table {
-  width: 100%;
   border-collapse: collapse;
   font-family: var(--header-font);
   font-size: 12px;
@@ -591,6 +590,7 @@ body {
   border: var(--border);
   text-align: left;
   background-color: var(--hero-color);
+  height: 100%;
 }
 .postman__main__hero__bottom__left__hero__group .table-wrapper .table th {
   background-color: var(--hero-color);
@@ -769,39 +769,6 @@ body {
 }
 .postman__footer__right ul .fa-circle-check {
   color: var(--green);
-}
-
-[data-title] {
-  position: relative;
-  cursor: pointer;
-}
-
-[data-title]::after {
-  content: attr(data-title);
-  position: absolute;
-  top: 110%;
-  left: 90%;
-  transform: translateX(-50%);
-  padding: 8px;
-  background-color: var(--dark-gray);
-  border: var(--border);
-  color: var(--white);
-  font-size: 10px;
-  border-radius: 3px;
-  opacity: 0;
-  visibility: hidden;
-  white-space: nowrap;
-  z-index: 1;
-  pointer-events: none;
-  transition: opacity 0.2s, visibility 0.2s;
-  font-family: var(--header-font);
-  font-weight: 200;
-}
-
-[data-title]:hover::after {
-  opacity: 1;
-  visibility: visible;
-  font-weight: 300;
 }
 
 .form-select option {
@@ -1697,4 +1664,16 @@ td.d-flex:active {
   color: var(--baseTextColor);
   font-size: 20px;
   padding: 0 !important;
+}
+
+.tooltip-inner {
+  background-color: var(--dark-gray);
+  border: var(--border);
+  color: var(--white);
+  font-size: 10px;
+  border-radius: 3px;
+}
+
+.bs-tooltip-left .tooltip-arrow::before {
+  border-left-color: var(--dark-gray) !important;
 }/*# sourceMappingURL=style.css.map */

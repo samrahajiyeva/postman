@@ -349,7 +349,7 @@ $(function () {
         </td>
       </tr>
     `);
-  
+
     $tableBody.append($newRow);
     addEventToInputs($newRow);
     addDeleteFunctionality($newRow);
@@ -407,5 +407,47 @@ $(function () {
     handle: "td.d-flex", // Sadəcə checkbox olan td üzərindən sürüşdürülə bilər
     ghostClass: "sortable-ghost",
   });
-});
 
+  // tooltips
+
+  [
+    "documentation",
+    "comments",
+    "code",
+    "related-requests",
+    "info",
+    "variables-request",
+  ].forEach((className) => {
+    $(`.${className}`).tooltip({
+      title: className
+        .replace("-", " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase()),
+      placement: "left",
+      fallbackPlacement: [],
+    });
+  });
+
+  $(".configureWorkspace").tooltip({
+    title: "Configure workspace sidebar",
+    placement: "right",
+    fallbackPlacement: [],
+  });
+
+  [
+    "searchTabs",
+    "settings",
+    "notifications",
+    "manageAccounts",
+    "saveRequest",
+    "shareRequest",
+    "Ctrl+",
+  ].forEach((className) => {
+    $(`.${className}`).tooltip({
+      title: className
+        .replace("-", " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase()),
+      placement: "bottom",
+      fallbackPlacement: [],
+    });
+  });
+});
