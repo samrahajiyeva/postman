@@ -516,7 +516,7 @@ body {
   transition: 0.1s;
   border: 1px solid var(--blue) !important;
 }
-.postman__main__hero__bottom__left__hero__request button {
+.postman__main__hero__bottom__left__hero__request .request-send-btn {
   border: none;
   border-radius: 5px;
   background-color: var(--blue);
@@ -1444,17 +1444,21 @@ body {
   font-size: 12px;
 }
 
-.send-submodal {
+.sendContainer {
+  position: relative;
+}
+.sendContainer .send-submodal {
   padding: 8px;
   position: absolute;
-  top: 22.67%;
-  right: 3.4%;
+  top: 40px;
+  right: 0px;
   background-color: var(--dark);
   border-radius: 5px;
   border: var(--border);
   font-family: var(--header-font);
+  min-width: 140px;
 }
-.send-submodal button {
+.sendContainer .send-submodal button {
   border-radius: 5px;
   border: none;
   background: transparent;
@@ -1462,7 +1466,7 @@ body {
   color: var(--white);
   padding: 5px;
 }
-.send-submodal button:hover {
+.sendContainer .send-submodal button:hover {
   background-color: var(--bg-color-2);
   transition: 0.3s;
 }

@@ -308,12 +308,20 @@
                             autocomplete
                           />
                         </div>
-                        <button class="col-1 request-send-btn">
+                        <div class="col-1 request-send-btn sendContainer">
                           <span data-title="Ctrl+↩">Send</span>
-                          <i
-                            class="fa-solid fa-angle-down sendSubModalToggle"
-                          ></i>
-                        </button>
+                          <div>
+                            <i
+                              class="fa-solid fa-angle-down sendSubModalToggle"
+                            ></i>
+
+                            <!-- send submodal -->
+
+                            <div class="send-submodal d-none">
+                              <button class="col-12">Send and Download</button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       <div class="col-12">
@@ -899,12 +907,6 @@
           <button class="btn saveAsCancel">Cancel</button>
         </div>
       </div>
-    </div>
-
-    <!-- send submodal -->
-
-    <div class="send-submodal col-1 d-none">
-      <button class="col-12">Send and Download</button>
     </div>
 
     <!-- scripts -->
