@@ -1467,31 +1467,37 @@ body {
   transition: 0.3s;
 }
 
-.history-modal {
+.historyContainer {
+  position: relative;
+}
+.historyContainer .history-modal {
+  width: 220px;
   padding: 8px;
   position: absolute;
-  top: 71%;
-  left: 30.5%;
+  top: 27px;
+  left: 16%;
+  transform: translateX(-16%);
   background-color: var(--dark);
   border-radius: 5px;
   border: var(--border);
   font-family: var(--header-font);
+  z-index: 999;
 }
-.history-modal-empty {
+.historyContainer .history-modal-empty {
   padding: 20px;
 }
-.history-modal-empty h5 {
+.historyContainer .history-modal-empty h5 {
   font-size: 15px;
   color: var(--white);
   margin: 0;
   padding: 0;
   margin: 10px 0px 10px;
 }
-.history-modal-empty span {
+.historyContainer .history-modal-empty span {
   color: var(--white);
   font-size: 12px;
 }
-.history-modal-empty p {
+.historyContainer .history-modal-empty p {
   margin: 0;
   padding: 0;
   background-color: purple;
@@ -1503,20 +1509,22 @@ body {
   align-items: center;
   justify-content: center;
 }
-.history-modal-empty p i {
+.historyContainer .history-modal-empty p i {
   font-size: 20px;
   color: var(--white);
 }
-.history-modal-send {
+.historyContainer .history-modal-send {
   max-height: 160px;
-  overflow: auto;
+  overflow-y: auto;
 }
-.history-modal-send ul {
+.historyContainer .history-modal-send ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
-.history-modal-send ul li {
+.historyContainer .history-modal-send ul li {
   color: var(--header-links);
   font-size: 14px;
   display: flex;
@@ -1527,29 +1535,29 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
-.history-modal-send ul li p {
+.historyContainer .history-modal-send ul li p {
   margin: 0;
   padding: 0;
 }
-.history-modal-send ul li p span {
+.historyContainer .history-modal-send ul li p span {
   color: var(--header-links) !important;
 }
-.history-modal-send ul li div span {
+.historyContainer .history-modal-send ul li div span {
   color: #8e1a10;
   margin-right: 3px;
 }
-.history-modal-send ul li div i {
+.historyContainer .history-modal-send ul li div i {
   opacity: 0;
 }
-.history-modal-send ul li:hover {
+.historyContainer .history-modal-send ul li:hover {
   background-color: var(--bg-color-2);
   transition: 0.1s;
   cursor: pointer;
 }
-.history-modal-send ul li:hover i {
+.historyContainer .history-modal-send ul li:hover i {
   opacity: 1;
 }
-.history-modal-send ul li:first-child {
+.historyContainer .history-modal-send ul li:first-child {
   background-color: var(--bg-color-2);
 }
 

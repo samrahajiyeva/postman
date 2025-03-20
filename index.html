@@ -412,11 +412,95 @@
                                     <span>Response</span>
                                   </li>
                                   <li class="historyToggle">
-                                    <i
-                                      class="fa-solid fa-clock-rotate-left"
-                                    ></i>
-                                    <span>History</span>
-                                    <i class="fa-solid fa-angle-down"></i>
+                                    <div class="historyContainer">
+                                      <i
+                                        class="fa-solid fa-clock-rotate-left"
+                                      ></i>
+                                      <span>History</span>
+                                      <i class="fa-solid fa-angle-down"></i>
+
+                                      <!-- history modal -->
+                                      <div class="history-modal d-none">
+                                        <div
+                                          class="history-modal-empty d-flex flex-column align-items-center text-center"
+                                        >
+                                          <p>
+                                            <i
+                                              class="fa-solid fa-clock-rotate-left"
+                                            ></i>
+                                          </p>
+                                          <h5>No request history</h5>
+                                          <span
+                                            >Send the request and browse through
+                                            its history</span
+                                          >
+                                        </div>
+
+                                        <div class="history-modal-send d-none">
+                                          <ul>
+                                            <li>Current</li>
+                                            <li>
+                                              <p class="dateFromRequest">
+                                                Today, <span>1:53PM</span>
+                                              </p>
+                                              <div>
+                                                <span>403</span>
+                                                <i
+                                                  class="fa-solid fa-ellipsis"
+                                                ></i>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <p>Today, <span>1:53PM</span></p>
+                                              <div>
+                                                <span>403</span>
+                                                <i
+                                                  class="fa-solid fa-ellipsis"
+                                                ></i>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <p>Today, <span>1:53PM</span></p>
+                                              <div>
+                                                <span>403</span>
+                                                <i
+                                                  class="fa-solid fa-ellipsis"
+                                                ></i>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <p>
+                                                Yesterday, <span>1:53PM</span>
+                                              </p>
+                                              <div>
+                                                <span>403</span>
+                                                <i
+                                                  class="fa-solid fa-ellipsis"
+                                                ></i>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <p>Today, <span>1:53PM</span></p>
+                                              <div>
+                                                <span>403</span>
+                                                <i
+                                                  class="fa-solid fa-ellipsis"
+                                                ></i>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <p>Today, <span>1:53PM</span></p>
+                                              <div>
+                                                <span>403</span>
+                                                <i
+                                                  class="fa-solid fa-ellipsis"
+                                                ></i>
+                                              </div>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
                                   </li>
                                 </ul>
                                 <i
@@ -431,7 +515,6 @@
                                   src="https://www.google.com/chrome/"
                                   width="100%"
                                   class="h-100"
-                                  
                                 >
                                 </iframe>
                               </div>
@@ -822,64 +905,6 @@
 
     <div class="send-submodal col-1 d-none">
       <button class="col-12">Send and Download</button>
-    </div>
-    <!-- history modal -->
-    <div class="history-modal col-2 d-none">
-      <div
-        class="history-modal-empty d-flex flex-column align-items-center text-center"
-      >
-        <p><i class="fa-solid fa-clock-rotate-left"></i></p>
-        <h5>No request history</h5>
-        <span>Send the request and browse through its history</span>
-      </div>
-
-      <div class="history-modal-send d-none">
-        <ul>
-          <li>Current</li>
-          <li>
-            <p class="dateFromRequest">Today, <span>1:53PM</span></p>
-            <div>
-              <span>403</span>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </li>
-          <li>
-            <p>Today, <span>1:53PM</span></p>
-            <div>
-              <span>403</span>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </li>
-          <li>
-            <p>Today, <span>1:53PM</span></p>
-            <div>
-              <span>403</span>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </li>
-          <li>
-            <p>Yesterday, <span>1:53PM</span></p>
-            <div>
-              <span>403</span>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </li>
-          <li>
-            <p>Today, <span>1:53PM</span></p>
-            <div>
-              <span>403</span>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </li>
-          <li>
-            <p>Today, <span>1:53PM</span></p>
-            <div>
-              <span>403</span>
-              <i class="fa-solid fa-ellipsis"></i>
-            </div>
-          </li>
-        </ul>
-      </div>
     </div>
 
     <!-- scripts -->
