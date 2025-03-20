@@ -291,7 +291,7 @@ body {
       }
 
       &__bottom {
-        height: calc(100vh - 127px);
+        height: calc(100vh - 131px);
         &__left {
           padding-top: 15px;
           border-right: var(--border);
@@ -863,7 +863,7 @@ body {
             // display: flex !important;
             // flex-direction: column;
             // overflow: hidden;
-            height: calc(100vh - 470px);
+            height: calc(100vh - 478px);
 
             &__header {
               @include displaying();
@@ -903,6 +903,7 @@ body {
               color: var(--baseTextColor);
               font-size: 12px;
               // height: 172px;
+              height: calc(100vh - 506px);
             }
           }
         }
@@ -2051,3 +2052,6 @@ td.d-flex:active {
   padding: 0 !important;
 }
 
+iframe{
+
+}

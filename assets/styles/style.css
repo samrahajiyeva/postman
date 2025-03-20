@@ -230,7 +230,7 @@ body {
   padding: 6px 8px;
 }
 .postman__main__sidebar__bottom {
-  height: calc(100vh - 127px);
+  height: calc(100vh - 131px);
 }
 .postman__main__sidebar__bottom__left {
   padding-top: 15px;
@@ -664,7 +664,7 @@ body {
 }
 .postman__main__hero__bottom__left__footer {
   border-top: var(--border);
-  height: calc(100vh - 470px);
+  height: calc(100vh - 478px);
 }
 .postman__main__hero__bottom__left__footer__header {
   display: flex;
@@ -701,6 +701,7 @@ body {
   font-family: var(--header-font);
   color: var(--baseTextColor);
   font-size: 12px;
+  height: calc(100vh - 506px);
 }
 .postman__main__hero__bottom__right {
   background-color: var(--hero-color);
