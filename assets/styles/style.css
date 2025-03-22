@@ -410,6 +410,12 @@ body {
 .postman__main__hero__top__middle {
   font-size: 13px;
   color: var(--baseTextColor);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.05s;
+}
+.postman__main__hero__top__middle:hover {
+  background-color: var(--bg-color-1);
 }
 .postman__main__hero__top__end {
   height: 100%;
@@ -800,6 +806,7 @@ body {
 }
 
 .modal {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   width: 50%;
   padding: 9px;
   background-color: var(--hero-color);
@@ -1452,6 +1459,7 @@ body {
   position: relative;
 }
 .historyContainer .history-modal {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   width: 220px;
   padding: 8px;
   position: absolute;
@@ -1676,4 +1684,106 @@ td.d-flex:active {
 
 .bs-tooltip-left .tooltip-arrow::before {
   border-left-color: var(--dark-gray) !important;
+}
+
+.environmentContainer {
+  position: relative;
+}
+.environmentContainer .environment-modal {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  width: 320px;
+  position: absolute;
+  top: 45px;
+  right: 0px;
+  background-color: var(--dark);
+  border-radius: 5px;
+  border: var(--border);
+  font-family: var(--header-font);
+  z-index: 999;
+}
+.environmentContainer .environment-modal__empty .environment-fa-square-plus {
+  background-color: var(--bg-color-1);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  margin-bottom: 15px;
+  margin-top: 25px;
+}
+.environmentContainer .environment-modal__empty .environment-fa-square-plus i {
+  font-size: 22px;
+}
+.environmentContainer .environment-modal__empty h4 {
+  font-size: 14px;
+  color: var(--white);
+}
+.environmentContainer .environment-modal__empty p {
+  font-size: 12px;
+  color: var(--baseTextColor);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.environmentContainer .environment-modal__empty p a {
+  color: var(--baseTextColor);
+}
+.environmentContainer .environment-modal__empty button {
+  background-color: #ff6c37;
+  border: none;
+  font-weight: 600;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 6px 14px;
+  transition: 0.2s;
+  margin-bottom: 25px;
+}
+.environmentContainer .environment-modal__empty button:hover {
+  background-color: #d2420e;
+}
+.environmentContainer .environment-modal__list .environment-search {
+  border-bottom: var(--border);
+}
+.environmentContainer .environment-modal__list .environment-search input {
+  width: 85%;
+  background: transparent;
+  border: none;
+  font-size: 12px;
+  padding: 7px 9px;
+  border-right: var(--border);
+  color: var(--white);
+  outline: none;
+}
+.environmentContainer .environment-modal__list .environment-search input:focus {
+  border: none;
+  border-right: var(--border);
+}
+.environmentContainer .environment-modal__list .environment-search button {
+  width: 10%;
+  border: none;
+  font-size: 14px;
+  background: transparent;
+  color: var(--baseTextColor);
+}
+.environmentContainer .environment-modal__list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 10px;
+}
+.environmentContainer .environment-modal__list ul li {
+  padding: 10px 0px 10px 15px;
+  border-radius: 5px;
+}
+.environmentContainer .environment-modal__list ul li i {
+  margin-right: 10px;
+}
+.environmentContainer .environment-modal__list ul li span {
+  color: var(--white);
+  font-size: 13px;
+}
+.environmentContainer .environment-modal__list ul li:first-child span {
+  color: var(--baseTextColor);
+}
+.environmentContainer .environment-modal__list ul li:hover {
+  background-color: var(--bg-color-1);
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

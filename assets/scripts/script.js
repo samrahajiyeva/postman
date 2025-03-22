@@ -450,4 +450,10 @@ $(function () {
       fallbackPlacement: [],
     });
   });
+
+  // environment modal
+  $(".middle-side").on("click", function () {
+    // $(".saveAs-modal").removeClass("d-none");
+    $(".environment-modal").toggleClass("d-none");
+  });
 });

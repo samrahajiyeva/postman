@@ -523,6 +523,13 @@ body {
         &__middle {
           font-size: 13px;
           color: var(--baseTextColor);
+          border-radius: 5px;
+          cursor: pointer;
+          transition: 0.05s;
+
+          &:hover{
+            background-color: var(--bg-color-1);
+          }
         }
 
         &__end {
@@ -1063,6 +1070,7 @@ body {
 
 // modal
 .modal {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   width: 50%;
   padding: 9px;
   background-color: var(--hero-color);
@@ -1840,6 +1848,7 @@ body {
 
   // history submodal
   .history-modal {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 220px;
     padding: 8px;
     position: absolute;
@@ -2084,4 +2093,132 @@ td.d-flex:active {
 
 .bs-tooltip-left .tooltip-arrow::before {
   border-left-color: var(--dark-gray) !important;
+}
+
+.environmentContainer {
+  position: relative;
+
+  // history submodal
+  .environment-modal {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 320px;
+    // padding: 25px 30px;
+    position: absolute;
+    top: 45px;
+    right: 0px;
+    background-color: var(--dark);
+    border-radius: 5px;
+    border: var(--border);
+    font-family: var(--header-font);
+    z-index: 999;
+
+    &__empty {
+      .environment-fa-square-plus {
+        background-color: var(--bg-color-1);
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        margin-bottom: 15px;
+        margin-top: 25px;
+
+        i {
+          font-size: 22px;
+        }
+      }
+
+      h4 {
+        font-size: 14px;
+        color: var(--white);
+      }
+
+      p {
+        font-size: 12px;
+        color: var(--baseTextColor);
+        padding-left: 20px;
+        padding-right: 20px;
+
+        a {
+          color: var(--baseTextColor);
+        }
+      }
+
+      button {
+        background-color: #ff6c37;
+        border: none;
+        font-weight: 600;
+        color: white;
+        border-radius: 5px;
+        font-size: 12px;
+        padding: 6px 14px;
+        transition: 0.2s;
+        margin-bottom: 25px;
+
+        &:hover {
+          background-color: #d2420e;
+        }
+      }
+    }
+
+    &__list {
+      .environment-search {
+        border-bottom: var(--border);
+
+        input {
+          width: 85%;
+          background: transparent;
+          border: none;
+          font-size: 12px;
+          padding: 7px 9px;
+          border-right: var(--border);
+          color: var(--white);
+          outline: none;
+
+          &:focus {
+            border: none;
+            border-right: var(--border);
+          }
+        }
+
+        button {
+          width: 10%;
+          border: none;
+          font-size: 14px;
+          background: transparent;
+          color: var(--baseTextColor);
+        }
+      }
+
+      ul {
+        list-style: none;
+        @include agentEraser();
+        padding: 10px;
+
+        li {
+          padding: 10px 0px 10px 15px;
+          border-radius: 5px;
+
+          i {
+            margin-right: 10px;
+          }
+
+          span{
+            color: var(--white);
+            font-size: 13px;
+          }
+
+          &:first-child{
+            span{
+              color: var(--baseTextColor);
+            }
+          }
+         
+        }
+
+        li:hover{
+            background-color: var(--bg-color-1);
+            cursor: pointer;
+        }
+      }
+    }
+  }
 }

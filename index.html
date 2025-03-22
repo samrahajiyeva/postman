@@ -205,12 +205,57 @@
                           </div>
                         </div>
                         <div
-                          class="col-2 p-0 postman__main__hero__top__middle d-flex align-items-center justify-content-center"
+                          class="col-2 p-0 postman__main__hero__top__middle d-flex align-items-center justify-content-center environmentContainer"
                         >
                           <div class="middle-side text-center align-middle">
                             <i class="fa-regular fa-note-sticky"></i>
                             <span class="ms-1 me-4">No environment</span>
                             <i class="fa-solid fa-angle-down"></i>
+
+                            <!-- burada isleyirsen -->
+                            <div class="environment-modal d-none">
+                              <div
+                                class="environment-modal__empty d-flex flex-column align-items-center"
+                              >
+                                <div
+                                  class="environment-fa-square-plus d-flex align-items-center justify-content-center"
+                                >
+                                  <i class="fa-solid fa-square-plus"></i>
+                                </div>
+                                <h4>No Environments</h4>
+                                <p>
+                                  Use environments to easily switch variable
+                                  values and test your API in different setups.
+                                  Learn more about <a href="#">environments.</a>
+                                </p>
+                                <button class="">Create Environment</button>
+                              </div>
+
+                              <div
+                                class="environment-modal__list d-flex flex-column  d-none"
+                              >
+                                <!-- from script -->
+                                <div class="environment-search">
+                                  <input type="text" placeholder="Search..." />
+                                  <button>
+                                    <i class="fa-solid fa-plus"></i>
+                                  </button>
+                                </div>
+
+                                <div>
+                                  <ul class="text-start">
+                                    <li>
+                                      <i class="fa-solid fa-check"></i
+                                      ><span>No Environment</span>
+                                    </li>
+                                    <li>
+                                      <i class="fa-solid fa-check"></i
+                                      ><span>New Environment</span>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="col-1 p-2 postman__main__hero__top__end">
@@ -321,8 +366,11 @@
                         </div>
                         <div class="col-1 request-send-btn sendContainer">
                           <div>
-                            <span class="Ctrl+  me-1">Send</span>
+                            <span class="Ctrl+ me-1" style="cursor: pointer"
+                              >Send</span
+                            >
                             <i
+                              style="cursor: pointer"
                               class="fa-solid fa-angle-down sendSubModalToggle"
                             ></i>
 
