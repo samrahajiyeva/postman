@@ -452,8 +452,103 @@ $(function () {
   });
 
   // environment modal
-  $(".middle-side").on("click", function () {
-    // $(".saveAs-modal").removeClass("d-none");
+  $(".middle-side").on("click", function (event) {
+    event.stopPropagation();
     $(".environment-modal").toggleClass("d-none");
+  });
+
+  $(".environment-modal").on("click", function (event) {
+    event.stopPropagation();
+  });
+
+  $(document).on("click", function () {
+    $(".environment-modal").addClass("d-none");
+  });
+
+  $(".environment-modal__empty button").on("click", function () {
+    $(".environment-modal__empty").addClass("d-none");
+    $(".environment-modal__list").removeClass("d-none");
+
+    $(".middle-side span.ms-1.me-4").text("New Environment");
+
+    let newEnvironment = `
+    <li>
+      <i class="fa-solid fa-check"></i>
+      <span>New Environment</span>
+    </li>
+  `;
+    $(".environment-modal__list ul").append(newEnvironment);
+  });
+
+  // Search input filter
+  $(".environment-search input").on("keyup", function () {
+    let searchText = $(this).val().toLowerCase();
+    let found = false; // Mətnin uyğun gəlib-gəlmədiyini izləyirik
+
+    // Əvvəlcə "No environments found" mesajını gizlət
+    $(".environment-modal__list ul li.no-environments").remove();
+
+    $(".environment-modal__list ul li").each(function () {
+      let itemText = $(this).text().toLowerCase();
+
+      if (itemText.includes(searchText)) {
+        $(this).show(); // Uyğun gələn li elementlərini göstəririk
+        found = true;
+      } else {
+        $(this).hide(); // Uyğun gəlməyənləri gizləyirik
+      }
+    });
+
+    // Əgər heç bir li uyğun gəlmirsə, "No environments found" mesajını əlavə et
+    if (!found && searchText !== "") {
+      let noResults = `<li class="no-environments text-center"><span style="color: var(--baseTextColor)
+    ">No environments found</span></li>`;
+      $(".environment-modal__list ul").append(noResults);
+    }
+  });
+
+  // "+" (plus) ikonuna klik edildikdə yeni environment əlavə etmək
+  $(".environment-search button").on("click", function () {
+    // Bütün li elementlərindəki fa-check ikonlarını gizlət
+    $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
+
+    // Yeni environment əlavə edirik
+    let newEnvironment = `
+    <li>
+      <i class="fa-solid fa-check opacity-0"></i>
+      <span>New Environment</span>
+    </li>
+  `;
+
+    // Yeni li'yi əlavə edirik
+    $(".environment-modal__list ul").append(newEnvironment);
+
+    // Yalnız yeni əlavə olunan li elementində fa-check ikonunu göstəririk
+    let lastItem = $(".environment-modal__list ul li").last();
+    lastItem.find("i.fa-check").removeClass("opacity-0"); // fa-check ikonunu göstəririk
+  });
+
+  // Hər hansı bir <li> klik edildikdə yalnız həmin <li> içindəki fa-check görünsün
+  $(".environment-modal__list ul").on("click", "li", function () {
+    // Bütün li elementlərindəki fa-check ikonlarını gizlət
+    $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
+    // Seçilən <li> içindəki fa-check ikonunu göstər
+    $(this).find("i.fa-check").removeClass("opacity-0");
+  });
+
+  $(".environment-modal__list ul").on("click", "li", function () {
+    // Bütün li elementlərindəki fa-check ikonlarını gizlət
+    $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
+
+    // Seçilən <li> içindəki fa-check ikonunu göstər
+    $(this).find("i.fa-check").removeClass("opacity-0");
+
+    // Seçilən li içindəki yazıya görə span-ı dəyişdiririk
+    let selectedText = $(this).find("span").text();
+    if (selectedText === "No Environment") {
+      $(".middle-side span.ms-1.me-4").text("No environment");
+    } else if (selectedText === "New Environment") {
+      $(".middle-side span.ms-1.me-4").text("New Environment");
+    }
   });
 });
