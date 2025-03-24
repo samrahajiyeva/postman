@@ -468,19 +468,18 @@ $(function () {
   $(".environment-modal__empty button").on("click", function () {
     $(".environment-modal__empty").addClass("d-none");
     $(".environment-modal__list").removeClass("d-none");
-    
+
     $(
       ".middle-side .change-check"
     ).html(` <span class="ms-1 me-4">New environment</span>
                           <i class="fa-solid fa-angle-down"></i>`);
 
-  
-  // sidebar collectiona yeni env elave etme
-  $(".sidebar-no-environment").addClass("d-none");
-  $(".sidebar-new-environment").removeClass("d-none");
+    // sidebar collectiona yeni env elave etme
+    $(".sidebar-no-environment").addClass("d-none");
+    $(".sidebar-new-environment").removeClass("d-none");
 
     createNewEnvironment();
-    createNewSidebarEnv()
+    createNewSidebarEnv();
   });
 
   // Search input filter
@@ -513,7 +512,7 @@ $(function () {
   // "+" (plus) ikonuna klik edildikdə yeni environment əlavə etmək
   $(".environment-search button").on("click", function () {
     createNewEnvironment();
-    createNewSidebarEnv()
+    createNewSidebarEnv();
   });
 
   // Hər hansı bir <li> klik edildikdə yalnız həmin <li> içindəki fa-check görünsün
@@ -555,7 +554,7 @@ $(function () {
       $(".sidebar-no-environment").addClass("d-none");
       $(".sidebar-new-environment").removeClass("d-none");
 
-      createNewSidebarEnv()
+      createNewSidebarEnv();
 
       // environment modala yeni environment elave etmek
       $(".environment-modal__empty").addClass("d-none");
@@ -575,8 +574,7 @@ $(function () {
       $(".sidebar-no-environment").addClass("d-none");
       $(".sidebar-new-environment").removeClass("d-none");
 
-
-      createNewSidebarEnv()
+      createNewSidebarEnv();
 
       // environment modala yeni environment elave etmek
       $(".environment-modal__empty").addClass("d-none");
@@ -593,8 +591,10 @@ $(function () {
     });
   });
 
-
-
+  $(".sidebar-new-environment-ul").on("click", "li", function () {
+    $(".sidebar-new-environment-ul li").removeClass("active"); // Hamısından "active" sil
+    $(this).addClass("active"); // Yalnız klik olunan `li`-yə "active" əlavə et
+  });
 });
 
 // func for creating new env in env modal
@@ -603,7 +603,7 @@ const createNewEnvironment = () => {
 
   // Yeni environment əlavə edirik
   let newEnvironment = `
-  <li class="active">
+  <li>
     <i class="fa-solid fa-check opacity-0"></i>
     <span>New Environment</span>
   </li>
@@ -619,6 +619,8 @@ const createNewEnvironment = () => {
 
 // func for creating new lenv for sidebar env
 const createNewSidebarEnv = () => {
+  $(".sidebar-new-environment-ul li").removeClass("active");
+
   const newli = `
   <li class="active">
       <div class="d-flex justify-content-between">
@@ -633,4 +635,4 @@ const createNewSidebarEnv = () => {
 `;
 
   $(".sidebar-new-environment-ul").append(newli);
-}
+};
