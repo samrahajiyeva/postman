@@ -522,7 +522,7 @@ $(function () {
     // Bütün li elementlərindəki fa-check ikonlarını gizlət
     $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
 
-    // Seçilən <li> içindəki fa-check ikonunu göstər
+    // Seçilən <li> içindəki fa-check ikonunu gosterme
     $(this).find("i.fa-check").removeClass("opacity-0");
 
     // Seçilən li içindəki yazıya görə span-ı dəyişdiririk
@@ -592,6 +592,9 @@ $(function () {
       });
     });
   });
+
+
+
 });
 
 // func for creating new env in env modal
@@ -600,7 +603,7 @@ const createNewEnvironment = () => {
 
   // Yeni environment əlavə edirik
   let newEnvironment = `
-  <li>
+  <li class="active">
     <i class="fa-solid fa-check opacity-0"></i>
     <span>New Environment</span>
   </li>
@@ -614,12 +617,10 @@ const createNewEnvironment = () => {
   lastItem.find("i.fa-check").removeClass("opacity-0"); // fa-check ikonunu göstəririk
 };
 
-
-
 // func for creating new lenv for sidebar env
 const createNewSidebarEnv = () => {
   const newli = `
-  <li>
+  <li class="active">
       <div class="d-flex justify-content-between">
           <span>New Environment</span>
 

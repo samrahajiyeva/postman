@@ -348,7 +348,7 @@ body {
           flex-direction: column;
           gap: 5px;
           padding: 0px;
-          overflow: auto;
+          // overflow: auto;
 
           &__top {
             width: 100%;
@@ -2363,5 +2363,26 @@ td.d-flex:active {
 @supports not selector(::-webkit-scrollbar) {
   .sidebar-new-environment-ul {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+
+// .updateEnvironmentContainer{
+//   position: relative;
+
+//   .updateEnvironment{
+//   position: absolute;
+//   top: 27px;
+//   left: 16%;
+//   transform: translateX(-16%);
+//   background-color: red;
+//   padding: 30px;
+//   }
+// }
+
+.sidebar-new-environment-ul{
+
+  .active{
+    background-color: var(--bg-color-1);
   }
 }
