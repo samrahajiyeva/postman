@@ -257,9 +257,6 @@ body {
   width: 90%;
   height: 60px;
 }
-.postman__main__sidebar__bottom__left ul li:nth-child(1) {
-  background-color: var(--bg-color-2);
-}
 .postman__main__sidebar__bottom__left ul li span {
   font-size: 11px;
 }
@@ -268,6 +265,9 @@ body {
   transition: 0.2s;
   cursor: pointer;
   color: var(--white);
+}
+.postman__main__sidebar__bottom__left ul .active-tab {
+  background-color: var(--bg-color-2);
 }
 .postman__main__sidebar__bottom__right {
   display: flex;

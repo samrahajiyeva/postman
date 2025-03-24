@@ -543,12 +543,16 @@ $(function () {
     $(".sidebar-collections").removeClass("d-none");
     $(".sidebar-environments").addClass("d-none");
     $(".sidebar-three-dots").removeClass("d-none");
+    $(".collection").addClass("active-tab");
+    $(".environment").removeClass("active-tab");
   });
 
   $(".environment").on("click", () => {
     $(".sidebar-collections").addClass("d-none");
     $(".sidebar-environments").removeClass("d-none");
     $(".sidebar-three-dots").addClass("d-none");
+    $(".collection").removeClass("active-tab");
+    $(".environment").addClass("active-tab");
 
     $(".add-new-environment").on("click", function () {
       $(".sidebar-no-environment").addClass("d-none");

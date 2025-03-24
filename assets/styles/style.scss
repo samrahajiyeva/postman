@@ -292,6 +292,7 @@ body {
 
       &__bottom {
         height: calc(100vh - 131px);
+
         &__left {
           padding-top: 15px;
           border-right: var(--border);
@@ -316,9 +317,7 @@ body {
               width: 90%;
               height: 60px;
 
-              &:nth-child(1) {
-                background-color: var(--bg-color-2);
-              }
+             
 
               span {
                 font-size: 11px;
@@ -339,6 +338,10 @@ body {
               //     background-color: var(--bg-color-1);
               //     margin-bottom: 20px;
               // }
+            }
+
+            .active-tab{
+              background-color: var(--bg-color-2);
             }
           }
         }
