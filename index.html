@@ -119,11 +119,11 @@
                 <div class="row h-100">
                   <div class="postman__main__sidebar__bottom__left col-3">
                     <ul>
-                      <li>
+                      <li class="collection">
                         <i class="fa-solid fa-layer-group"></i>
                         <span>Collections</span>
                       </li>
-                      <li>
+                      <li class="environment">
                         <i class="fa-solid fa-square-minus"></i>
                         <span>Environments</span>
                       </li>
@@ -143,16 +143,17 @@
 
                   <div class="postman__main__sidebar__bottom__right col-9">
                     <div class="postman__main__sidebar__bottom__right__top">
-                      <i class="fa-solid fa-plus"></i>
+                      <i class="fa-solid fa-plus add-new-environment"></i>
                       <div class="search-container">
                         <i class="fa-solid fa-layer-group"></i>
                         <input type="text" />
                       </div>
-                      <i class="fa-solid fa-ellipsis"></i>
+                      <i class="fa-solid fa-ellipsis sidebar-three-dots"></i>
                     </div>
 
                     <div class="postman__main__sidebar__bottom__right__bottom">
-                      <ul>
+                     <div class="sidebar-collections">
+                       <ul>
                         <li>
                           <div>
                             <i class="fa-solid fa-angle-down"></i>
@@ -165,13 +166,37 @@
                         <span>Test</span>
                       </div>
                       <ul class="sidebarList">
-                        <!-- <li>
-                            <div>
-                              <i class="fa-solid fa-angle-right"></i>
-                              <span>New Collection</span>
+                      
+                      </ul>
+                     </div>
+
+                     <div class="sidebar-environments d-none">
+                      <div class="sidebar-no-environment text-center">
+                        <div>
+                          <img src="https://postman.com/_aether-assets/illustrations/dark/illustration-no-environment.svg" alt="postman logo">
+                        </div>
+                        <h4>You don’t have any environments.</h4>
+                        <span>
+                          An environment is a set of variables that allows you to switch the context of your requests.
+                        </span>
+                        <button class="createEnvironment">Create Environment</button>
+                       </div>
+
+                       <div class="sidebar-new-environment d-none">
+                        <ul class="sidebar-new-environment-ul">
+                          <!-- <li>
+                            <div class="d-flex justify-content-between">
+                              <span>New Environment</span>
+
+                              <div class="sidebar-new-environment-icons">
+                                <i class="fa-solid fa-circle-check me-1 selectedEnvironment"></i>
+                                <i class="fa-solid fa-ellipsis"></i>
+                              </div>
                             </div>
                           </li> -->
-                      </ul>
+                        </ul>
+                       </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -208,9 +233,11 @@
                           class="col-2 p-0 postman__main__hero__top__middle d-flex align-items-center justify-content-center environmentContainer"
                         >
                           <div class="middle-side text-center align-middle">
-                            <i class="fa-regular fa-note-sticky"></i>
+                            <div class="text-center change-check">
+                              <i class="fa-regular fa-note-sticky"></i>
                             <span class="ms-1 me-4">No environment</span>
                             <i class="fa-solid fa-angle-down"></i>
+                            </div>
 
                             <!-- burada isleyirsen -->
                             <div class="environment-modal d-none">
@@ -228,7 +255,7 @@
                                   values and test your API in different setups.
                                   Learn more about <a href="#">environments.</a>
                                 </p>
-                                <button class="">Create Environment</button>
+                                <button class="modalCreateEnvironment">Create Environment</button>
                               </div>
 
                               <div
@@ -242,7 +269,7 @@
                                   </button>
                                 </div>
 
-                                <div>
+                                <div class="environment-ul-scroll">
                                   <ul class="text-start">
                                     <li>
                                       <i class="fa-solid fa-check opacity-0"></i

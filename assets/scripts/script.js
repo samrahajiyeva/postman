@@ -468,16 +468,19 @@ $(function () {
   $(".environment-modal__empty button").on("click", function () {
     $(".environment-modal__empty").addClass("d-none");
     $(".environment-modal__list").removeClass("d-none");
+    
+    $(
+      ".middle-side .change-check"
+    ).html(` <span class="ms-1 me-4">New environment</span>
+                          <i class="fa-solid fa-angle-down"></i>`);
 
-    $(".middle-side span.ms-1.me-4").text("New Environment");
+  
+  // sidebar collectiona yeni env elave etme
+  $(".sidebar-no-environment").addClass("d-none");
+  $(".sidebar-new-environment").removeClass("d-none");
 
-    let newEnvironment = `
-    <li>
-      <i class="fa-solid fa-check"></i>
-      <span>New Environment</span>
-    </li>
-  `;
-    $(".environment-modal__list ul").append(newEnvironment);
+    createNewEnvironment();
+    createNewSidebarEnv()
   });
 
   // Search input filter
@@ -509,32 +512,11 @@ $(function () {
 
   // "+" (plus) ikonuna klik edildikdə yeni environment əlavə etmək
   $(".environment-search button").on("click", function () {
-    // Bütün li elementlərindəki fa-check ikonlarını gizlət
-    $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
-
-    // Yeni environment əlavə edirik
-    let newEnvironment = `
-    <li>
-      <i class="fa-solid fa-check opacity-0"></i>
-      <span>New Environment</span>
-    </li>
-  `;
-
-    // Yeni li'yi əlavə edirik
-    $(".environment-modal__list ul").append(newEnvironment);
-
-    // Yalnız yeni əlavə olunan li elementində fa-check ikonunu göstəririk
-    let lastItem = $(".environment-modal__list ul li").last();
-    lastItem.find("i.fa-check").removeClass("opacity-0"); // fa-check ikonunu göstəririk
+    createNewEnvironment();
+    createNewSidebarEnv()
   });
 
   // Hər hansı bir <li> klik edildikdə yalnız həmin <li> içindəki fa-check görünsün
-  $(".environment-modal__list ul").on("click", "li", function () {
-    // Bütün li elementlərindəki fa-check ikonlarını gizlət
-    $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
-    // Seçilən <li> içindəki fa-check ikonunu göstər
-    $(this).find("i.fa-check").removeClass("opacity-0");
-  });
 
   $(".environment-modal__list ul").on("click", "li", function () {
     // Bütün li elementlərindəki fa-check ikonlarını gizlət
@@ -546,9 +528,108 @@ $(function () {
     // Seçilən li içindəki yazıya görə span-ı dəyişdiririk
     let selectedText = $(this).find("span").text();
     if (selectedText === "No Environment") {
-      $(".middle-side span.ms-1.me-4").text("No environment");
+      $(".middle-side .change-check").html(` 
+        <i class="fa-regular fa-note-sticky"></i>
+        <span class="ms-1 me-4">No environment</span>
+        <i class="fa-solid fa-angle-down"></i>`);
     } else if (selectedText === "New Environment") {
-      $(".middle-side span.ms-1.me-4").text("New Environment");
+      $(".middle-side .change-check")
+        .html(` <span class="ms-1 me-4">New environment</span>
+        <i class="fa-solid fa-angle-down"></i>`);
     }
   });
+
+  // kecid etme collection ve environment tab arasinda
+  $(".collection").on("click", () => {
+    $(".sidebar-collections").removeClass("d-none");
+    $(".sidebar-environments").addClass("d-none");
+    $(".sidebar-three-dots").removeClass("d-none");
+  });
+
+  $(".environment").on("click", () => {
+    $(".sidebar-collections").addClass("d-none");
+    $(".sidebar-environments").removeClass("d-none");
+    $(".sidebar-three-dots").addClass("d-none");
+
+    $(".add-new-environment").on("click", function () {
+      $(".sidebar-no-environment").addClass("d-none");
+      $(".sidebar-new-environment").removeClass("d-none");
+
+      createNewSidebarEnv()
+
+      // environment modala yeni environment elave etmek
+      $(".environment-modal__empty").addClass("d-none");
+      $(".environment-modal__list").removeClass("d-none");
+      createNewEnvironment();
+
+      //fa check eden zaman environment modal span deyismesi
+      $(".selectedEnvironment").on("click", function () {
+        $(
+          ".middle-side .change-check"
+        ).html(` <span class="ms-1 me-4">New environment</span>
+                            <i class="fa-solid fa-angle-down"></i>`);
+      });
+    });
+
+    $(".createEnvironment").on("click", () => {
+      $(".sidebar-no-environment").addClass("d-none");
+      $(".sidebar-new-environment").removeClass("d-none");
+
+
+      createNewSidebarEnv()
+
+      // environment modala yeni environment elave etmek
+      $(".environment-modal__empty").addClass("d-none");
+      $(".environment-modal__list").removeClass("d-none");
+      createNewEnvironment();
+
+      //fa check eden zaman environment modal span deyismesi
+      $(".selectedEnvironment").on("click", function () {
+        $(
+          ".middle-side .change-check"
+        ).html(`<span class="ms-1 me-4">New environment</span>
+                <i class="fa-solid fa-angle-down"></i>`);
+      });
+    });
+  });
 });
+
+// func for creating new env in env modal
+const createNewEnvironment = () => {
+  $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
+
+  // Yeni environment əlavə edirik
+  let newEnvironment = `
+  <li>
+    <i class="fa-solid fa-check opacity-0"></i>
+    <span>New Environment</span>
+  </li>
+`;
+
+  // Yeni li'yi əlavə edirik
+  $(".environment-modal__list ul").append(newEnvironment);
+
+  // Yalnız yeni əlavə olunan li elementində fa-check ikonunu göstəririk
+  let lastItem = $(".environment-modal__list ul li").last();
+  lastItem.find("i.fa-check").removeClass("opacity-0"); // fa-check ikonunu göstəririk
+};
+
+
+
+// func for creating new lenv for sidebar env
+const createNewSidebarEnv = () => {
+  const newli = `
+  <li>
+      <div class="d-flex justify-content-between">
+          <span>New Environment</span>
+
+          <div class="sidebar-new-environment-icons">
+            <i class="fa-solid fa-circle-check me-1 selectedEnvironment"></i>
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+      </div>
+  </li>
+`;
+
+  $(".sidebar-new-environment-ul").append(newli);
+}

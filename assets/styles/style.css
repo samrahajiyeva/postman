@@ -274,6 +274,7 @@ body {
   flex-direction: column;
   gap: 5px;
   padding: 0px;
+  overflow: auto;
 }
 .postman__main__sidebar__bottom__right__top {
   width: 100%;
@@ -327,29 +328,29 @@ body {
   flex-direction: column;
   gap: 1px;
 }
-.postman__main__sidebar__bottom__right__bottom ul {
+.postman__main__sidebar__bottom__right__bottom .sidebar-collections ul {
   margin: 0;
   padding: 0;
   list-style: none;
   color: var(--white);
   font-family: var(--header-font);
 }
-.postman__main__sidebar__bottom__right__bottom ul li {
+.postman__main__sidebar__bottom__right__bottom .sidebar-collections ul li {
   width: 100%;
   font-size: 12px;
   padding: 4px 16px;
   cursor: pointer;
   transition: 0.2s;
 }
-.postman__main__sidebar__bottom__right__bottom ul li:hover {
+.postman__main__sidebar__bottom__right__bottom .sidebar-collections ul li:hover {
   background-color: var(--bg-color-1);
 }
-.postman__main__sidebar__bottom__right__bottom ul li div {
+.postman__main__sidebar__bottom__right__bottom .sidebar-collections ul li div {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.postman__main__sidebar__bottom__right__bottom .li-div {
+.postman__main__sidebar__bottom__right__bottom .sidebar-collections .li-div {
   background-color: var(--bg-color-1);
   cursor: pointer;
   transition: 0.2s;
@@ -360,14 +361,68 @@ body {
   padding: 7px 0px 7px 50px;
   border-left: 2px solid var(--primary-orange);
 }
-.postman__main__sidebar__bottom__right__bottom .li-div span {
+.postman__main__sidebar__bottom__right__bottom .sidebar-collections .li-div span {
   color: var(--white);
   font-size: 13px;
 }
-.postman__main__sidebar__bottom__right__bottom .li-div span:nth-child(1) {
+.postman__main__sidebar__bottom__right__bottom .sidebar-collections .li-div span:nth-child(1) {
   color: var(--green);
   font-size: 9px;
   font-weight: bold;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-no-environment {
+  padding: 32px 16px;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-no-environment img {
+  width: 140px;
+  height: 120px;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-no-environment h4 {
+  font-size: 14px;
+  color: var(--baseTextColor);
+  margin-top: 10px;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-no-environment span {
+  display: inline-block;
+  color: var(--baseTextColor);
+  font-size: 12px;
+  line-height: 19px;
+  margin: 3px 0px 5px;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-new-environment ul {
+  list-style: none;
+  font-size: 12px;
+  color: var(--baseTextColor);
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-new-environment ul li {
+  padding: 5px 20px 5px 25px;
+  margin-bottom: 1px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-new-environment ul li .sidebar-new-environment-icons i {
+  opacity: 0;
+  color: var(--baseTextColor);
+  font-size: 13px;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-new-environment ul li:hover {
+  background-color: var(--bg-color-1);
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-new-environment ul li:hover .sidebar-new-environment-icons i {
+  opacity: 1;
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments .sidebar-new-environment ul li:hover .sidebar-new-environment-icons i:hover {
+  color: var(--white);
+}
+.postman__main__sidebar__bottom__right__bottom .sidebar-environments button {
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: bold;
+  color: #3e92f2;
 }
 .postman__main__hero {
   background-color: var(--hero-color);
@@ -1470,7 +1525,7 @@ body {
   border-radius: 5px;
   border: var(--border);
   font-family: var(--header-font);
-  z-index: 999;
+  z-index: 9999;
 }
 .historyContainer .history-modal-empty {
   padding: 20px;
@@ -1763,27 +1818,87 @@ td.d-flex:active {
   background: transparent;
   color: var(--baseTextColor);
 }
-.environmentContainer .environment-modal__list ul {
+.environmentContainer .environment-modal__list .environment-ul-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.environmentContainer .environment-modal__list .environment-ul-scroll ul {
   list-style: none;
   margin: 0;
   padding: 0;
   padding: 10px;
 }
-.environmentContainer .environment-modal__list ul li {
+.environmentContainer .environment-modal__list .environment-ul-scroll ul li {
   padding: 10px 0px 10px 15px;
   border-radius: 5px;
 }
-.environmentContainer .environment-modal__list ul li i {
+.environmentContainer .environment-modal__list .environment-ul-scroll ul li i {
   margin-right: 10px;
 }
-.environmentContainer .environment-modal__list ul li span {
+.environmentContainer .environment-modal__list .environment-ul-scroll ul li span {
   color: var(--white);
   font-size: 13px;
 }
-.environmentContainer .environment-modal__list ul li:first-child span {
+.environmentContainer .environment-modal__list .environment-ul-scroll ul li:first-child span {
   color: var(--baseTextColor);
 }
-.environmentContainer .environment-modal__list ul li:hover {
+.environmentContainer .environment-modal__list .environment-ul-scroll ul li:hover {
   background-color: var(--bg-color-1);
   cursor: pointer;
+}
+
+.environment-ul-scroll {
+  --sb-track-color: #e6e6e6;
+  --sb-thumb-color: #212121;
+  --sb-size: 6px;
+}
+
+.environment-ul-scroll::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.environment-ul-scroll::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.environment-ul-scroll::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .environment-ul-scroll {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+.sidebar-new-environment-ul {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.sidebar-new-environment-ul {
+  --sb-track-color: #e6e6e6;
+  --sb-thumb-color: #212121;
+  --sb-size: 6px;
+}
+
+.sidebar-new-environment-ul::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.sidebar-new-environment-ul::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.sidebar-new-environment-ul::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .sidebar-new-environment-ul {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
 }/*# sourceMappingURL=style.css.map */
