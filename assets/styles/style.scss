@@ -318,6 +318,7 @@ body {
               height: 60px;
 
              
+             
 
               span {
                 font-size: 11px;
@@ -2396,19 +2397,33 @@ td.d-flex:active {
 }
 
 
-// .postman__main__sidebar {
-//   width: 25%; 
-//   min-width: 25%;
-//   max-width: 1000px;
-//   position: relative;
-// }
+//update environment
+.updateEnvironmentContainer{
+  position: absolute;
 
-// .resizer {
-//   width: 5px;
-//   background: #ccc;
-//   cursor: ew-resize;
-//   position: absolute;
-//   right: 0;
-//   top: 0;
-//   bottom: 0;
-// }
+
+  .updateEnvironment{
+    position: absolute !important;
+    padding: 10px;
+    background-color: var(--dark);
+    border-radius: 5px;
+    border: var(--border);    
+    // left: 20%;
+    transform: translate(-70%);
+    top: 8px;
+
+    ul{
+      list-style: none;
+      @include agentEraser();
+
+      li{
+        padding: 0px !important;
+        margin-bottom: 2px;
+        border-radius: 5px;
+
+        padding: 2px 100px 2px 5px !important;
+      }
+    }
+  }
+}
+

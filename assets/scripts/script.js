@@ -539,34 +539,29 @@ $(function () {
     sidebarToggler();
   });
 
-  // const sidebar = document.querySelector(".postman__main__sidebar");
-  // const resizer = document.querySelector(".resizer");
-  // let isResizing = false;
 
-  // resizer.addEventListener("mousedown", (e) => {
-  //   isResizing = true;
-  //   document.addEventListener("mousemove", handleMouseMove);
-  //   document.addEventListener("mouseup", () => {
-  //     isResizing = false;
-  //     document.removeEventListener("mousemove", handleMouseMove);
-  //   });
-  // });
-
-  // function handleMouseMove(e) {
-  //   if (isResizing) {
-  //     let newWidth = e.clientX - sidebar.getBoundingClientRect().left;
-  //     if (newWidth >= 200 && newWidth <= 500) {
-  //       sidebar.style.width = `${newWidth}px`;
-  //     }
-  //   }
-  // }
+  //update modali
+  $(document).on("click", ".fa-ellipsis", function (event) {
+    event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
+    let container = $(this).siblings(".updateEnvironmentContainer");
+  
+    // Bütün digər açıq olanları bağla
+    $(".updateEnvironmentContainer").not(container).addClass("d-none");
+  
+    // Mövcud konteynerin görünürlüğünü dəyiş
+    container.toggleClass("d-none");
+  });
+  
+  // Səhifədə başqa yerə klik edildikdə modalın bağlanması üçün
+  $(document).on("click", function (event) {
+    if (!$(event.target).closest(".updateEnvironmentContainer, .fa-ellipsis").length) {
+      $(".updateEnvironmentContainer").addClass("d-none");
+    }
+  });
+  
 });
 
-
-
-
 //functions
-
 
 // Environment seçim sinxronizasiyası
 const syncEnvironmentSelection = () => {
@@ -615,6 +610,14 @@ const createNewEnvironment = (envName = "New Environment") => {
           <div class="sidebar-new-environment-icons">
             <i class="fa-solid fa-circle-check me-1 selectedEnvironment"></i>
             <i class="fa-solid fa-ellipsis"></i>
+            <div class="updateEnvironmentContainer d-none">
+                                  <div class="updateEnvironment">
+                                    <ul class="text-start">
+                                      <li>Rename</li>
+                                      <li>Delete</li>
+                                    </ul>
+                                  </div>
+                                </div>
           </div>
       </div>
     </li>
@@ -667,193 +670,5 @@ function sidebarToggler() {
       .addClass("col-3");
     parentDivofMain.removeClass("col-11").addClass("col-9");
   }
-};
+}
 
-// // environment modal
-// $(".middle-side").on("click", function (event) {
-//   event.stopPropagation();
-//   $(".environment-modal").toggleClass("d-none");
-// });
-
-// $(".environment-modal").on("click", function (event) {
-//   event.stopPropagation();
-// });
-
-// $(document).on("click", function () {
-//   $(".environment-modal").addClass("d-none");
-// });
-
-// $(".environment-modal__empty button").on("click", function () {
-//   $(".environment-modal__empty").addClass("d-none");
-//   $(".environment-modal__list").removeClass("d-none");
-
-//   $(
-//     ".middle-side .change-check"
-//   ).html(` <span class="ms-1 me-4">New environment</span>
-//                         <i class="fa-solid fa-angle-down"></i>`);
-
-//   // sidebar collectiona yeni env elave etme
-//   $(".sidebar-no-environment").addClass("d-none");
-//   $(".sidebar-new-environment").removeClass("d-none");
-
-//   createNewEnvironment();
-//   createNewSidebarEnv();
-// });
-
-// // Search input filter
-// $(".environment-search input").on("keyup", function () {
-//   let searchText = $(this).val().toLowerCase();
-//   let found = false; // Mətnin uyğun gəlib-gəlmədiyini izləyirik
-
-//   // Əvvəlcə "No environments found" mesajını gizlət
-//   $(".environment-modal__list ul li.no-environments").remove();
-
-//   $(".environment-modal__list ul li").each(function () {
-//     let itemText = $(this).text().toLowerCase();
-
-//     if (itemText.includes(searchText)) {
-//       $(this).show(); // Uyğun gələn li elementlərini göstəririk
-//       found = true;
-//     } else {
-//       $(this).hide(); // Uyğun gəlməyənləri gizləyirik
-//     }
-//   });
-
-//   // Əgər heç bir li uyğun gəlmirsə, "No environments found" mesajını əlavə et
-//   if (!found && searchText !== "") {
-//     let noResults = `<li class="no-environments text-center"><span style="color: var(--baseTextColor)
-//   ">No environments found</span></li>`;
-//     $(".environment-modal__list ul").append(noResults);
-//   }
-// });
-
-// // "+" (plus) ikonuna klik edildikdə yeni environment əlavə etmək
-// $(".environment-search button").on("click", function () {
-//   createNewEnvironment();
-//   createNewSidebarEnv();
-// });
-
-// // Hər hansı bir <li> klik edildikdə yalnız həmin <li> içindəki fa-check görünsün
-
-// $(".environment-modal__list ul").on("click", "li", function () {
-//   // Bütün li elementlərindəki fa-check ikonlarını gizlət
-//   $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
-
-//   // Seçilən <li> içindəki fa-check ikonunu gosterme
-//   $(this).find("i.fa-check").removeClass("opacity-0");
-
-//   // Seçilən li içindəki yazıya görə span-ı dəyişdiririk
-//   let selectedText = $(this).find("span").text();
-//   if (selectedText === "No Environment") {
-//     $(".middle-side .change-check").html(`
-//       <i class="fa-regular fa-note-sticky"></i>
-//       <span class="ms-1 me-4">No environment</span>
-//       <i class="fa-solid fa-angle-down"></i>`);
-//   } else if (selectedText === "New Environment") {
-//     $(".middle-side .change-check")
-//       .html(` <span class="ms-1 me-4">New environment</span>
-//       <i class="fa-solid fa-angle-down"></i>`);
-//   }
-// });
-
-// // kecid etme collection ve environment tab arasinda
-// $(".collection").on("click", () => {
-//   $(".sidebar-collections").removeClass("d-none");
-//   $(".sidebar-environments").addClass("d-none");
-//   $(".sidebar-three-dots").removeClass("d-none");
-//   $(".collection").addClass("active-tab");
-//   $(".environment").removeClass("active-tab");
-// });
-
-// $(".environment").on("click", () => {
-//   $(".sidebar-collections").addClass("d-none");
-//   $(".sidebar-environments").removeClass("d-none");
-//   $(".sidebar-three-dots").addClass("d-none");
-//   $(".collection").removeClass("active-tab");
-//   $(".environment").addClass("active-tab");
-
-//   $(".add-new-environment").on("click", function () {
-//     $(".sidebar-no-environment").addClass("d-none");
-//     $(".sidebar-new-environment").removeClass("d-none");
-
-//     createNewSidebarEnv();
-
-//     // environment modala yeni environment elave etmek
-//     $(".environment-modal__empty").addClass("d-none");
-//     $(".environment-modal__list").removeClass("d-none");
-//     createNewEnvironment();
-
-//     //fa check eden zaman environment modal span deyismesi
-//     $(".selectedEnvironment").on("click", function () {
-//       $(
-//         ".middle-side .change-check"
-//       ).html(` <span class="ms-1 me-4">New environment</span>
-//                           <i class="fa-solid fa-angle-down"></i>`);
-//     });
-//   });
-
-//   $(".createEnvironment").on("click", () => {
-//     $(".sidebar-no-environment").addClass("d-none");
-//     $(".sidebar-new-environment").removeClass("d-none");
-
-//     createNewSidebarEnv();
-
-//     // environment modala yeni environment elave etmek
-//     $(".environment-modal__empty").addClass("d-none");
-//     $(".environment-modal__list").removeClass("d-none");
-//     createNewEnvironment();
-
-//     //fa check eden zaman environment modal span deyismesi
-//     $(".selectedEnvironment").on("click", function () {
-//       $(
-//         ".middle-side .change-check"
-//       ).html(`<span class="ms-1 me-4">New environment</span>
-//               <i class="fa-solid fa-angle-down"></i>`);
-//     });
-//   });
-// });
-
-// $(".sidebar-new-environment-ul").on("click", "li", function () {
-//   $(".sidebar-new-environment-ul li").removeClass("active"); // Hamısından "active" sil
-//   $(this).addClass("active"); // Yalnız klik olunan `li`-yə "active" əlavə et
-// });
-
-// // func for creating new env in env modal
-// const createNewEnvironment = () => {
-//   $(".environment-modal__list ul li i.fa-check").addClass("opacity-0");
-
-//   // Yeni environment əlavə edirik
-//   let newEnvironment = `
-//   <li>
-//     <i class="fa-solid fa-check opacity-0"></i>
-//     <span>New Environment</span>
-//   </li>
-// `;
-
-//   // Yeni li'yi əlavə edirik
-//   $(".environment-modal__list ul").append(newEnvironment);
-
-//   // Yalnız yeni əlavə olunan li elementində fa-check ikonunu göstəririk
-//   let lastItem = $(".environment-modal__list ul li").last();
-//   lastItem.find("i.fa-check").removeClass("opacity-0"); // fa-check ikonunu göstəririk
-// };
-
-// // func for creating new lenv for sidebar env
-// const createNewSidebarEnv = () => {
-//   $(".sidebar-new-environment-ul li").removeClass("active");
-
-//   const newli = `
-//   <li class="active">
-//       <div class="d-flex justify-content-between">
-//           <span>New Environment</span>
-
-//           <div class="sidebar-new-environment-icons">
-//             <i class="fa-solid fa-circle-check me-1 selectedEnvironment"></i>
-//             <i class="fa-solid fa-ellipsis"></i>
-//           </div>
-//       </div>
-//   </li>
-// `;
-
-//   $(".sidebar-new-environment-ul").append(newli);
-// };
