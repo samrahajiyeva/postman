@@ -1931,4 +1931,20 @@ td.d-flex:active {
   margin-bottom: 2px;
   border-radius: 5px;
   padding: 2px 100px 2px 5px !important;
+}
+
+.fa-check {
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+
+li.active .fa-check {
+  opacity: 1;
+}
+
+.rename-input {
+  background-color: transparent;
+  border: var(--border) !important;
+  color: var(--baseTextColor);
+  padding-left: 5px !important;
 }/*# sourceMappingURL=style.css.map */

@@ -565,14 +565,23 @@ $(function () {
     "click",
     ".updateEnvironment ul li:contains('Delete')",
     function (event) {
-      event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
+      event.stopPropagation();
 
-      let envItem = $(this).closest("li[data-id]"); // Əlaqəli `li` elementini tap
+      let envItem = $(this).closest("li[data-id]");
       let envID = envItem.attr("data-id");
 
-      // Həm modal siyahısından, həm də sidebar siyahısından eyni `data-id` olan elementi sil
+      // Həm modal siyahısından, həm də sidebar siyahısından sil
       $(`.environment-modal__list ul li[data-id="${envID}"]`).remove();
       $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
+
+      // Əgər seçilmiş environment silindisə, default dəyəri təyin et
+      let selectedEnv = $(".middle-side .change-check span").text();
+      if (selectedEnv === envItem.find("span").text()) {
+        $(".middle-side .change-check").html(`
+          <span class="ms-1 me-2">No environment</span>
+          <i class="fa-solid fa-angle-down"></i>
+        `);
+      }
 
       // Əgər hər iki list boşdursa, default divləri göstər
       if ($(".environment-modal__list ul li").length === 1) {
@@ -587,7 +596,6 @@ $(function () {
     }
   );
 
-  //delete
   $(document).on(
     "click",
     ".updateEnvironment ul li:contains('Rename')",
@@ -675,7 +683,7 @@ const createNewEnvironment = (envName = "New Environment") => {
 
   let newEnvironment = `
     <li data-id="${envID}">
-      <i class="fa-solid fa-check opacity-0"></i>
+      <i class="fa-solid fa-check"></i>
       <span>${envName}</span>
     </li>
   `;
