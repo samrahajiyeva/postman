@@ -539,50 +539,103 @@ $(function () {
     sidebarToggler();
   });
 
-
   //update modali
   $(document).on("click", ".fa-ellipsis", function (event) {
     event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
     let container = $(this).siblings(".updateEnvironmentContainer");
-  
+
     // Bütün digər açıq olanları bağla
     $(".updateEnvironmentContainer").not(container).addClass("d-none");
-  
+
     // Mövcud konteynerin görünürlüğünü dəyiş
     container.toggleClass("d-none");
   });
-  
+
   // Səhifədə başqa yerə klik edildikdə modalın bağlanması üçün
   $(document).on("click", function (event) {
-    if (!$(event.target).closest(".updateEnvironmentContainer, .fa-ellipsis").length) {
+    if (
+      !$(event.target).closest(".updateEnvironmentContainer, .fa-ellipsis")
+        .length
+    ) {
       $(".updateEnvironmentContainer").addClass("d-none");
     }
   });
 
+  $(document).on(
+    "click",
+    ".updateEnvironment ul li:contains('Delete')",
+    function (event) {
+      event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
 
-  $(document).on("click", ".updateEnvironment ul li:contains('Delete')", function (event) {
-    event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
-    
-    let envItem = $(this).closest("li[data-id]"); // Əlaqəli `li` elementini tap
-    let envID = envItem.attr("data-id");
-  
-    // Həm modal siyahısından, həm də sidebar siyahısından eyni `data-id` olan elementi sil
-    $(`.environment-modal__list ul li[data-id="${envID}"]`).remove();
-    $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
-  
-    // Əgər hər iki list boşdursa, default divləri göstər
-    if ($(".environment-modal__list ul li").length === 1) {
-      $(".environment-modal__empty").removeClass("d-none");
-      $(".environment-modal__list").addClass("d-none");
+      let envItem = $(this).closest("li[data-id]"); // Əlaqəli `li` elementini tap
+      let envID = envItem.attr("data-id");
+
+      // Həm modal siyahısından, həm də sidebar siyahısından eyni `data-id` olan elementi sil
+      $(`.environment-modal__list ul li[data-id="${envID}"]`).remove();
+      $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
+
+      // Əgər hər iki list boşdursa, default divləri göstər
+      if ($(".environment-modal__list ul li").length === 1) {
+        $(".environment-modal__empty").removeClass("d-none");
+        $(".environment-modal__list").addClass("d-none");
+      }
+
+      if ($(".sidebar-new-environment-ul li").length === 0) {
+        $(".sidebar-no-environment").removeClass("d-none");
+        $(".sidebar-new-environment").addClass("d-none");
+      }
     }
-  
-    if ($(".sidebar-new-environment-ul li").length === 0) {
-      $(".sidebar-no-environment").removeClass("d-none");
-      $(".sidebar-new-environment").addClass("d-none");
+  );
+
+  //delete
+  $(document).on(
+    "click",
+    ".updateEnvironment ul li:contains('Rename')",
+    function (event) {
+      event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
+
+      let envItem = $(this).closest("li[data-id]");
+      let envID = envItem.attr("data-id");
+      let spanElement = envItem.find("span");
+      let currentName = spanElement.text();
+
+      // Əgər artıq input açıqdırsa, ikinci dəfə açmağa icazə vermə
+      if (envItem.find("input").length) return;
+
+      // Input yarat və span-i gizlə
+      let inputElement = $(
+        `<input type="text" class="rename-input" value="${currentName}" />`
+      );
+      spanElement.hide().after(inputElement);
+      inputElement.focus();
+
+      // Enter düyməsinə basıldıqda yeni dəyəri qəbul et
+      inputElement.on("keypress", function (e) {
+        if (e.which === 13) {
+          // Enter düyməsi basılıbsa
+          let newName = $(this).val().trim();
+          if (newName) {
+            spanElement.text(newName).show();
+            $(this).remove();
+
+            // Həm sidebar, həm də modal içində uyğun li-ni tap və yenilə
+            $(`.environment-modal__list ul li[data-id="${envID}"] span`).text(
+              newName
+            );
+            $(`.sidebar-new-environment-ul li[data-id="${envID}"] span`).text(
+              newName
+            );
+          }
+        }
+      });
+
+      // Fokus itirildikdə inputu bağla və span-i göstər
+      inputElement.on("blur", function () {
+        spanElement.show();
+        $(this).remove();
+      });
     }
-  });
-  
-  
+  );
 });
 
 //functions
@@ -609,7 +662,7 @@ const syncEnvironmentSelection = () => {
       // Seçilen environment adını yenileme
       let selectedText = $(this).find("span").text();
       $(".middle-side .change-check").html(`
-      <span class="ms-1 me-4">${selectedText}</span>
+      <span class="ms-1 me-2">${selectedText}</span>
       <i class="fa-solid fa-angle-down"></i>
     `);
     }
@@ -660,10 +713,6 @@ const createNewEnvironment = (envName = "New Environment") => {
   syncEnvironmentSelection();
 };
 
-
-
-
-
 function sidebarToggler() {
   $(".postman__main__sidebar__top").toggleClass("d-none");
   const lockItem = $(
@@ -699,4 +748,3 @@ function sidebarToggler() {
     parentDivofMain.removeClass("col-11").addClass("col-9");
   }
 }
-
