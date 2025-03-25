@@ -571,7 +571,7 @@ $(function () {
     $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
   
     // Əgər hər iki list boşdursa, default divləri göstər
-    if ($(".environment-modal__list ul li").length === 0) {
+    if ($(".environment-modal__list ul li").length === 1) {
       $(".environment-modal__empty").removeClass("d-none");
       $(".environment-modal__list").addClass("d-none");
     }
