@@ -566,9 +566,20 @@ $(function () {
     let envItem = $(this).closest("li[data-id]"); // Əlaqəli `li` elementini tap
     let envID = envItem.attr("data-id");
   
-    // Həm modal siyahısından, həm də sidebar siyahısından sil
+    // Həm modal siyahısından, həm də sidebar siyahısından eyni `data-id` olan elementi sil
     $(`.environment-modal__list ul li[data-id="${envID}"]`).remove();
     $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
+  
+    // Əgər hər iki list boşdursa, default divləri göstər
+    if ($(".environment-modal__list ul li").length === 0) {
+      $(".environment-modal__empty").removeClass("d-none");
+      $(".environment-modal__list").addClass("d-none");
+    }
+  
+    if ($(".sidebar-new-environment-ul li").length === 0) {
+      $(".sidebar-no-environment").removeClass("d-none");
+      $(".sidebar-new-environment").addClass("d-none");
+    }
   });
   
   
