@@ -538,7 +538,35 @@ $(function () {
   $(document).on("click", ".sidebarLockToggle", function () {
     sidebarToggler();
   });
+
+  // const sidebar = document.querySelector(".postman__main__sidebar");
+  // const resizer = document.querySelector(".resizer");
+  // let isResizing = false;
+
+  // resizer.addEventListener("mousedown", (e) => {
+  //   isResizing = true;
+  //   document.addEventListener("mousemove", handleMouseMove);
+  //   document.addEventListener("mouseup", () => {
+  //     isResizing = false;
+  //     document.removeEventListener("mousemove", handleMouseMove);
+  //   });
+  // });
+
+  // function handleMouseMove(e) {
+  //   if (isResizing) {
+  //     let newWidth = e.clientX - sidebar.getBoundingClientRect().left;
+  //     if (newWidth >= 200 && newWidth <= 500) {
+  //       sidebar.style.width = `${newWidth}px`;
+  //     }
+  //   }
+  // }
 });
+
+
+
+
+//functions
+
 
 // Environment seçim sinxronizasiyası
 const syncEnvironmentSelection = () => {
