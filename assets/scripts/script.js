@@ -529,38 +529,15 @@ $(function () {
   // Əsas funksiyalar aktiv edilsin
   syncEnvironmentSelection();
 
-
-
   // sidebar acma qapama
 
-  $('.sidebarToggle').on('click' , ()=> {
-    $('.postman__main__sidebar__top').toggleClass('d-none')
-    const lockItem = $(".postman__main__sidebar__bottom__left ul li:first-child i.fa-lock");
-    
-    if (lockItem.length) {
-      lockItem.parent().remove();
-    } else {
-      $(".postman__main__sidebar__bottom__left ul").prepend(`
-        <li><i class="fa-solid fa-lock"></i></li>
-      `);
-    }
+  $(".sidebarToggle").on("click", () => {
+    sidebarToggler();
+  });
 
-    $('.postman__main__sidebar__bottom').toggleClass('sidebar-collapsed');
-
-    let parentDiv = $('.postman__main__sidebar').parent();
-    let parentDivofMain = $('.postman__main__hero').parent()
-
-    if (parentDiv.hasClass('col-3')) {
-      parentDiv.removeClass('col-3').addClass('col-1');
-      $('.postman__main__sidebar__bottom__right').addClass('d-none')
-      $('.postman__main__sidebar__bottom__left').removeClass('col-3').addClass('col-12')
-      parentDivofMain.removeClass('col-9').addClass('col-11')
-    } else {
-      parentDiv.removeClass('col-1').addClass('col-3');
-      $('.postman__main__sidebar__bottom__right').removeClass('d-none')
-      $('.postman__main__sidebar__bottom__left').removeClass('col-12').addClass('col-3')
-      parentDivofMain.removeClass('col-11').addClass('col-9')
-    }  })
+  $(document).on("click", ".sidebarLockToggle", function () {
+    sidebarToggler();
+  });
 });
 
 // Environment seçim sinxronizasiyası
@@ -628,29 +605,41 @@ const createNewEnvironment = (envName = "New Environment") => {
   syncEnvironmentSelection();
 };
 
+function sidebarToggler() {
+  $(".postman__main__sidebar__top").toggleClass("d-none");
+  const lockItem = $(
+    ".postman__main__sidebar__bottom__left ul li:first-child i.fa-lock"
+  );
 
+  if (lockItem.length) {
+    lockItem.parent().remove();
+  } else {
+    $(".postman__main__sidebar__bottom__left ul").prepend(`
+      <li class='sidebarLockToggle'><i class="fa-solid fa-lock"></i></li>
+    `);
+  }
 
+  $(".postman__main__sidebar__bottom").toggleClass("sidebar-collapsed");
 
+  let parentDiv = $(".postman__main__sidebar").parent();
+  let parentDivofMain = $(".postman__main__hero").parent();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  if (parentDiv.hasClass("col-3")) {
+    parentDiv.removeClass("col-3").addClass("col-1");
+    $(".postman__main__sidebar__bottom__right").addClass("d-none");
+    $(".postman__main__sidebar__bottom__left")
+      .removeClass("col-3")
+      .addClass("col-12");
+    parentDivofMain.removeClass("col-9").addClass("col-11");
+  } else {
+    parentDiv.removeClass("col-1").addClass("col-3");
+    $(".postman__main__sidebar__bottom__right").removeClass("d-none");
+    $(".postman__main__sidebar__bottom__left")
+      .removeClass("col-12")
+      .addClass("col-3");
+    parentDivofMain.removeClass("col-11").addClass("col-9");
+  }
+};
 
 // // environment modal
 // $(".middle-side").on("click", function (event) {

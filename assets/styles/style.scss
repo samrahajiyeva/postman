@@ -304,7 +304,7 @@ body {
             list-style: none;
             color: var(--baseTextColor);
             @include agentEraser();
-            gap: 10px;
+            gap: 5px;
             align-items: center;
 
             li {
