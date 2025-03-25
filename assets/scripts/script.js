@@ -558,6 +558,19 @@ $(function () {
       $(".updateEnvironmentContainer").addClass("d-none");
     }
   });
+
+
+  $(document).on("click", ".updateEnvironment ul li:contains('Delete')", function (event) {
+    event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
+    
+    let envItem = $(this).closest("li[data-id]"); // Əlaqəli `li` elementini tap
+    let envID = envItem.attr("data-id");
+  
+    // Həm modal siyahısından, həm də sidebar siyahısından sil
+    $(`.environment-modal__list ul li[data-id="${envID}"]`).remove();
+    $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
+  });
+  
   
 });
 
@@ -571,7 +584,7 @@ const syncEnvironmentSelection = () => {
     function () {
       let envID = $(this).attr("data-id");
 
-      // Active class'ı yalnız seçilən environment üçün əlavə et
+      // Active class'ı yalnız seçilən environment üçün elave etmek
       $(
         ".environment-modal__list ul li, .sidebar-new-environment-ul li"
       ).removeClass("active");
@@ -582,7 +595,7 @@ const syncEnvironmentSelection = () => {
         "active"
       );
 
-      // Seçilən environment adını yenilə
+      // Seçilen environment adını yenileme
       let selectedText = $(this).find("span").text();
       $(".middle-side .change-check").html(`
       <span class="ms-1 me-4">${selectedText}</span>
