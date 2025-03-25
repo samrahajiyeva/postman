@@ -244,7 +244,7 @@ body {
   color: var(--baseTextColor);
   margin: 0;
   padding: 0;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
 }
 .postman__main__sidebar__bottom__left ul li {
@@ -1903,4 +1903,8 @@ td.d-flex:active {
 }
 .sidebar-new-environment-ul .active {
   background-color: var(--bg-color-1);
+}
+
+.sidebar-collapsed {
+  height: calc(100vh - 81.5px) !important;
 }/*# sourceMappingURL=style.css.map */
