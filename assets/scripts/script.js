@@ -660,6 +660,10 @@ const createNewEnvironment = (envName = "New Environment") => {
   syncEnvironmentSelection();
 };
 
+
+
+
+
 function sidebarToggler() {
   $(".postman__main__sidebar__top").toggleClass("d-none");
   const lockItem = $(
