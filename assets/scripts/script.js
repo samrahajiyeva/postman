@@ -625,6 +625,9 @@ $(function () {
             $(`.sidebar-new-environment-ul li[data-id="${envID}"] span`).text(
               newName
             );
+
+            $(`.postman__environment__tab[data-attr="${envID}"] .postman__environment__tab__header span`).text(newName);
+
           }
         }
       });
@@ -709,6 +712,7 @@ $(function () {
   //     $(document).off("mousemove", resize);
   //     $(document).off("mouseup", stopResize);
   //   }
+
 });
 
 //functions
@@ -782,6 +786,98 @@ const createNewEnvironment = (envName = "New Environment") => {
   ).removeClass("active");
   $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
   $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass("active");
+
+
+// delete
+  // Yeni environment yarandıqda əsas div gizlədilir
+  $(".postman__main__hero__bottom__left").addClass("d-none");
+  $(".postman__environment__tab").addClass("d-none");
+
+  // Yeni environment üçün unikal data attr təyin et
+  let environmentTab = `
+  <div class="col-11 postman__environment__tab" data-attr="${envID}">
+                    <div class="postman__environment__tab__header d-flex align-items-center justify-content-between">
+                      <span>${envName}</span>
+                      <div class="d-flex align-items-center postman__environment__tab__header__right">
+                        <div class="d-flex align-items-center me-2">
+                          <i class="fa-solid fa-floppy-disk saveRequest me-2"></i>
+                            <span class="save">Save</span>
+                        </div>
+                        <div class="d-flex align-items-center fork-div pe-2 me-2">
+                          <i class="fa-solid fa-code-fork me-2"></i>
+                          <span>Fork</span>
+                        </div>
+                        <span>0</span>
+                        <button class="ms-2 me-2">Share</button>
+                        <i class="fa-solid fa-ellipsis"></i>
+                      </div>
+                    </div>
+
+                    <div class="postman__environment__tab__search mb-2">
+                      <div class="env-search-container">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Filter Variables"/>
+                      </div>
+                    </div>
+
+                    <div class="postman__environment__tab__request">
+                      <div class="env-table-wrapper">
+                        <table class="environment table">
+                          <thead>
+                            <tr>
+                              <th>
+  
+                              </th>
+                              <th>
+                                Variable
+                              </th>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                Initial value
+                              </th>
+                              <th>
+                                Current value
+                              </th>
+                              <th>
+                                <i class="fa-solid fa-ellipsis"></i>
+                              </th>
+                            </tr>
+                          </thead>
+  
+                          <tbody>
+                            <tr>
+                              <td>
+                                <input type="checkbox">
+                              </td>
+                              <td>
+                                <input type="text" placeholder="Add new variable">
+                              </td>
+                              <td>
+                                <div class="env-type d-flex align-items-center justify-content-between">
+                                  <span>default</span>
+                                  <i class="fa-solid fa-angle-down"></i>
+                                </div>
+                              </td>
+                            <td>
+                              <input type="text">
+                            </td>
+                            <td colspan="2">
+                              <input type="text">
+                            </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+   `;
+
+   $(".change-to-env").prepend(environmentTab);
+
+   // Yeni yaradılan environment-i göstər
+   $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
 
   syncEnvironmentSelection();
 };

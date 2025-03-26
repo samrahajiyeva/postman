@@ -2470,4 +2470,360 @@ li.active .fa-check {
 //   z-index: 100;
 // }
 
+// .postman__main__hero__bottom__environment{
+//   border-right: var(--border);
+//   height: calc(100vh - 124.5px);
 
+//   .search-container {
+//     position: relative;
+//     // width: 250px;
+//     margin: 0px 3px 0px;
+
+//     i {
+//       position: absolute;
+//       left: 10px;
+//       top: 50%;
+//       transform: translateY(-50%);
+//       color: gray;
+//       font-size: 16px;
+//     }
+
+//     input {
+//       width: 100%;
+//       padding: 7px 35px;
+//       border: var(--border);
+//       border-radius: 5px;
+//       outline: none;
+//       font-size: 12px;
+//       background-color: transparent;
+//       color: var(--white);
+
+//       &:focus {
+//         background-color: var(--dark-gray);
+//       }
+//     }
+//   }
+
+//     // table
+//     .env-table-wrapper {
+//       height: 400px;
+//       overflow: auto;
+
+//       .env-table {
+//         // width: 100%;
+//         border-collapse: collapse;
+//         font-family: var(--header-font);
+//         font-size: 12px;
+//         background-color: var(--hero-color);
+
+//         th,
+//         td {
+//           padding: 10px;
+//           border: var(--border);
+//           text-align: left;
+//           background-color: var(--hero-color);
+//           height: 100%;
+//         }
+
+//         th {
+//           background-color: var(--hero-color);
+//           color: var(--white);
+//         }
+
+//         td input {
+//           width: 100%;
+//           border-radius: 0% !important;
+//           background-color: var(--hero-color);
+//           border: none;
+//           color: var(--white);
+//           outline: none;
+//           padding: 1px 2px 1px;
+
+//           &:focus {
+//             border: var(--border) !important;
+//           }
+//         }
+
+//         td input[type="checkbox"] {
+//           width: 20px;
+//           height: 20px;
+//           accent-color: var(--white);
+//           border-radius: 5px !important;
+//           background-color: transparent !important;
+//         }
+
+//         th input {
+//           width: 100%;
+//           border-radius: 0% !important;
+//           background-color: var(--hero-color);
+//           border: none;
+//           color: var(--white);
+//           outline: none;
+//           padding: 1px 2px 1px;
+
+//           &:focus {
+//             border: var(--border) !important;
+//           }
+//         }
+
+//         th input[type="checkbox"] {
+//           width: 20px;
+//           height: 20px;
+//           accent-color: var(--white);
+//           border-radius: 5px !important;
+//           background-color: transparent !important;
+//         }
+
+//         .bulk-edit {
+//           color: var(--baseTextColor);
+//           text-align: center;
+
+//           .fa-ellipsis {
+//             border-radius: 3px;
+//             padding: 3px;
+
+//             &:hover {
+//               background-color: var(--bg-color-1);
+//               cursor: pointer;
+//               color: var(--white);
+//               transition: 0.3s;
+//             }
+//           }
+
+//           span {
+//             margin-left: 10px;
+//             font-weight: 300 !important;
+//             color: var(--baseTextColor);
+//             font-size: 12px;
+//             border-radius: 3px;
+//             padding: 3px;
+
+//             &:hover {
+//               background-color: var(--bg-color-1);
+//               color: var(--white);
+//               cursor: pointer;
+//               transition: 0.2s;
+//             }
+//           }
+//         }
+//       }
+//     }
+
+// }
+
+.postman__environment__tab {
+  height: calc(100vh - 124.5px);
+  border-right: var(--border);
+
+  &__header {
+    font-family: var(--header-font);
+    font-size: 12px;
+    padding: 15px 0px 16px;
+
+    span {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    &__right {
+      span {
+        color: var(--baseTextColor);
+        font-weight: 300;
+      }
+
+      i {
+        color: var(--baseTextColor);
+      }
+
+      .fork-div {
+        border-right: var(--border);
+      }
+
+      button {
+        border: none;
+        background-color: transparent;
+        color: var(--white);
+        padding: 4px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 5px;
+      }
+    }
+  }
+
+  &__search {
+    .env-search-container {
+      position: relative;
+      width: 250px;
+      margin: 0px 3px 0px;
+
+      i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: gray;
+        font-size: 16px;
+      }
+
+      input {
+        width: 100%;
+        padding: 7px 36px;
+        border: var(--border);
+        border-radius: 5px;
+        outline: none;
+        font-size: 12px;
+        background-color: transparent;
+        color: var(--white);
+
+        &:focus {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  &__request {
+    .env-table-wrapper {
+      min-height: 350px;
+      max-height: 400px;
+      overflow: auto;
+
+      .table {
+        // width: 100%;
+        border-collapse: collapse;
+        font-family: var(--header-font);
+        font-size: 12px;
+        background-color: var(--hero-color);
+
+        th,
+        td {
+          padding: 5px 8px;
+          border: var(--border);
+          text-align: left;
+          background-color: var(--hero-color);
+          height: 100%;
+
+          &:first-child{
+            border-left: none;
+          }
+
+          &:last-child{
+            border-right: none;
+          }
+        }
+
+        th {
+          background-color: var(--hero-color);
+          color: var(--baseTextColor);
+        }
+
+        td input {
+          width: 100%;
+          border-radius: 0% !important;
+          background-color: var(--hero-color);
+          border: none;
+          color: var(--white);
+          outline: none;
+          padding: 1px 2px 1px;
+
+          &:focus {
+            border: var(--border) !important;
+          }
+        }
+
+        td input[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+          accent-color: var(--white);
+          border-radius: 5px !important;
+          background-color: transparent !important;
+        }
+
+        th input {
+          width: 100%;
+          border-radius: 0% !important;
+          background-color: var(--hero-color);
+          border: none;
+          color: var(--white);
+          outline: none;
+          padding: 1px 2px 1px;
+
+          &:focus {
+            border: var(--border) !important;
+          }
+        }
+
+        th input[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+          accent-color: var(--white);
+          border-radius: 5px !important;
+          background-color: transparent !important;
+        }
+
+        .bulk-edit {
+          color: var(--baseTextColor);
+          text-align: center;
+
+          .fa-ellipsis {
+            border-radius: 3px;
+            padding: 3px;
+
+            &:hover {
+              background-color: var(--bg-color-1);
+              cursor: pointer;
+              color: var(--white);
+              transition: 0.3s;
+            }
+          }
+
+          span {
+            margin-left: 10px;
+            font-weight: 300 !important;
+            color: var(--baseTextColor);
+            font-size: 12px;
+            border-radius: 3px;
+            padding: 3px;
+
+            &:hover {
+              background-color: var(--bg-color-1);
+              color: var(--white);
+              cursor: pointer;
+              transition: 0.2s;
+            }
+          }
+        }
+
+        .env-type {
+          color: var(--white);
+        }
+      }
+    }
+  }
+}
+
+.env-table-wrapper {
+  --sb-track-color: #e6e6e6;
+  --sb-thumb-color: #212121;
+  --sb-size: 6px;
+}
+
+.env-table-wrapper::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.env-table-wrapper::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.env-table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .env-table-wrapper {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
