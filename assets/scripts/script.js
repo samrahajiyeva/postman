@@ -541,17 +541,14 @@ $(function () {
 
   //update modali
   $(document).on("click", ".fa-ellipsis", function (event) {
-    event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
+    event.stopPropagation();
     let container = $(this).siblings(".updateEnvironmentContainer");
 
-    // Bütün digər açıq olanları bağla
     $(".updateEnvironmentContainer").not(container).addClass("d-none");
 
-    // Mövcud konteynerin görünürlüğünü dəyiş
     container.toggleClass("d-none");
   });
 
-  // Səhifədə başqa yerə klik edildikdə modalın bağlanması üçün
   $(document).on("click", function (event) {
     if (
       !$(event.target).closest(".updateEnvironmentContainer, .fa-ellipsis")
@@ -574,7 +571,6 @@ $(function () {
       $(`.environment-modal__list ul li[data-id="${envID}"]`).remove();
       $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
 
-      // Əgər seçilmiş environment silindisə, default dəyəri təyin et
       let selectedEnv = $(".middle-side .change-check span").text();
       if (selectedEnv === envItem.find("span").text()) {
         $(".middle-side .change-check").html(`
@@ -583,7 +579,6 @@ $(function () {
         `);
       }
 
-      // Əgər hər iki list boşdursa, default divləri göstər
       if ($(".environment-modal__list ul li").length === 1) {
         $(".environment-modal__empty").removeClass("d-none");
         $(".environment-modal__list").addClass("d-none");
@@ -600,24 +595,21 @@ $(function () {
     "click",
     ".updateEnvironment ul li:contains('Rename')",
     function (event) {
-      event.stopPropagation(); // Digər klik eventlərinin qarşısını almaq üçün
+      event.stopPropagation();
 
       let envItem = $(this).closest("li[data-id]");
       let envID = envItem.attr("data-id");
       let spanElement = envItem.find("span");
       let currentName = spanElement.text();
 
-      // Əgər artıq input açıqdırsa, ikinci dəfə açmağa icazə vermə
       if (envItem.find("input").length) return;
 
-      // Input yarat və span-i gizlə
       let inputElement = $(
         `<input type="text" class="rename-input" value="${currentName}" />`
       );
       spanElement.hide().after(inputElement);
       inputElement.focus();
 
-      // Enter düyməsinə basıldıqda yeni dəyəri qəbul et
       inputElement.on("keypress", function (e) {
         if (e.which === 13) {
           // Enter düyməsi basılıbsa
@@ -626,7 +618,7 @@ $(function () {
             spanElement.text(newName).show();
             $(this).remove();
 
-            // Həm sidebar, həm də modal içində uyğun li-ni tap və yenilə
+            // sidebar ve modal icerisinde uygun li'ni yenilemek
             $(`.environment-modal__list ul li[data-id="${envID}"] span`).text(
               newName
             );
@@ -637,7 +629,6 @@ $(function () {
         }
       });
 
-      // Fokus itirildikdə inputu bağla və span-i göstər
       inputElement.on("blur", function () {
         spanElement.show();
         $(this).remove();
@@ -645,11 +636,9 @@ $(function () {
     }
   );
 
-
-
   $(".search-container input").on("keyup", function () {
     let searchText = $(this).val().toLowerCase();
-    
+
     let hasMatch = false;
     $(".sidebar-new-environment-ul li").each(function () {
       let itemText = $(this).text().toLowerCase();
@@ -661,7 +650,6 @@ $(function () {
       }
     });
 
-    // Əgər uyğun nəticə yoxdursa, div-i əlavə et və göstər
     if (!hasMatch) {
       if ($(".envNotFound").length === 0) {
         $(".sidebar-new-environment-ul").after(`
@@ -677,9 +665,50 @@ $(function () {
         `);
       }
     } else {
-      $(".envNotFound").remove(); 
+      $(".envNotFound").remove();
     }
   });
+
+  //   const sidebarContainer = $(".postman__sidebar-container");
+  //   const sidebar = $(".postman__main__sidebar").parent();
+  //   const hero = $(".postman__main__hero").parent();
+  //   const resizeHandle = $(".resize-handle");
+
+  //   let isResizing = false;
+  //   let startX, startWidth;
+
+  //   resizeHandle.on("mousedown", function (e) {
+  //     isResizing = true;
+  //     startX = e.clientX;
+  //     startWidth = sidebar.width();
+
+  //     $(document).on("mousemove", resize);
+  //     $(document).on("mouseup", stopResize);
+  //   });
+
+  //   function resize(e) {
+  //     if (!isResizing) return;
+
+  //     let diffX = e.clientX - startX;
+  //     let newSidebarWidth = startWidth + diffX;
+  //     let containerWidth = $(".container-fluid").width();
+  //     let minSidebarWidth = containerWidth * (3 / 12); // col-3 genişliyi
+  //     let maxSidebarWidth = containerWidth * (5 / 12); // col-5 genişliyi
+
+  //     if (newSidebarWidth >= minSidebarWidth && newSidebarWidth <= maxSidebarWidth) {
+  //       let newSidebarCol = Math.round((newSidebarWidth / containerWidth) * 12);
+  //       let newHeroCol = 12 - newSidebarCol;
+
+  //       sidebarContainer.removeClass("col-3 col-4 col-5").addClass(`col-${newSidebarCol}`);
+  //       hero.removeClass("col-9 col-8 col-7").addClass(`col-${newHeroCol}`);
+  //     }
+  //   }
+
+  //   function stopResize() {
+  //     isResizing = false;
+  //     $(document).off("mousemove", resize);
+  //     $(document).off("mouseup", stopResize);
+  //   }
 });
 
 //functions

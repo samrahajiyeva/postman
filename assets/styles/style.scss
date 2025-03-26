@@ -317,9 +317,6 @@ body {
               width: 90%;
               height: 60px;
 
-             
-             
-
               span {
                 font-size: 11px;
               }
@@ -341,7 +338,7 @@ body {
               // }
             }
 
-            .active-tab{
+            .active-tab {
               background-color: var(--bg-color-2);
             }
           }
@@ -364,7 +361,8 @@ body {
 
             .search-container {
               position: relative;
-              width: 250px;
+              // width: 250px;
+              margin: 0px 3px 0px;
 
               i {
                 position: absolute;
@@ -488,38 +486,36 @@ body {
                 }
               }
 
-              .sidebar-new-environment{
-
-                ul{
+              .sidebar-new-environment {
+                ul {
                   list-style: none;
                   font-size: 12px;
                   color: var(--baseTextColor);
                   font-weight: 500;
                   @include agentEraser();
 
-                  li{
+                  li {
                     padding: 5px 20px 5px 25px;
                     margin-bottom: 1px;
                     transition: 0.2s;
                     cursor: pointer;
 
-                    .sidebar-new-environment-icons{
-                      i{
+                    .sidebar-new-environment-icons {
+                      i {
                         opacity: 0;
                         color: var(--baseTextColor);
                         font-size: 13px;
                       }
                     }
 
-
-                    &:hover{
+                    &:hover {
                       background-color: var(--bg-color-1);
 
-                      .sidebar-new-environment-icons{
-                        i{
+                      .sidebar-new-environment-icons {
+                        i {
                           opacity: 1;
-                          
-                          &:hover{
+
+                          &:hover {
                             color: var(--white);
                           }
                         }
@@ -2194,7 +2190,6 @@ td.d-flex:active {
     font-family: var(--header-font);
     z-index: 999;
 
-
     &__empty {
       .environment-fa-square-plus {
         background-color: var(--bg-color-1);
@@ -2243,7 +2238,6 @@ td.d-flex:active {
     }
 
     &__list {
-
       .environment-search {
         border-bottom: var(--border);
 
@@ -2272,46 +2266,44 @@ td.d-flex:active {
         }
       }
 
-     .environment-ul-scroll{
-      max-height: 400px;
-      overflow-y: auto;
+      .environment-ul-scroll {
+        max-height: 400px;
+        overflow-y: auto;
 
-      ul {
-        list-style: none;
-        @include agentEraser();
-        padding: 10px;
+        ul {
+          list-style: none;
+          @include agentEraser();
+          padding: 10px;
 
-        li {
-          padding: 10px 0px 10px 15px;
-          border-radius: 5px;
+          li {
+            padding: 10px 0px 10px 15px;
+            border-radius: 5px;
 
-          i {
-            margin-right: 10px;
-          }
+            i {
+              margin-right: 10px;
+            }
 
-          span {
-            color: var(--white);
-            font-size: 13px;
-          }
-
-          &:first-child {
             span {
-              color: var(--baseTextColor);
+              color: var(--white);
+              font-size: 13px;
+            }
+
+            &:first-child {
+              span {
+                color: var(--baseTextColor);
+              }
             }
           }
-        }
 
-        li:hover {
-          background-color: var(--bg-color-1);
-          cursor: pointer;
+          li:hover {
+            background-color: var(--bg-color-1);
+            cursor: pointer;
+          }
         }
       }
-     }
     }
   }
 }
-
-
 
 .environment-ul-scroll {
   --sb-track-color: #e6e6e6;
@@ -2339,7 +2331,7 @@ td.d-flex:active {
   }
 }
 
-.sidebar-new-environment-ul{
+.sidebar-new-environment-ul {
   max-height: 420px;
   overflow-y: auto;
 }
@@ -2370,7 +2362,6 @@ td.d-flex:active {
   }
 }
 
-
 // .updateEnvironmentContainer{
 //   position: relative;
 
@@ -2384,39 +2375,35 @@ td.d-flex:active {
 //   }
 // }
 
-.sidebar-new-environment-ul{
-
-  .active{
+.sidebar-new-environment-ul {
+  .active {
     background-color: var(--bg-color-1);
   }
 }
-
 
 .sidebar-collapsed {
   height: calc(100vh - 81.5px) !important;
 }
 
-
 //update environment
-.updateEnvironmentContainer{
+.updateEnvironmentContainer {
   position: absolute;
 
-
-  .updateEnvironment{
+  .updateEnvironment {
     position: absolute !important;
     padding: 10px;
     background-color: var(--dark);
     border-radius: 5px;
-    border: var(--border);    
+    border: var(--border);
     // left: 20%;
     transform: translate(-70%);
     top: 8px;
 
-    ul{
+    ul {
       list-style: none;
       @include agentEraser();
 
-      li{
+      li {
         padding: 0px !important;
         margin-bottom: 2px;
         border-radius: 5px;
@@ -2436,7 +2423,7 @@ li.active .fa-check {
   opacity: 1;
 }
 
-.rename-input{
+.rename-input {
   background-color: transparent;
   border: var(--border) !important;
   color: var(--baseTextColor);
@@ -2444,24 +2431,43 @@ li.active .fa-check {
   max-width: 170px;
 }
 
-.envNotFound{
+.envNotFound {
   padding: 32px 16px;
-                img {
-                  width: 140px;
-                  height: 120px;
-                }
+  img {
+    width: 140px;
+    height: 120px;
+  }
 
-                h4 {
-                  font-size: 14px;
-                  color: var(--baseTextColor);
-                  margin-top: 10px;
-                }
+  h4 {
+    font-size: 14px;
+    color: var(--baseTextColor);
+    margin-top: 10px;
+  }
 
-                span {
-                  display: inline-block;
-                  color: var(--baseTextColor);
-                  font-size: 12px;
-                  line-height: 19px;
-                  margin: 3px 0px 5px;
-                }
+  span {
+    display: inline-block;
+    color: var(--baseTextColor);
+    font-size: 12px;
+    line-height: 19px;
+    margin: 3px 0px 5px;
+  }
 }
+
+// .postman__sidebar-container {
+//   position: relative;
+//   display: flex;
+//   align-items: stretch;
+// }
+
+// .resize-handle {
+//   width: 6px;
+//   cursor: ew-resize;
+//   background-color: rgba(0, 0, 0, 0.3);
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   z-index: 100;
+// }
+
+

@@ -285,7 +285,7 @@ body {
 }
 .postman__main__sidebar__bottom__right__top .search-container {
   position: relative;
-  width: 250px;
+  margin: 0px 3px 0px;
 }
 .postman__main__sidebar__bottom__right__top .search-container i {
   position: absolute;
