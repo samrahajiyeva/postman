@@ -726,22 +726,20 @@ const syncEnvironmentSelection = () => {
       let envID = $(this).attr("data-id");
 
       // Active class'ı yalnız seçilən environment üçün elave etmek
-      $(
-        ".environment-modal__list ul li, .sidebar-new-environment-ul li"
-      ).removeClass("active");
-      $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass(
-        "active"
-      );
-      $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass(
-        "active"
-      );
+      $(".environment-modal__list ul li, .sidebar-new-environment-ul li").removeClass("active");
+      $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
+      $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass("active");
 
       // Seçilen environment adını yenileme
       let selectedText = $(this).find("span").text();
       $(".middle-side .change-check").html(`
-      <span class="ms-1 me-2">${selectedText}</span>
-      <i class="fa-solid fa-angle-down"></i>
-    `);
+        <span class="ms-1 me-2">${selectedText}</span>
+        <i class="fa-solid fa-angle-down"></i>
+      `);
+
+      // Uygun olan environment tab'ını göstermek
+      $(".postman__environment__tab").addClass("d-none"); // Əvvəlcə bütün tab'ları gizləyirik
+      $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none"); // Seçilən tab'ı göstəririk
     }
   );
 };
@@ -787,8 +785,7 @@ const createNewEnvironment = (envName = "New Environment") => {
   $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
   $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass("active");
 
-
-// delete
+  // delete
   // Yeni environment yarandıqda əsas div gizlədilir
   $(".postman__main__hero__bottom__left").addClass("d-none");
   $(".postman__environment__tab").addClass("d-none");
@@ -801,13 +798,13 @@ const createNewEnvironment = (envName = "New Environment") => {
                       <div class="d-flex align-items-center postman__environment__tab__header__right">
                         <div class="d-flex align-items-center me-2">
                           <i class="fa-solid fa-floppy-disk saveRequest me-2"></i>
-                            <span class="save">Save</span>
+                            <p class="save">Save</p>
                         </div>
                         <div class="d-flex align-items-center fork-div pe-2 me-2">
                           <i class="fa-solid fa-code-fork me-2"></i>
-                          <span>Fork</span>
+                          <p>Fork</p>
                         </div>
-                        <span>0</span>
+                        <p>0</p>
                         <button class="ms-2 me-2">Share</button>
                         <i class="fa-solid fa-ellipsis"></i>
                       </div>
@@ -881,6 +878,7 @@ const createNewEnvironment = (envName = "New Environment") => {
 
   syncEnvironmentSelection();
 };
+
 
 function sidebarToggler() {
   $(".postman__main__sidebar__top").toggleClass("d-none");

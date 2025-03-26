@@ -1983,9 +1983,11 @@ li.active .fa-check {
   color: var(--white);
   font-weight: 600;
 }
-.postman__environment__tab__header__right span {
+.postman__environment__tab__header__right p {
   color: var(--baseTextColor);
   font-weight: 300;
+  margin: 0;
+  padding: 0;
 }
 .postman__environment__tab__header__right i {
   color: var(--baseTextColor);

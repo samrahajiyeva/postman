@@ -2626,9 +2626,10 @@ li.active .fa-check {
     }
 
     &__right {
-      span {
+      p {
         color: var(--baseTextColor);
         font-weight: 300;
+        @include agentEraser()
       }
 
       i {
