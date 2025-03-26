@@ -644,6 +644,42 @@ $(function () {
       });
     }
   );
+
+
+
+  $(".search-container input").on("keyup", function () {
+    let searchText = $(this).val().toLowerCase();
+    
+    let hasMatch = false;
+    $(".sidebar-new-environment-ul li").each(function () {
+      let itemText = $(this).text().toLowerCase();
+      if (itemText.includes(searchText)) {
+        $(this).show();
+        hasMatch = true;
+      } else {
+        $(this).hide();
+      }
+    });
+
+    // Əgər uyğun nəticə yoxdursa, div-i əlavə et və göstər
+    if (!hasMatch) {
+      if ($(".envNotFound").length === 0) {
+        $(".sidebar-new-environment-ul").after(`
+          <div class="envNotFound text-center">
+            <div>
+              <img src="https://postman.com/_aether-assets/illustrations/dark/illustration-no-environment.svg" alt="postman logo">
+            </div>
+            <h4>No results found for ${searchText}</h4>
+            <span>
+            Please try again using different keywords, and don’t forget to check for typos.
+            </span>
+          </div>
+        `);
+      }
+    } else {
+      $(".envNotFound").remove(); 
+    }
+  });
 });
 
 //functions
