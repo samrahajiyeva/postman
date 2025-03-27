@@ -332,7 +332,7 @@ $(function () {
   function addNewRow() {
     const $newRow = $(`
       <tr>
-        <td class="d-flex justify-content-center">
+        <td>
           <input type="checkbox" class="params-check" style="opacity: 0;">
         </td>
         <td>
@@ -477,6 +477,7 @@ $(function () {
 
     createNewEnvironment();
   });
+
   // Axtarış filteri
   $(".environment-search input").on("keyup", function () {
     let searchText = $(this).val().toLowerCase();
@@ -557,7 +558,7 @@ $(function () {
     }
   });
 
- $(document).on(
+  $(document).on(
     "click",
     ".updateEnvironment ul li:contains('Delete')",
     function (event) {
@@ -589,26 +590,26 @@ $(function () {
       }
     }
   );
- 
+
   $(document).on(
     "click",
     ".updateEnvironment ul li:contains('Rename')",
     function (event) {
       event.stopPropagation();
-  
+
       let envItem = $(this).closest("li[data-id]");
       let envID = envItem.attr("data-id");
       let spanElement = envItem.find("span");
       let currentName = spanElement.text();
-  
+
       if (envItem.find("input").length) return;
-  
+
       let inputElement = $(
         `<input type="text" class="rename-input" value="${currentName}" />`
       );
       spanElement.hide().after(inputElement);
       inputElement.focus();
-  
+
       inputElement.on("keypress", function (e) {
         if (e.which === 13) {
           // Enter düyməsi basılıbsa
@@ -616,28 +617,33 @@ $(function () {
           if (newName) {
             spanElement.text(newName).show();
             $(this).remove();
-  
+
             // sidebar ve modal icerisinde uygun li'ni yenilemek
-            $(`.environment-modal__list ul li[data-id="${envID}"] span`).text(newName);
-            $(`.sidebar-new-environment-ul li[data-id="${envID}"] span`).text(newName);
-            
+            $(`.environment-modal__list ul li[data-id="${envID}"] span`).text(
+              newName
+            );
+            $(`.sidebar-new-environment-ul li[data-id="${envID}"] span`).text(
+              newName
+            );
+
             // env-review div içindeki span'ı güncelle
-            $(`.left-side .env-review[data-attr="${envID}"] span`).text(newName);
-  
+            $(`.left-side .env-review[data-attr="${envID}"] span`).text(
+              newName
+            );
+
             $(
               `.postman__environment__tab[data-attr="${envID}"] .postman__environment__tab__header span`
             ).text(newName);
           }
         }
       });
-  
+
       inputElement.on("blur", function () {
         spanElement.show();
         $(this).remove();
       });
     }
   );
-  
 
   $(".search-container input").on("keyup", function () {
     let searchText = $(this).val().toLowerCase();
@@ -672,7 +678,6 @@ $(function () {
     }
   });
 
-
   $(".review").on("click", function () {
     $(".postman__main__hero__bottom__left").removeClass("d-none");
     $(".postman__environment__tab").addClass("d-none");
@@ -680,36 +685,137 @@ $(function () {
 
   $(".sidebar-new-environment-ul").on("click", "li", function () {
     let envID = $(this).attr("data-id");
-  
+
     // Seçilen environment tabi
     $(".postman__main__hero__bottom__left").addClass("d-none");
     $(".postman__environment__tab").removeClass("d-none");
-  
+
     $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
-  
+
     $(".sidebar-new-environment-ul li").removeClass("active");
     $(this).addClass("active");
   });
-  
+
   $(document).on("click", ".env-review", function () {
     // Bu env-review div'inin data-attr atributunu əldə et
     let envAttr = $(this).attr("data-attr");
 
     // Əgər data-attr varsa, uyğun environment tab-ını aç
     if (envAttr) {
-        // Bütün tab'ları gizləyirik
-        $(".postman__environment__tab").addClass("d-none");
+      // Bütün tab'ları gizləyirik
+      $(".postman__environment__tab").addClass("d-none");
 
-        // Bu data-attr dəyərinə sahib tab'ı göstəririk
-        $(`.postman__environment__tab[data-attr="${envAttr}"]`).removeClass("d-none");
+      // Bu data-attr dəyərinə sahib tab'ı göstəririk
+      $(`.postman__environment__tab[data-attr="${envAttr}"]`).removeClass(
+        "d-none"
+      );
     }
 
-    $('.postman__main__hero__bottom__left').addClass('d-none')
+    $(".postman__main__hero__bottom__left").addClass("d-none");
+  });
+
+  $(document).on("click", ".env-type-change", function (e) {
+    e.stopPropagation();
+    $(this).next(".default-modal").toggleClass("d-none");
+  });
+
+  // Sayfanın başqa bir yerinə kliklədikdə modal bağlansın
+  $(document).on("click", function () {
+    $(".default-modal").addClass("d-none");
+  });
+
+  $(document).on("click", ".default-modal li", function (e) {
+    e.stopPropagation();
+
+    // Seçilen dəyəri götür
+    let selectedValue = $(this).text();
+
+    // `env-type-change` içindəki `span` elementinin məzmununu dəyiş
+    $(this)
+      .closest(".env-type")
+      .find(".env-type-change span")
+      .text(selectedValue);
+
+    // `default-modal`'ı bağla
+    $(this).closest(".default-modal").addClass("d-none");
+  });
+
+  // environment tab table
+  $(document).on("input", ".env-table tbody tr td input", function () {
+    let $row = $(this).closest("tr");
+    let $tableBody = $row.closest("tbody");
+
+    // Əgər bu satır sonuncu satırdırsa və input boş deyilsə, yeni satır əlavə et
+    if ($row.is(":last-child") && $(this).val().trim() !== "") {
+      let newRow = `
+        <tr>
+          <td>
+            <input type="checkbox" class="opacity-0">
+          </td>
+          <td>
+            <input type="text" placeholder="Add new variable">
+          </td>
+          <td>
+            <div class="env-type  opacity-0">
+              <div class="env-type-change d-flex align-items-center justify-content-between">
+                <span>default</span>
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+              <div class="default-modal d-none">
+                <ul>
+                  <li>Default</li>
+                  <li>Secret</li>
+                </ul>
+              </div>
+            </div>
+          </td>
+          <td>
+            <input type="text">
+          </td>
+          <td colspan="2">
+            <input type="text">
+          </td>
+        </tr>
+      `;
+      $tableBody.append(newRow);
+    }
+  });
+
+  // Hər hansı bir inputa dəyər daxil edilərsə, checkbox və env-type görünməlidir
+  $(document).on("input focus", ".env-table tbody tr td input", function () {
+    let $row = $(this).closest("tr");
+    let $envType = $row.find(".env-type");
+    let $checkbox = $row.find("td:first-child input[type='checkbox']");
+
+    if ($(this).val().trim() !== "" || $(this).is(":focus")) {
+      $envType.removeClass("opacity-0");
+    } else {
+      // Bütün input sahələri boşdursa, opacity geri qaytar
+      let allInputsEmpty =
+        $row.find("td input[type='text']").filter(function () {
+          return $(this).val().trim() !== "";
+        }).length === 0;
+
+      if (allInputsEmpty) {
+        $envType.addClass("opacity-0");
+      }
+    }
+
+    if ($(this).val().trim() !== "") {
+      $checkbox.removeClass("opacity-0").prop("checked", true);
+    } else {
+      // Bütün input sahələri boşdursa, opacity geri qaytar
+      let allInputsEmpty =
+        $row.find("td input[type='text']").filter(function () {
+          return $(this).val().trim() !== "";
+        }).length === 0;
+
+      if (allInputsEmpty) {
+        $checkbox.addClass("opacity-0").prop("checked", false);
+      }
+    }
+  });
 });
-
-
-});
-
 
 //functions
 
@@ -745,8 +851,7 @@ const syncEnvironmentSelection = () => {
         "d-none"
       ); // Seçilən tab'ı göstəririk
 
-
-      $('.postman__main__hero__bottom__left').addClass('d-none')
+      $(".postman__main__hero__bottom__left").addClass("d-none");
     }
   );
 };
@@ -793,7 +898,9 @@ const createNewEnvironment = (envName = "New Environment") => {
   `;
   $(".left-side-env-review").append(newEnvReviewDiv);
 
-  $(".environment-modal__list ul li, .sidebar-new-environment-ul li").removeClass("active");
+  $(
+    ".environment-modal__list ul li, .sidebar-new-environment-ul li"
+  ).removeClass("active");
   $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
   $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass("active");
 
@@ -828,7 +935,7 @@ const createNewEnvironment = (envName = "New Environment") => {
 
                     <div class="postman__environment__tab__request">
                       <div class="env-table-wrapper">
-                        <table class="environment table">
+                        <table class="environment table env-table">
                           <thead>
                             <tr>
                               <th>
@@ -855,15 +962,23 @@ const createNewEnvironment = (envName = "New Environment") => {
                           <tbody>
                             <tr>
                               <td>
-                                <input type="checkbox">
+                                <input type="checkbox" class='opacity-0'>
                               </td>
                               <td>
                                 <input type="text" placeholder="Add new variable">
                               </td>
                               <td>
-                                <div class="env-type d-flex align-items-center justify-content-between">
-                                  <span>default</span>
-                                  <i class="fa-solid fa-angle-down"></i>
+                                <div class="env-type opacity-0">
+                                  <div class="env-type-change d-flex align-items-center justify-content-between">
+                                    <span>default</span>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                  </div>
+                                  <div class="default-modal d-none">
+                                    <ul>
+                                      <li>Default</li>
+                                      <li>Secret</li>
+                                    </ul>
+                                  </div>
                                 </div>
                               </td>
                             <td>
@@ -886,7 +1001,6 @@ const createNewEnvironment = (envName = "New Environment") => {
 
   syncEnvironmentSelection();
 };
-
 
 function sidebarToggler() {
   $(".postman__main__sidebar__top").toggleClass("d-none");
@@ -924,51 +1038,43 @@ function sidebarToggler() {
   }
 }
 
+//   const sidebarContainer = $(".postman__sidebar-container");
+//   const sidebar = $(".postman__main__sidebar").parent();
+//   const hero = $(".postman__main__hero").parent();
+//   const resizeHandle = $(".resize-handle");
 
+//   let isResizing = false;
+//   let startX, startWidth;
 
+//   resizeHandle.on("mousedown", function (e) {
+//     isResizing = true;
+//     startX = e.clientX;
+//     startWidth = sidebar.width();
 
+//     $(document).on("mousemove", resize);
+//     $(document).on("mouseup", stopResize);
+//   });
 
+//   function resize(e) {
+//     if (!isResizing) return;
 
+//     let diffX = e.clientX - startX;
+//     let newSidebarWidth = startWidth + diffX;
+//     let containerWidth = $(".container-fluid").width();
+//     let minSidebarWidth = containerWidth * (3 / 12); // col-3 genişliyi
+//     let maxSidebarWidth = containerWidth * (5 / 12); // col-5 genişliyi
 
+//     if (newSidebarWidth >= minSidebarWidth && newSidebarWidth <= maxSidebarWidth) {
+//       let newSidebarCol = Math.round((newSidebarWidth / containerWidth) * 12);
+//       let newHeroCol = 12 - newSidebarCol;
 
+//       sidebarContainer.removeClass("col-3 col-4 col-5").addClass(`col-${newSidebarCol}`);
+//       hero.removeClass("col-9 col-8 col-7").addClass(`col-${newHeroCol}`);
+//     }
+//   }
 
-  //   const sidebarContainer = $(".postman__sidebar-container");
-  //   const sidebar = $(".postman__main__sidebar").parent();
-  //   const hero = $(".postman__main__hero").parent();
-  //   const resizeHandle = $(".resize-handle");
-
-  //   let isResizing = false;
-  //   let startX, startWidth;
-
-  //   resizeHandle.on("mousedown", function (e) {
-  //     isResizing = true;
-  //     startX = e.clientX;
-  //     startWidth = sidebar.width();
-
-  //     $(document).on("mousemove", resize);
-  //     $(document).on("mouseup", stopResize);
-  //   });
-
-  //   function resize(e) {
-  //     if (!isResizing) return;
-
-  //     let diffX = e.clientX - startX;
-  //     let newSidebarWidth = startWidth + diffX;
-  //     let containerWidth = $(".container-fluid").width();
-  //     let minSidebarWidth = containerWidth * (3 / 12); // col-3 genişliyi
-  //     let maxSidebarWidth = containerWidth * (5 / 12); // col-5 genişliyi
-
-  //     if (newSidebarWidth >= minSidebarWidth && newSidebarWidth <= maxSidebarWidth) {
-  //       let newSidebarCol = Math.round((newSidebarWidth / containerWidth) * 12);
-  //       let newHeroCol = 12 - newSidebarCol;
-
-  //       sidebarContainer.removeClass("col-3 col-4 col-5").addClass(`col-${newSidebarCol}`);
-  //       hero.removeClass("col-9 col-8 col-7").addClass(`col-${newHeroCol}`);
-  //     }
-  //   }
-
-  //   function stopResize() {
-  //     isResizing = false;
-  //     $(document).off("mousemove", resize);
-  //     $(document).off("mouseup", stopResize);
-  //   }
+//   function stopResize() {
+//     isResizing = false;
+//     $(document).off("mousemove", resize);
+//     $(document).off("mouseup", stopResize);
+//   }
