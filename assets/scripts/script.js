@@ -626,8 +626,9 @@ $(function () {
               newName
             );
 
-            $(`.postman__environment__tab[data-attr="${envID}"] .postman__environment__tab__header span`).text(newName);
-
+            $(
+              `.postman__environment__tab[data-attr="${envID}"] .postman__environment__tab__header span`
+            ).text(newName);
           }
         }
       });
@@ -713,6 +714,12 @@ $(function () {
   //     $(document).off("mouseup", stopResize);
   //   }
 
+
+  $(".review").on("click", function () {
+    $(".postman__main__hero__bottom__left").removeClass("d-none");
+    $(".postman__environment__tab").addClass("d-none");
+  });
+  
 });
 
 //functions
@@ -726,9 +733,15 @@ const syncEnvironmentSelection = () => {
       let envID = $(this).attr("data-id");
 
       // Active class'ı yalnız seçilən environment üçün elave etmek
-      $(".environment-modal__list ul li, .sidebar-new-environment-ul li").removeClass("active");
-      $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
-      $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass("active");
+      $(
+        ".environment-modal__list ul li, .sidebar-new-environment-ul li"
+      ).removeClass("active");
+      $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass(
+        "active"
+      );
+      $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass(
+        "active"
+      );
 
       // Seçilen environment adını yenileme
       let selectedText = $(this).find("span").text();
@@ -739,10 +752,146 @@ const syncEnvironmentSelection = () => {
 
       // Uygun olan environment tab'ını göstermek
       $(".postman__environment__tab").addClass("d-none"); // Əvvəlcə bütün tab'ları gizləyirik
-      $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none"); // Seçilən tab'ı göstəririk
+      $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass(
+        "d-none"
+      ); // Seçilən tab'ı göstəririk
     }
   );
 };
+
+// Yeni environment yaratma funksiyası
+// const createNewEnvironment = (envName = "New Environment") => {
+//   let envID = "env_" + new Date().getTime();
+
+//   let newEnvironment = `
+//     <li data-id="${envID}">
+//       <i class="fa-solid fa-check"></i>
+//       <span>${envName}</span>
+//     </li>
+//   `;
+
+//   let newSidebarEnv = `
+//     <li class="active" data-id="${envID}">
+//       <div class="d-flex justify-content-between">
+//           <span>${envName}</span>
+//           <div class="sidebar-new-environment-icons">
+//             <i class="fa-solid fa-circle-check me-1 selectedEnvironment"></i>
+//             <i class="fa-solid fa-ellipsis"></i>
+//             <div class="updateEnvironmentContainer d-none">
+//                                   <div class="updateEnvironment">
+//                                     <ul class="text-start">
+//                                       <li>Rename</li>
+//                                       <li>Delete</li>
+//                                     </ul>
+//                                   </div>
+//                                 </div>
+//           </div>
+//       </div>
+//     </li>
+//   `;
+
+//   $(".environment-modal__list ul").append(newEnvironment);
+//   $(".sidebar-new-environment-ul").append(newSidebarEnv);
+
+//   // Active olanları sinxronlaşdır
+//   $(
+//     ".environment-modal__list ul li, .sidebar-new-environment-ul li"
+//   ).removeClass("active");
+//   $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
+//   $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass("active");
+
+//   // Yeni environment yarandıqda əsas div gizlədilir
+//   $(".postman__main__hero__bottom__left").addClass("d-none");
+//   $(".postman__environment__tab").addClass("d-none");
+
+//   // Yeni environment üçün unikal data attr təyin et
+//   let environmentTab = `
+//   <div class="col-11 postman__environment__tab" data-attr="${envID}">
+//                     <div class="postman__environment__tab__header d-flex align-items-center justify-content-between">
+//                       <span>${envName}</span>
+//                       <div class="d-flex align-items-center postman__environment__tab__header__right">
+//                         <div class="d-flex align-items-center me-2">
+//                           <i class="fa-solid fa-floppy-disk saveRequest me-2"></i>
+//                             <p class="save">Save</p>
+//                         </div>
+//                         <div class="d-flex align-items-center fork-div pe-2 me-2">
+//                           <i class="fa-solid fa-code-fork me-2"></i>
+//                           <p>Fork</p>
+//                         </div>
+//                         <p>0</p>
+//                         <button class="ms-2 me-2">Share</button>
+//                         <i class="fa-solid fa-ellipsis"></i>
+//                       </div>
+//                     </div>
+
+//                     <div class="postman__environment__tab__search mb-2">
+//                       <div class="env-search-container">
+//                         <i class="fa-solid fa-magnifying-glass"></i>
+//                         <input type="text" placeholder="Filter Variables"/>
+//                       </div>
+//                     </div>
+
+//                     <div class="postman__environment__tab__request">
+//                       <div class="env-table-wrapper">
+//                         <table class="environment table">
+//                           <thead>
+//                             <tr>
+//                               <th>
+  
+//                               </th>
+//                               <th>
+//                                 Variable
+//                               </th>
+//                               <th>
+//                                 Type
+//                               </th>
+//                               <th>
+//                                 Initial value
+//                               </th>
+//                               <th>
+//                                 Current value
+//                               </th>
+//                               <th>
+//                                 <i class="fa-solid fa-ellipsis"></i>
+//                               </th>
+//                             </tr>
+//                           </thead>
+  
+//                           <tbody>
+//                             <tr>
+//                               <td>
+//                                 <input type="checkbox">
+//                               </td>
+//                               <td>
+//                                 <input type="text" placeholder="Add new variable">
+//                               </td>
+//                               <td>
+//                                 <div class="env-type d-flex align-items-center justify-content-between">
+//                                   <span>default</span>
+//                                   <i class="fa-solid fa-angle-down"></i>
+//                                 </div>
+//                               </td>
+//                             <td>
+//                               <input type="text">
+//                             </td>
+//                             <td colspan="2">
+//                               <input type="text">
+//                             </td>
+//                             </tr>
+//                           </tbody>
+//                         </table>
+//                       </div>
+//                     </div>
+//                   </div>
+//    `;
+
+//   $(".change-to-env").prepend(environmentTab);
+
+//   // Yeni yaradılan environment-i göstər
+//   $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
+
+//   syncEnvironmentSelection();
+// };
 
 // Yeni environment yaratma funksiyası
 const createNewEnvironment = (envName = "New Environment") => {
@@ -778,19 +927,13 @@ const createNewEnvironment = (envName = "New Environment") => {
   $(".environment-modal__list ul").append(newEnvironment);
   $(".sidebar-new-environment-ul").append(newSidebarEnv);
 
-  // Active olanları sinxronlaşdır
-  $(
-    ".environment-modal__list ul li, .sidebar-new-environment-ul li"
-  ).removeClass("active");
+  $(".environment-modal__list ul li, .sidebar-new-environment-ul li").removeClass("active");
   $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
   $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass("active");
 
-  // delete
-  // Yeni environment yarandıqda əsas div gizlədilir
   $(".postman__main__hero__bottom__left").addClass("d-none");
   $(".postman__environment__tab").addClass("d-none");
 
-  // Yeni environment üçün unikal data attr təyin et
   let environmentTab = `
   <div class="col-11 postman__environment__tab" data-attr="${envID}">
                     <div class="postman__environment__tab__header d-flex align-items-center justify-content-between">
@@ -871,13 +1014,25 @@ const createNewEnvironment = (envName = "New Environment") => {
                   </div>
    `;
 
-   $(".change-to-env").prepend(environmentTab);
+  $(".change-to-env").prepend(environmentTab);
 
-   // Yeni yaradılan environment-i göstər
-   $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
+  $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
 
   syncEnvironmentSelection();
 };
+
+$(".sidebar-new-environment-ul").on("click", "li", function () {
+  let envID = $(this).attr("data-id");
+
+  // Seçilen environment tabi
+  $(".postman__main__hero__bottom__left").addClass("d-none");
+  $(".postman__environment__tab").removeClass("d-none");
+
+  $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
+
+  $(".sidebar-new-environment-ul li").removeClass("active");
+  $(this).addClass("active");
+});
 
 
 function sidebarToggler() {
