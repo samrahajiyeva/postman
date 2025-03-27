@@ -526,7 +526,6 @@ $(function () {
     $(this).addClass("active");
   });
 
-  // Əsas funksiyalar aktiv edilsin
   syncEnvironmentSelection();
 
   // sidebar acma qapama
@@ -558,58 +557,27 @@ $(function () {
     }
   });
 
-  $(document).on(
-    "click",
-    ".updateEnvironment ul li:contains('Delete')",
-    function (event) {
-      event.stopPropagation();
-
-      let envItem = $(this).closest("li[data-id]");
-      let envID = envItem.attr("data-id");
-
-      // Həm modal siyahısından, həm də sidebar siyahısından sil
-      $(`.environment-modal__list ul li[data-id="${envID}"]`).remove();
-      $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
-
-      let selectedEnv = $(".middle-side .change-check span").text();
-      if (selectedEnv === envItem.find("span").text()) {
-        $(".middle-side .change-check").html(`
-          <span class="ms-1 me-2">No environment</span>
-          <i class="fa-solid fa-angle-down"></i>
-        `);
-      }
-
-      if ($(".environment-modal__list ul li").length === 1) {
-        $(".environment-modal__empty").removeClass("d-none");
-        $(".environment-modal__list").addClass("d-none");
-      }
-
-      if ($(".sidebar-new-environment-ul li").length === 0) {
-        $(".sidebar-no-environment").removeClass("d-none");
-        $(".sidebar-new-environment").addClass("d-none");
-      }
-    }
-  );
-
+ 
+ 
   $(document).on(
     "click",
     ".updateEnvironment ul li:contains('Rename')",
     function (event) {
       event.stopPropagation();
-
+  
       let envItem = $(this).closest("li[data-id]");
       let envID = envItem.attr("data-id");
       let spanElement = envItem.find("span");
       let currentName = spanElement.text();
-
+  
       if (envItem.find("input").length) return;
-
+  
       let inputElement = $(
         `<input type="text" class="rename-input" value="${currentName}" />`
       );
       spanElement.hide().after(inputElement);
       inputElement.focus();
-
+  
       inputElement.on("keypress", function (e) {
         if (e.which === 13) {
           // Enter düyməsi basılıbsa
@@ -617,28 +585,28 @@ $(function () {
           if (newName) {
             spanElement.text(newName).show();
             $(this).remove();
-
+  
             // sidebar ve modal icerisinde uygun li'ni yenilemek
-            $(`.environment-modal__list ul li[data-id="${envID}"] span`).text(
-              newName
-            );
-            $(`.sidebar-new-environment-ul li[data-id="${envID}"] span`).text(
-              newName
-            );
-
+            $(`.environment-modal__list ul li[data-id="${envID}"] span`).text(newName);
+            $(`.sidebar-new-environment-ul li[data-id="${envID}"] span`).text(newName);
+            
+            // env-review div içindeki span'ı güncelle
+            $(`.left-side .env-review[data-attr="${envID}"] span`).text(newName);
+  
             $(
               `.postman__environment__tab[data-attr="${envID}"] .postman__environment__tab__header span`
             ).text(newName);
           }
         }
       });
-
+  
       inputElement.on("blur", function () {
         spanElement.show();
         $(this).remove();
       });
     }
   );
+  
 
   $(".search-container input").on("keyup", function () {
     let searchText = $(this).val().toLowerCase();
@@ -673,54 +641,44 @@ $(function () {
     }
   });
 
-  //   const sidebarContainer = $(".postman__sidebar-container");
-  //   const sidebar = $(".postman__main__sidebar").parent();
-  //   const hero = $(".postman__main__hero").parent();
-  //   const resizeHandle = $(".resize-handle");
-
-  //   let isResizing = false;
-  //   let startX, startWidth;
-
-  //   resizeHandle.on("mousedown", function (e) {
-  //     isResizing = true;
-  //     startX = e.clientX;
-  //     startWidth = sidebar.width();
-
-  //     $(document).on("mousemove", resize);
-  //     $(document).on("mouseup", stopResize);
-  //   });
-
-  //   function resize(e) {
-  //     if (!isResizing) return;
-
-  //     let diffX = e.clientX - startX;
-  //     let newSidebarWidth = startWidth + diffX;
-  //     let containerWidth = $(".container-fluid").width();
-  //     let minSidebarWidth = containerWidth * (3 / 12); // col-3 genişliyi
-  //     let maxSidebarWidth = containerWidth * (5 / 12); // col-5 genişliyi
-
-  //     if (newSidebarWidth >= minSidebarWidth && newSidebarWidth <= maxSidebarWidth) {
-  //       let newSidebarCol = Math.round((newSidebarWidth / containerWidth) * 12);
-  //       let newHeroCol = 12 - newSidebarCol;
-
-  //       sidebarContainer.removeClass("col-3 col-4 col-5").addClass(`col-${newSidebarCol}`);
-  //       hero.removeClass("col-9 col-8 col-7").addClass(`col-${newHeroCol}`);
-  //     }
-  //   }
-
-  //   function stopResize() {
-  //     isResizing = false;
-  //     $(document).off("mousemove", resize);
-  //     $(document).off("mouseup", stopResize);
-  //   }
-
 
   $(".review").on("click", function () {
     $(".postman__main__hero__bottom__left").removeClass("d-none");
     $(".postman__environment__tab").addClass("d-none");
   });
+
+  $(".sidebar-new-environment-ul").on("click", "li", function () {
+    let envID = $(this).attr("data-id");
   
+    // Seçilen environment tabi
+    $(".postman__main__hero__bottom__left").addClass("d-none");
+    $(".postman__environment__tab").removeClass("d-none");
+  
+    $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
+  
+    $(".sidebar-new-environment-ul li").removeClass("active");
+    $(this).addClass("active");
+  });
+  
+  $(document).on("click", ".env-review", function () {
+    // Bu env-review div'inin data-attr atributunu əldə et
+    let envAttr = $(this).attr("data-attr");
+
+    // Əgər data-attr varsa, uyğun environment tab-ını aç
+    if (envAttr) {
+        // Bütün tab'ları gizləyirik
+        $(".postman__environment__tab").addClass("d-none");
+
+        // Bu data-attr dəyərinə sahib tab'ı göstəririk
+        $(`.postman__environment__tab[data-attr="${envAttr}"]`).removeClass("d-none");
+    }
+
+    $('.postman__main__hero__bottom__left').addClass('d-none')
 });
+
+
+});
+
 
 //functions
 
@@ -759,141 +717,6 @@ const syncEnvironmentSelection = () => {
   );
 };
 
-// Yeni environment yaratma funksiyası
-// const createNewEnvironment = (envName = "New Environment") => {
-//   let envID = "env_" + new Date().getTime();
-
-//   let newEnvironment = `
-//     <li data-id="${envID}">
-//       <i class="fa-solid fa-check"></i>
-//       <span>${envName}</span>
-//     </li>
-//   `;
-
-//   let newSidebarEnv = `
-//     <li class="active" data-id="${envID}">
-//       <div class="d-flex justify-content-between">
-//           <span>${envName}</span>
-//           <div class="sidebar-new-environment-icons">
-//             <i class="fa-solid fa-circle-check me-1 selectedEnvironment"></i>
-//             <i class="fa-solid fa-ellipsis"></i>
-//             <div class="updateEnvironmentContainer d-none">
-//                                   <div class="updateEnvironment">
-//                                     <ul class="text-start">
-//                                       <li>Rename</li>
-//                                       <li>Delete</li>
-//                                     </ul>
-//                                   </div>
-//                                 </div>
-//           </div>
-//       </div>
-//     </li>
-//   `;
-
-//   $(".environment-modal__list ul").append(newEnvironment);
-//   $(".sidebar-new-environment-ul").append(newSidebarEnv);
-
-//   // Active olanları sinxronlaşdır
-//   $(
-//     ".environment-modal__list ul li, .sidebar-new-environment-ul li"
-//   ).removeClass("active");
-//   $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
-//   $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).addClass("active");
-
-//   // Yeni environment yarandıqda əsas div gizlədilir
-//   $(".postman__main__hero__bottom__left").addClass("d-none");
-//   $(".postman__environment__tab").addClass("d-none");
-
-//   // Yeni environment üçün unikal data attr təyin et
-//   let environmentTab = `
-//   <div class="col-11 postman__environment__tab" data-attr="${envID}">
-//                     <div class="postman__environment__tab__header d-flex align-items-center justify-content-between">
-//                       <span>${envName}</span>
-//                       <div class="d-flex align-items-center postman__environment__tab__header__right">
-//                         <div class="d-flex align-items-center me-2">
-//                           <i class="fa-solid fa-floppy-disk saveRequest me-2"></i>
-//                             <p class="save">Save</p>
-//                         </div>
-//                         <div class="d-flex align-items-center fork-div pe-2 me-2">
-//                           <i class="fa-solid fa-code-fork me-2"></i>
-//                           <p>Fork</p>
-//                         </div>
-//                         <p>0</p>
-//                         <button class="ms-2 me-2">Share</button>
-//                         <i class="fa-solid fa-ellipsis"></i>
-//                       </div>
-//                     </div>
-
-//                     <div class="postman__environment__tab__search mb-2">
-//                       <div class="env-search-container">
-//                         <i class="fa-solid fa-magnifying-glass"></i>
-//                         <input type="text" placeholder="Filter Variables"/>
-//                       </div>
-//                     </div>
-
-//                     <div class="postman__environment__tab__request">
-//                       <div class="env-table-wrapper">
-//                         <table class="environment table">
-//                           <thead>
-//                             <tr>
-//                               <th>
-  
-//                               </th>
-//                               <th>
-//                                 Variable
-//                               </th>
-//                               <th>
-//                                 Type
-//                               </th>
-//                               <th>
-//                                 Initial value
-//                               </th>
-//                               <th>
-//                                 Current value
-//                               </th>
-//                               <th>
-//                                 <i class="fa-solid fa-ellipsis"></i>
-//                               </th>
-//                             </tr>
-//                           </thead>
-  
-//                           <tbody>
-//                             <tr>
-//                               <td>
-//                                 <input type="checkbox">
-//                               </td>
-//                               <td>
-//                                 <input type="text" placeholder="Add new variable">
-//                               </td>
-//                               <td>
-//                                 <div class="env-type d-flex align-items-center justify-content-between">
-//                                   <span>default</span>
-//                                   <i class="fa-solid fa-angle-down"></i>
-//                                 </div>
-//                               </td>
-//                             <td>
-//                               <input type="text">
-//                             </td>
-//                             <td colspan="2">
-//                               <input type="text">
-//                             </td>
-//                             </tr>
-//                           </tbody>
-//                         </table>
-//                       </div>
-//                     </div>
-//                   </div>
-//    `;
-
-//   $(".change-to-env").prepend(environmentTab);
-
-//   // Yeni yaradılan environment-i göstər
-//   $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
-
-//   syncEnvironmentSelection();
-// };
-
-// Yeni environment yaratma funksiyası
 const createNewEnvironment = (envName = "New Environment") => {
   let envID = "env_" + new Date().getTime();
 
@@ -926,6 +749,15 @@ const createNewEnvironment = (envName = "New Environment") => {
 
   $(".environment-modal__list ul").append(newEnvironment);
   $(".sidebar-new-environment-ul").append(newSidebarEnv);
+
+  // left-side div'inə yeni div əlavə et
+  let newEnvReviewDiv = `
+    <div class="env-review px-3 pb-2 pt-2 d-flex align-items-center" data-attr="${envID}">
+      <i class="fa-solid fa-square-minus me-1"></i>
+      <span>${envName}</span>
+    </div>
+  `;
+  $(".left-side-env-review").append(newEnvReviewDiv);
 
   $(".environment-modal__list ul li, .sidebar-new-environment-ul li").removeClass("active");
   $(`.environment-modal__list ul li[data-id="${envID}"]`).addClass("active");
@@ -1021,19 +853,6 @@ const createNewEnvironment = (envName = "New Environment") => {
   syncEnvironmentSelection();
 };
 
-$(".sidebar-new-environment-ul").on("click", "li", function () {
-  let envID = $(this).attr("data-id");
-
-  // Seçilen environment tabi
-  $(".postman__main__hero__bottom__left").addClass("d-none");
-  $(".postman__environment__tab").removeClass("d-none");
-
-  $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass("d-none");
-
-  $(".sidebar-new-environment-ul li").removeClass("active");
-  $(this).addClass("active");
-});
-
 
 function sidebarToggler() {
   $(".postman__main__sidebar__top").toggleClass("d-none");
@@ -1070,3 +889,52 @@ function sidebarToggler() {
     parentDivofMain.removeClass("col-11").addClass("col-9");
   }
 }
+
+
+
+
+
+
+
+
+
+  //   const sidebarContainer = $(".postman__sidebar-container");
+  //   const sidebar = $(".postman__main__sidebar").parent();
+  //   const hero = $(".postman__main__hero").parent();
+  //   const resizeHandle = $(".resize-handle");
+
+  //   let isResizing = false;
+  //   let startX, startWidth;
+
+  //   resizeHandle.on("mousedown", function (e) {
+  //     isResizing = true;
+  //     startX = e.clientX;
+  //     startWidth = sidebar.width();
+
+  //     $(document).on("mousemove", resize);
+  //     $(document).on("mouseup", stopResize);
+  //   });
+
+  //   function resize(e) {
+  //     if (!isResizing) return;
+
+  //     let diffX = e.clientX - startX;
+  //     let newSidebarWidth = startWidth + diffX;
+  //     let containerWidth = $(".container-fluid").width();
+  //     let minSidebarWidth = containerWidth * (3 / 12); // col-3 genişliyi
+  //     let maxSidebarWidth = containerWidth * (5 / 12); // col-5 genişliyi
+
+  //     if (newSidebarWidth >= minSidebarWidth && newSidebarWidth <= maxSidebarWidth) {
+  //       let newSidebarCol = Math.round((newSidebarWidth / containerWidth) * 12);
+  //       let newHeroCol = 12 - newSidebarCol;
+
+  //       sidebarContainer.removeClass("col-3 col-4 col-5").addClass(`col-${newSidebarCol}`);
+  //       hero.removeClass("col-9 col-8 col-7").addClass(`col-${newHeroCol}`);
+  //     }
+  //   }
+
+  //   function stopResize() {
+  //     isResizing = false;
+  //     $(document).off("mousemove", resize);
+  //     $(document).off("mouseup", stopResize);
+  //   }

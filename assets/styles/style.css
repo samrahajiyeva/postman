@@ -439,6 +439,7 @@ body {
   color: var(--baseTextColor);
 }
 .postman__main__hero__top__left .left-side .review {
+  cursor: pointer;
   border-bottom: 1px solid var(--primary-orange);
 }
 .postman__main__hero__top__left .left-side .review span {
@@ -2154,4 +2155,12 @@ li.active .fa-check {
   .env-table-wrapper {
     scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
+}
+.env-review {
+  border-left: var(--border);
+  cursor: pointer;
+}
+.env-review span {
+  color: var(--white);
+  font-size: 11px;
 }/*# sourceMappingURL=style.css.map */
