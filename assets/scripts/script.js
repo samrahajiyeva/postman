@@ -557,7 +557,38 @@ $(function () {
     }
   });
 
- 
+ $(document).on(
+    "click",
+    ".updateEnvironment ul li:contains('Delete')",
+    function (event) {
+      event.stopPropagation();
+
+      let envItem = $(this).closest("li[data-id]");
+      let envID = envItem.attr("data-id");
+
+      // Həm modal siyahısından, həm də sidebar siyahısından sil
+      $(`.environment-modal__list ul li[data-id="${envID}"]`).remove();
+      $(`.sidebar-new-environment-ul li[data-id="${envID}"]`).remove();
+
+      let selectedEnv = $(".middle-side .change-check span").text();
+      if (selectedEnv === envItem.find("span").text()) {
+        $(".middle-side .change-check").html(
+          `<span class="ms-1 me-2">No environment</span>
+          <i class="fa-solid fa-angle-down"></i>`
+        );
+      }
+
+      if ($(".environment-modal__list ul li").length === 1) {
+        $(".environment-modal__empty").removeClass("d-none");
+        $(".environment-modal__list").addClass("d-none");
+      }
+
+      if ($(".sidebar-new-environment-ul li").length === 0) {
+        $(".sidebar-no-environment").removeClass("d-none");
+        $(".sidebar-new-environment").addClass("d-none");
+      }
+    }
+  );
  
   $(document).on(
     "click",
@@ -713,6 +744,9 @@ const syncEnvironmentSelection = () => {
       $(`.postman__environment__tab[data-attr="${envID}"]`).removeClass(
         "d-none"
       ); // Seçilən tab'ı göstəririk
+
+
+      $('.postman__main__hero__bottom__left').addClass('d-none')
     }
   );
 };
